@@ -92,7 +92,7 @@ namespace BlueCloud.Extensions.Tests
                 }
             });
 
-            Assert.True(elapsedTime < 500, $"Actual Elapsed Time: {elapsedTime} milliseconds");
+            Assert.True(elapsedTime < 600, $"Actual Elapsed Time: {elapsedTime} milliseconds");
         }
 
         private long MeasurePerformance(Action action) {
