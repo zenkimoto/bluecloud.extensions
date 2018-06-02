@@ -17,11 +17,19 @@
     <ProjectReference Include="..\BlueCloud.Extensions\BlueCloud.Extensions.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="chinook.db" />
+    <None Remove="Data\chinook.db" />
+    <None Remove="SQL\GetAllAlbums.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="chinook.db">
+    <Content Include="Database\chinook.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\" />
+    <Folder Include="SQL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\GetAllAlbums.sql" />
   </ItemGroup>
 </Project>

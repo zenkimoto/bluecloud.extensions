@@ -11,7 +11,7 @@ namespace BlueCloud.Extensions.Tests
 
         public IDbConnectionExtensionsTests() 
         {
-            connection = new SqliteConnection("Data Source=./chinook.db");
+            connection = new SqliteConnection("Data Source=./Database/chinook.db");
             connection.Open();
         }
 
@@ -37,7 +37,8 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void ExecuteQueryString_WhenAddingParameter_ShouldReturnCorrectRow() {
+        public void ExecuteQueryString_WhenAddingParameter_ShouldReturnCorrectRow() 
+        {
             var title = "";
 
             connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = @albumId", command =>
@@ -50,6 +51,22 @@ namespace BlueCloud.Extensions.Tests
             });
 
             Assert.Equal("For Those About To Rock We Salute You", title);
+        }
+
+        [Fact]
+        public void ExecuteQueryEmbeddedResource_ShouldReturnRows() 
+        {
+            var count = 0;
+
+            connection.ExecuteQueryEmbeddedResource("GetAllAlbums.sql", reader =>
+            {
+                while (reader.Read())
+                {
+                    count++;
+                }
+            });
+
+            Assert.Equal(347, count);    
         }
     }
 }
