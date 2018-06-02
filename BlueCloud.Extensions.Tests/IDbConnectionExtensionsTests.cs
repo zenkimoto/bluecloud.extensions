@@ -4,14 +4,15 @@ using BlueCloud.Extensions.Data;
 using Microsoft.Data.Sqlite;
 using BlueCloud.Extensions.Tests.Model;
 using System.Linq;
+using System.Diagnostics;
 
 namespace BlueCloud.Extensions.Tests
 {
-    public class IDbConnectionExtensionsTests: IDisposable
+    public class IDbConnectionExtensionsTests : IDisposable
     {
         SqliteConnection connection;
 
-        public IDbConnectionExtensionsTests() 
+        public IDbConnectionExtensionsTests()
         {
             connection = new SqliteConnection("Data Source=./Database/chinook.db");
             connection.Open();
@@ -29,8 +30,10 @@ namespace BlueCloud.Extensions.Tests
         {
             var count = 0;
 
-            connection.ExecuteQueryString("SELECT * FROM albums", reader => {
-                while (reader.Read()) {
+            connection.ExecuteQueryString("SELECT * FROM albums", reader =>
+            {
+                while (reader.Read())
+                {
                     count++;
                 }
             });
@@ -39,7 +42,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void ExecuteQueryString_WhenAddingParameter_ShouldReturnCorrectRow() 
+        public void ExecuteQueryString_WhenAddingParameter_ShouldReturnCorrectRow()
         {
             var title = "";
 
@@ -56,7 +59,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void ExecuteQueryEmbeddedResource_ShouldReturnRows() 
+        public void ExecuteQueryEmbeddedResource_ShouldReturnRows()
         {
             var count = 0;
 
@@ -68,7 +71,7 @@ namespace BlueCloud.Extensions.Tests
                 }
             });
 
-            Assert.Equal(347, count);    
+            Assert.Equal(347, count);
         }
 
         [Fact]
@@ -77,6 +80,27 @@ namespace BlueCloud.Extensions.Tests
             var albums = connection.GetObjectsFromEmbeddedResource<Album>("GetAllAlbums.sql");
 
             Assert.Equal(347, albums.ToList().Count);
+        }
+
+        [Fact]
+        public void GetObjectsFromEmbeddedResource_ShouldBePerformant()
+        {
+            var elapsedTime = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++) {
+                    connection.GetObjectsFromEmbeddedResource<Album>("GetAllAlbums.sql");    
+                }
+            });
+
+            Assert.True(elapsedTime < 500, $"Actual Elapsed Time: {elapsedTime} milliseconds");
+        }
+
+        private long MeasurePerformance(Action action) {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            action.Invoke();
+            stopwatch.Stop();
+            return stopwatch.ElapsedMilliseconds;
         }
     }
 }
