@@ -2,6 +2,8 @@ using System;
 using Xunit;
 using BlueCloud.Extensions.Data;
 using Microsoft.Data.Sqlite;
+using BlueCloud.Extensions.Tests.Model;
+using System.Linq;
 
 namespace BlueCloud.Extensions.Tests
 {
@@ -67,6 +69,14 @@ namespace BlueCloud.Extensions.Tests
             });
 
             Assert.Equal(347, count);    
+        }
+
+        [Fact]
+        public void GetObjectsFromEmbeddedResource_ShouldReturnAlbumObjects()
+        {
+            var albums = connection.GetObjectsFromEmbeddedResource<Album>("GetAllAlbums.sql");
+
+            Assert.Equal(347, albums.ToList().Count);
         }
     }
 }
