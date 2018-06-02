@@ -103,7 +103,6 @@ namespace BlueCloud.Extensions.Data
             using (IDbCommand command = connection.CommandWithSqlString(sqlString))
             {
                 commandCallback?.Invoke(command);
-
 #if DEBUG
                 if (validateParameters)
                 {
@@ -195,7 +194,6 @@ namespace BlueCloud.Extensions.Data
             using (IDbCommand command = connection.CommandWithSqlString(sqlString))
             {
                 commandCallback?.Invoke(command);
-
 #if DEBUG
                 if (validateParameters)
                 {
