@@ -17,8 +17,8 @@
     <ProjectReference Include="..\BlueCloud.Extensions\BlueCloud.Extensions.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Data\chinook.db" />
     <None Remove="SQL\GetAllAlbums.sql" />
+    <None Remove="Database\chinook.db" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\chinook.db">
