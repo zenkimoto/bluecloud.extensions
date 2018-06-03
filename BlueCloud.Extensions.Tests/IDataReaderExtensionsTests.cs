@@ -87,6 +87,95 @@ namespace BlueCloud.Extensions.Tests
             Assert.True(time < 1, $"Base Benchmark Get Value: {time}");
         }
 
+        [Fact]
+        public void PopulateProperties_ShouldPopulateAttributedProperties() {
+            var album = new Album();
+
+            reader.Read();
+
+            reader.PopulateProperties<Album>(album);
+
+            Assert.Equal(1, album.AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", album.Title);
+            Assert.Equal(1, album.ArtistId);
+        }
+
+        [Fact]
+        public void PopulateProperties_ShouldBePerformant()
+        {
+            reader.Read();
+
+            var time = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 10000; i++) {
+                    var album = new Album();
+                    reader.PopulateProperties<Album>(album);                    
+                }
+            });
+
+            Assert.True(time < 1, $"Populate Properties benchmark: {time}");
+        }
+
+        [Fact]
+        public void PopulateProperties_BaseBenchmark()
+        {
+            reader.Read();
+
+            var time = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 10000; i++)
+                {
+                    var album = new Album();
+                    album.AlbumId = reader.GetInt32(reader.GetOrdinal("AlbumId"));
+                    album.Title = reader.GetString(reader.GetOrdinal("Title"));
+                    album.ArtistId = reader.GetInt32(reader.GetOrdinal("ArtistId"));
+                }
+            });
+
+            Assert.True(time < 1, $"Base Benchmark Populate Properties: {time}");
+        }
+
+        [Fact]
+        public void NewPopulateProperties_Benchmark()
+        {
+            reader.Read();
+
+            var time = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++) {
+                    reader.PopulateProperties<Album>();
+                    reader.Close();
+
+                    reader = command.ExecuteReader();
+                }
+            });
+
+            Assert.True(time < 1, $"New Benchmark Populate Properties: {time}");
+        }
+
+        [Fact]
+        public void NewBasePopulateProperties_Benchmark()
+        {
+            reader.Read();
+
+            var time = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++) {
+                    while (reader.Read())
+                    {
+                        reader.GetInt32(reader.GetOrdinal("AlbumId"));
+                        reader.GetString(reader.GetOrdinal("Title"));
+                        reader.GetInt32(reader.GetOrdinal("ArtistId"));
+                    }
+
+                    reader.Close();
+                    reader = command.ExecuteReader();                    
+                }
+            });
+
+            Assert.True(time < 1, $"New Base Benchmark Populate Properties: {time}");
+        }
+
         private long MeasurePerformance(Action action)
         {
             var stopwatch = new Stopwatch();

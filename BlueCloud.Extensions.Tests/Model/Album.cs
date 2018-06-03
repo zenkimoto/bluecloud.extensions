@@ -6,12 +6,12 @@ namespace BlueCloud.Extensions.Tests.Model
     public class Album
     {
         [DbField("AlbumId")]
-        public int AlbumId { get; set; }
+        public long AlbumId { get; set; }
 
         [DbField("Title")]
         public string Title { get; set; }
 
         [DbField("ArtistId")]
-        public int ArtistId { get; set; }
+        public long ArtistId { get; set; }
     }
 }

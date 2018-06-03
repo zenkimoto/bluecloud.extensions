@@ -90,7 +90,7 @@ namespace BlueCloud.Extensions.Data
             return result;
         }
 
-
+        [Obsolete]
         public static void PopulateProperties<T>(this IDataReader dataReader, T obj) where T : class
         {
             try
@@ -105,12 +105,13 @@ namespace BlueCloud.Extensions.Data
                 {
                     DbFieldAttribute dbField = property.GetDbField();
 
+                    // If property doesn't exist in the data reader, continue... (?)
                     if (fields.ContainsKey(dbField.Field.ToLower()) == false)
                         continue;
 
                     MethodInfo generic = method.MakeGenericMethod(property.PropertyType);
                     object result = generic.Invoke(null, new object[] { dataReader, dbField.Field });
-                    
+
                     property.SetValue(obj, result);
                 }
             }
@@ -125,6 +126,67 @@ namespace BlueCloud.Extensions.Data
                     throw;
                 }
             }
+        }
+
+        public static IEnumerable<T> PopulateProperties<T>(this IDataReader dataReader) where T : class
+        {
+            List<Tuple<string, PropertyInfo>> GetDatabaseProperties()
+            {
+                var type = typeof(T);
+                var properties = type.GetProperties();
+                var result = new List<Tuple<string, PropertyInfo>>();
+
+                foreach (var property in properties)
+                {
+                    var attrib = property.GetCustomAttribute<DbFieldAttribute>(true);
+
+                    if (attrib != null)
+                    {
+                        var tuple = new Tuple<string, PropertyInfo>(attrib.Field, property);
+                        result.Add(tuple);
+                    }
+                }
+
+                return result;
+            }
+
+            var dbProperties = GetDatabaseProperties();
+            var objects = new List<T>();
+
+            while (dataReader.Read())
+            {
+                T obj = (T)Activator.CreateInstance(typeof(T));
+
+                foreach (var mapping in dbProperties)
+                {
+                    var result = dataReader[mapping.Item1];
+
+                    if (result == DBNull.Value) {
+                        result = null;
+                    }
+
+                    try {
+                        mapping.Item2.SetValue(obj, result);
+                    } catch (ArgumentException ex) {
+                        var errorMessage = "";
+
+                        if (result == null) 
+                        {
+                            errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'. Detail: {ex.Message}";                     
+                        } 
+                        else 
+                        {
+                            errorMessage = $"Unable to convert database field: '{mapping.Item1}' to property: '{mapping.Item2.Name}'. Detail: {ex.Message}";
+                        }
+
+                        throw new InvalidCastException(errorMessage, ex);   
+                    }
+                }
+
+                objects.Add(obj);
+            }
+
+            return objects;
         }
 
         /// <summary>
