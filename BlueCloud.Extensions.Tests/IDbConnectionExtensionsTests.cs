@@ -4,8 +4,6 @@ using BlueCloud.Extensions.Data;
 using Microsoft.Data.Sqlite;
 using BlueCloud.Extensions.Tests.Model;
 using System.Linq;
-using System.Diagnostics;
-using System.Collections.Generic;
 
 namespace BlueCloud.Extensions.Tests
 {

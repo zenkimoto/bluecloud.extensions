@@ -29,6 +29,7 @@
     <Folder Include="Database\" />
     <Folder Include="SQL\" />
     <Folder Include="Model\" />
+    <Folder Include="Performance\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SQL\GetAllAlbums.sql" />

@@ -3,17 +3,16 @@ using Xunit;
 using BlueCloud.Extensions.Data;
 using Microsoft.Data.Sqlite;
 using BlueCloud.Extensions.Tests.Model;
-using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace BlueCloud.Extensions.Tests
+namespace BlueCloud.Extensions.Tests.Performance
 {
-    public class IDbConnectionExtensionPerformanceTests : IDisposable
+    public class IDbConnectionExtensionsPerformanceTests : IDisposable
     {
         SqliteConnection connection;
 
-        public IDbConnectionExtensionPerformanceTests()
+        public IDbConnectionExtensionsPerformanceTests()
         {
             connection = new SqliteConnection("Data Source=./Database/chinook.db");
             connection.Open();
