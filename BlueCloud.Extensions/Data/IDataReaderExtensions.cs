@@ -128,13 +128,13 @@ namespace BlueCloud.Extensions.Data
             }
         }
 
-        public static IEnumerable<T> PopulateProperties<T>(this IDataReader dataReader) where T : class
+        public static IEnumerable<T> MapToProperties<T>(this IDataReader dataReader) where T : class
         {
-            List<Tuple<string, PropertyInfo>> GetDatabaseProperties()
+            List<Tuple<string, PropertyInfo, bool>> GetDatabaseProperties()
             {
                 var type = typeof(T);
                 var properties = type.GetProperties();
-                var result = new List<Tuple<string, PropertyInfo>>();
+                var result = new List<Tuple<string, PropertyInfo, bool>>();
 
                 foreach (var property in properties)
                 {
@@ -142,7 +142,8 @@ namespace BlueCloud.Extensions.Data
 
                     if (attrib != null)
                     {
-                        var tuple = new Tuple<string, PropertyInfo>(attrib.Field, property);
+                        var isNullable = Nullable.GetUnderlyingType(property.PropertyType) != null;
+                        var tuple = new Tuple<string, PropertyInfo, bool>(attrib.Field, property, isNullable);
                         result.Add(tuple);
                     }
                 }
@@ -165,20 +166,15 @@ namespace BlueCloud.Extensions.Data
                         result = null;
                     }
 
+                    if (result == null && mapping.Item3 == false) {
+                        var errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'.";
+                        throw new InvalidCastException(errorMessage);
+                    }
+
                     try {
                         mapping.Item2.SetValue(obj, result);
                     } catch (ArgumentException ex) {
-                        var errorMessage = "";
-
-                        if (result == null) 
-                        {
-                            errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'. Detail: {ex.Message}";                     
-                        } 
-                        else 
-                        {
-                            errorMessage = $"Unable to convert database field: '{mapping.Item1}' to property: '{mapping.Item2.Name}'. Detail: {ex.Message}";
-                        }
-
+                        var errorMessage = $"Unable to convert database field: '{mapping.Item1}' to property: '{mapping.Item2.Name}'. Detail: {ex.Message}";
                         throw new InvalidCastException(errorMessage, ex);   
                     }
                 }

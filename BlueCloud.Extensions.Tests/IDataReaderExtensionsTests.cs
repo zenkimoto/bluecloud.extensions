@@ -5,7 +5,6 @@ using Microsoft.Data.Sqlite;
 using BlueCloud.Extensions.Tests.Model;
 using System.Linq;
 using System.Data;
-using System.Diagnostics;
 
 namespace BlueCloud.Extensions.Tests
 {
@@ -53,42 +52,8 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void BaseGetValueBenchark()
+        public void PopulateProperties_ShouldPopulateAttributedProperties()
         {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 10000; i++) {
-                    reader.GetInt32(reader.GetOrdinal("AlbumId"));
-                    reader.GetString(reader.GetOrdinal("Title"));
-                    reader.GetInt32(reader.GetOrdinal("ArtistId"));
-                }
-            });
-
-            Assert.True(time < 1, $"Base Benchmark Get Value: {time}");
-        }
-
-        [Fact]
-        public void GetValue_Benchmark()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 10000; i++)
-                {
-                    reader.GetValue<int>("AlbumId");
-                    reader.GetValue<string>("Title");
-                    reader.GetValue<int>("ArtistId");
-                }
-            });
-
-            Assert.True(time < 1, $"Base Benchmark Get Value: {time}");
-        }
-
-        [Fact]
-        public void PopulateProperties_ShouldPopulateAttributedProperties() {
             var album = new Album();
 
             reader.Read();
@@ -101,131 +66,18 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void PopulateProperties_ShouldBePerformant()
+        public void NewPopulateProperties_ShouldSetNull() 
         {
-            reader.Read();
+            reader.Close();
 
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 10000; i++) {
-                    var album = new Album();
-                    reader.PopulateProperties<Album>(album);                    
-                }
-            });
+            command.CommandText = "SELECT * FROM employees";
 
-            Assert.True(time < 1, $"Populate Properties benchmark: {time}");
+            reader = command.ExecuteReader();
+
+            var employees = reader.MapToProperties<Employee>();
+
+            Assert.Equal(null, employees.First()?.ReportsTo);
         }
 
-        [Fact]
-        public void PopulateProperties_BaseBenchmark()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 10000; i++)
-                {
-                    var album = new Album();
-                    album.AlbumId = reader.GetInt32(reader.GetOrdinal("AlbumId"));
-                    album.Title = reader.GetString(reader.GetOrdinal("Title"));
-                    album.ArtistId = reader.GetInt32(reader.GetOrdinal("ArtistId"));
-                }
-            });
-
-            Assert.True(time < 1, $"Base Benchmark Populate Properties: {time}");
-        }
-
-        [Fact]
-        public void NewPopulateProperties_Benchmark()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 100; i++) {
-                    reader.PopulateProperties<Album>();
-                    reader.Close();
-
-                    reader = command.ExecuteReader();
-                }
-            });
-
-            Assert.True(time < 1, $"New Benchmark Populate Properties: {time}");
-        }
-
-        [Fact]
-        public void NewBasePopulateProperties_Benchmark()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 100; i++) {
-                    while (reader.Read())
-                    {
-                        reader.GetInt32(reader.GetOrdinal("AlbumId"));
-                        reader.GetString(reader.GetOrdinal("Title"));
-                        reader.GetInt32(reader.GetOrdinal("ArtistId"));
-                    }
-
-                    reader.Close();
-                    reader = command.ExecuteReader();                    
-                }
-            });
-
-            Assert.True(time < 1, $"New Base Benchmark Populate Properties: {time}");
-        }
-
-        private long MeasurePerformance(Action action)
-        {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            action.Invoke();
-            stopwatch.Stop();
-            return stopwatch.ElapsedMilliseconds;
-        }
-
-        /*
-        [Fact]
-        public void ExecuteQueryString_WhenAddingParameter_ShouldReturnCorrectRow()
-        {
-            var title = "";
-
-            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = @albumId", command =>
-            {
-                command.AddParameter<int>("albumId", 1);
-            }, reader =>
-            {
-                reader.Read();
-                title = reader.GetValue<string>("Title");
-            });
-
-            Assert.Equal("For Those About To Rock We Salute You", title);
-        }
-
-        [Fact]
-        public void ExecuteQueryEmbeddedResource_ShouldReturnRows()
-        {
-            var count = 0;
-
-            connection.ExecuteQueryEmbeddedResource("GetAllAlbums.sql", reader =>
-            {
-                while (reader.Read())
-                {
-                    count++;
-                }
-            });
-
-            Assert.Equal(347, count);
-        }
-
-        [Fact]
-        public void GetObjectsFromEmbeddedResource_ShouldReturnAlbumObjects()
-        {
-            var albums = connection.GetObjectsFromEmbeddedResource<Album>("GetAllAlbums.sql");
-
-            Assert.Equal(347, albums.ToList().Count);
-        }
-        */
     }
 }
