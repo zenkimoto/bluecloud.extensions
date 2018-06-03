@@ -73,22 +73,6 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void PopulateProperties_ShouldPopulateAttributedProperties()
-        {
-            QueryAlbums();
-            
-            var album = new Album();
-
-            reader.Read();
-
-            reader.PopulateProperties<Album>(album);
-
-            Assert.Equal(1, album.AlbumId);
-            Assert.Equal("For Those About To Rock We Salute You", album.Title);
-            Assert.Equal(1, album.ArtistId);
-        }
-
-        [Fact]
         public void MapToObjects_ShouldSetNullableValuesToNull()
         {
             QueryEmployees();

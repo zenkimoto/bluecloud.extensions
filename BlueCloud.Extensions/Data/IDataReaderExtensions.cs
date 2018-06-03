@@ -70,65 +70,6 @@ namespace BlueCloud.Extensions.Data
             }
         }
 
-        private static readonly Dictionary<IDataRecord, Dictionary<string, int>> memo = new Dictionary<IDataRecord, Dictionary<string, int>>();
-
-        [Obsolete]
-        public static Dictionary<string, int> GetColumnOrdinals(this IDataRecord record)
-        {
-            if (memo.ContainsKey(record))
-            {
-                return memo[record];
-            }
-
-            var result = new Dictionary<string, int>();
-            for (int i = 0; i < record.FieldCount; i++)
-            {
-                result.Add(record.GetName(i).ToLower(), i);
-            }
-
-            memo[record] = result;
-
-            return result;
-        }
-
-        [Obsolete]
-        public static void PopulateProperties<T>(this IDataReader dataReader, T obj) where T : class
-        {
-            try
-            {
-                IEnumerable<PropertyInfo> properties = obj.DbFieldProperties();
-
-                Dictionary<string, int> fields = dataReader.GetColumnOrdinals();
-
-                MethodInfo method = typeof(IDataReaderExtensions).GetMethod("GetValue", new[] { typeof(IDataReader), typeof(string) });
-
-                foreach (PropertyInfo property in properties)
-                {
-                    DbFieldAttribute dbField = property.GetDbField();
-
-                    // If property doesn't exist in the data reader, continue... (?)
-                    if (fields.ContainsKey(dbField.Field.ToLower()) == false)
-                        continue;
-
-                    MethodInfo generic = method.MakeGenericMethod(property.PropertyType);
-                    object result = generic.Invoke(null, new object[] { dataReader, dbField.Field });
-
-                    property.SetValue(obj, result);
-                }
-            }
-            catch (TargetInvocationException iex)
-            {
-                if (iex.InnerException != null && iex.InnerException.GetType() == typeof(InvalidCastException))
-                {
-                    throw iex.InnerException;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-        }
-
         /// <summary>
         /// Maps to objects.
         /// </summary>
@@ -226,64 +167,6 @@ namespace BlueCloud.Extensions.Data
             tupleMemo[type.FullName] = result;
 
             return result;
-        }
-
-        /// <summary>
-        /// Attempts to populate an object from the database with DbField attributes set.
-        /// </summary>
-        /// <typeparam name="T">Object Type to Populate</typeparam>
-        /// <param name="dataReader">Data Reader</param>
-        /// <returns></returns>
-        [Obsolete]
-        private static T GetObject<T>(this IDataReader dataReader) where T : class
-        {
-            T obj = (T)Activator.CreateInstance(typeof(T));
-
-            dataReader.PopulateProperties(obj);
-
-            return obj;
-        }
-
-
-        /// <summary>
-        /// Attempts to populate an object from the database with DbField attributes set.
-        /// </summary>
-        /// <typeparam name="T">Object Type to Populate</typeparam>
-        /// <param name="dataReader">Data Reader</param>
-        /// <returns></returns>
-        [Obsolete]
-        public static List<T> GetObjects<T>(this IDataReader dataReader) where T : class
-        {
-            var result = new List<T>();
-
-            while (dataReader.Read())
-            {
-                T obj = dataReader.GetObject<T>();
-                if (obj != null)
-                    result.Add(obj);
-            }
-
-            return result;
-        }
-
-
-        /// <summary>
-        /// Attempts to populate an object from the database with DbField attributes set.
-        /// </summary>
-        /// <typeparam name="T">Object type to Populate</typeparam>
-        /// <param name="dataReader">Data Reader</param>
-        /// <returns></returns>
-        [Obsolete]
-        public static T GetSingleObject<T>(this IDataReader dataReader) where T : class
-        {
-            T obj = null;
-
-            if (dataReader.Read())
-            {
-                obj = dataReader.GetObject<T>();
-            }
-
-            return obj;
         }
     }
 }

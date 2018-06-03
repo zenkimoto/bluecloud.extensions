@@ -74,42 +74,6 @@ namespace BlueCloud.Extensions.Tests.Performance
         }
 
         [Fact]
-        public void PopulateProperties_ShouldBePerformant()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 10000; i++)
-                {
-                    var album = new Album();
-                    reader.PopulateProperties<Album>(album);
-                }
-            });
-
-            Assert.True(time < 1, $"Populate Properties benchmark: {time}");
-        }
-
-        [Fact]
-        public void PopulateProperties_BaseBenchmark()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 10000; i++)
-                {
-                    var album = new Album();
-                    album.AlbumId = reader.GetInt32(reader.GetOrdinal("AlbumId"));
-                    album.Title = reader.GetString(reader.GetOrdinal("Title"));
-                    album.ArtistId = reader.GetInt32(reader.GetOrdinal("ArtistId"));
-                }
-            });
-
-            Assert.True(time < 1, $"Base Benchmark Populate Properties: {time}");
-        }
-
-        [Fact]
         public void MapToObjects_ShouldBePerformant()
         {
             reader.Read();

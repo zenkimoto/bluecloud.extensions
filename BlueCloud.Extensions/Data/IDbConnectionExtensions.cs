@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Data;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using BlueCloud.Extensions.Assembly;
 using BlueCloud.Extensions.Collections;
 
@@ -507,11 +508,11 @@ namespace BlueCloud.Extensions.Data
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static IEnumerable<T> GetObjectsFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
         {
-            var result = new List<T>();
+            IEnumerable<T> result = null;
 
             connection.ExecuteQueryEmbeddedResource(embeddedResource, assembly, commandCallback, reader => 
             {
-                result = reader.GetObjects<T>();
+                result = reader.MapToObjects<T>();
             }, validateParameters);
 
             return result;
@@ -529,11 +530,11 @@ namespace BlueCloud.Extensions.Data
         /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static IEnumerable<T> GetObjectsFromQueryString<T>(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
         {
-            var result = new List<T>();
+            IEnumerable<T> result = null;
 
             connection.ExecuteQueryString(sqlString, commandCallback, reader =>
             {
-                result = reader.GetObjects<T>();
+                result = reader.MapToObjects<T>();
             }, validateParameters);
 
             return result;
@@ -599,7 +600,7 @@ namespace BlueCloud.Extensions.Data
 
             connection.ExecuteQueryEmbeddedResource(embeddedResource, assembly, commandCallback, reader =>
             {
-                obj = reader.GetSingleObject<T>();
+                obj = reader.MapToObjects<T>(1).First();
             }, validateParameters);
 
             return obj;
@@ -611,7 +612,7 @@ namespace BlueCloud.Extensions.Data
 
             connection.ExecuteQueryString(sqlString, commandCallback, reader =>
             {
-                obj = reader.GetSingleObject<T>();
+                obj = reader.MapToObjects<T>(1).First();
             }, validateParameters);
 
             return obj;
