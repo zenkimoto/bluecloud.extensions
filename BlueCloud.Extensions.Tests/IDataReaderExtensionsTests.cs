@@ -18,19 +18,14 @@ namespace BlueCloud.Extensions.Tests
         {
             connection = new SqliteConnection("Data Source=./Database/chinook.db");
             connection.Open();
-
-            command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM albums";
-
-            reader = command.ExecuteReader();
         }
 
         public void Dispose()
         {
-            reader.Close();
-            reader.Dispose();
+            reader?.Close();
+            reader?.Dispose();
 
-            command.Dispose();
+            command?.Dispose();
 
             connection.Close();
             connection.Dispose();
@@ -40,6 +35,8 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void GetValue_ShouldReturnCorrectValue()
         {
+            QueryAlbums();
+
             reader.Read();
 
             var albumId = reader.GetValue<int>("AlbumId");
@@ -54,6 +51,8 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void PopulateProperties_ShouldPopulateAttributedProperties()
         {
+            QueryAlbums();
+            
             var album = new Album();
 
             reader.Read();
@@ -66,17 +65,39 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void NewPopulateProperties_ShouldSetNull() 
+        public void MapToObjects_ShouldSetNullableValuesToNull()
         {
-            reader.Close();
+            QueryEmployees();
 
+            var employees = reader.MapToObjects<Employee>();
+
+            Assert.Equal(null, employees.First()?.ReportsTo);
+        }
+
+        [Fact]
+        public void MapToObjects_PopulateObjectsCorrectly() 
+        {
+            QueryEmployees();
+
+            var employees = reader.MapToObjects<Employee>();
+
+            Assert.Equal(1, employees.First().EmployeeId);
+            Assert.Equal(8, employees.Last().EmployeeId);
+            Assert.Equal(8, employees.Count());
+        }
+
+        private void QueryEmployees() {
+            command = connection.CreateCommand();
             command.CommandText = "SELECT * FROM employees";
 
             reader = command.ExecuteReader();
+        }
 
-            var employees = reader.MapToProperties<Employee>();
+        private void QueryAlbums() {
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM albums";
 
-            Assert.Equal(null, employees.First()?.ReportsTo);
+            reader = command.ExecuteReader();
         }
 
     }

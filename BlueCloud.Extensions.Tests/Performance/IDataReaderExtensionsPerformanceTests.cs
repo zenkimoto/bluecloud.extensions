@@ -118,7 +118,7 @@ namespace BlueCloud.Extensions.Tests.Performance
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    reader.MapToProperties<Album>();
+                    reader.MapToObjects<Album>();
                     reader.Close();
 
                     reader = command.ExecuteReader();

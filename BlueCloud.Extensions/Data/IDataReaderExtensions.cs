@@ -128,7 +128,7 @@ namespace BlueCloud.Extensions.Data
             }
         }
 
-        public static IEnumerable<T> MapToProperties<T>(this IDataReader dataReader) where T : class
+        public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader) where T : class
         {
             List<Tuple<string, PropertyInfo, bool>> GetDatabaseProperties()
             {
