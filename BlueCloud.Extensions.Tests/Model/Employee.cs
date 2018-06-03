@@ -19,5 +19,11 @@ namespace BlueCloud.Extensions.Tests.Model
 
         [DbField("ReportsTo")]
         public long? ReportsTo { get; set; }
+
+        [DbField("BirthDate")]
+        public DateTime BirthDate { get; set; }
+
+        [DbField("HireDate")]
+        public DateTime HireDate { get; set; }
     }
 }

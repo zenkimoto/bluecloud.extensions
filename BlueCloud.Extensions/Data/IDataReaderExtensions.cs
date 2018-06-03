@@ -161,6 +161,10 @@ namespace BlueCloud.Extensions.Data
 
                     if (result == DBNull.Value) {
                         result = null;
+                    } 
+                    else if (mapping.Item2.PropertyType == typeof(DateTime)) 
+                    {
+                        result = (DateTime)Convert.ChangeType(result, typeof(DateTime));
                     }
 
                     if (result == null && mapping.Item3 == false) {

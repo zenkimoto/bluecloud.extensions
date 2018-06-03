@@ -110,7 +110,7 @@ namespace BlueCloud.Extensions.Tests.Performance
         }
 
         [Fact]
-        public void NewPopulateProperties_Benchmark()
+        public void MapToObjects_ShouldBePerformant()
         {
             reader.Read();
 
@@ -129,7 +129,7 @@ namespace BlueCloud.Extensions.Tests.Performance
         }
 
         [Fact]
-        public void NewBasePopulateProperties_Benchmark()
+        public void MapToObjects_BaseBenchmark()
         {
             reader.Read();
 
