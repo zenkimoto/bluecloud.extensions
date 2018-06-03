@@ -142,7 +142,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void MapToObjects_CustomOverride()
+        public void MapToObjects_WhenCustomOverridingMapping_ShouldMapCorrectly()
         {
             QueryInvoices();
 
@@ -150,6 +150,17 @@ namespace BlueCloud.Extensions.Tests
 
             Assert.Equal(new DateTime(2009, 1, 1, 8, 0, 0, DateTimeKind.Utc), invoices.First().InvoiceDate);
             Assert.Equal(1001, invoices.First().InvoiceId);
+        }
+
+        [Fact]
+        public void MapToObjects_WhenAttemptingToMapToAnInvalidDatabaseField_ShouldThrowInvalidOperationException()
+        {
+            QueryInvoices();
+
+            Assert.Throws(typeof(InvalidOperationException), () =>
+            {
+                reader.MapToObjects<InvalidInvoice>(1);
+            });
         }
     }
 }

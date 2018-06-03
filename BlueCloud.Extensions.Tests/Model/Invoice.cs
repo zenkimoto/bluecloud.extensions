@@ -5,7 +5,6 @@ namespace BlueCloud.Extensions.Tests.Model
 {
     public class Invoice : IDbMappable
     {
-        // TODO: Test for db field not exists...
         [DbField("InvoiceId")]
         public long InvoiceId { get; set; }
 

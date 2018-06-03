@@ -16,7 +16,7 @@ namespace BlueCloud.Extensions.Data
         public static T GetValue<T>(this IDataReader dataReader, string fieldName)
         {
             if (fieldName == null)
-                throw new ArgumentNullException("fieldName");
+                throw new ArgumentNullException(nameof(fieldName));
 
             object value = null;
 
@@ -158,7 +158,14 @@ namespace BlueCloud.Extensions.Data
 
                 foreach (var mapping in dbProperties)
                 {
-                    var result = dataReader[mapping.Item1];
+                    object result = null;
+
+                    try {
+                        result = dataReader[mapping.Item1];   
+                    } catch (ArgumentOutOfRangeException ex) {
+                        var errorMessage = $"The database field: '{mapping.Item1}' specified in the DbField attribute does not exist in the query result.";
+                        throw new InvalidOperationException(errorMessage, ex);
+                    }
 
                     if (result == DBNull.Value) {
                         result = null;
