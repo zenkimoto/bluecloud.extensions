@@ -168,6 +168,11 @@ namespace BlueCloud.Extensions.Data
                         result = (DateTime)Convert.ChangeType(result, typeof(DateTime));
                     }
 
+                    // Allow for custom user mapping
+                    if (obj is IDbMappable && ((IDbMappable)obj).ShouldOverrideDatabaseMapping(mapping.Item2.Name, result)) {
+                        continue;
+                    }
+
                     if (result == null && mapping.Item3 == false) {
                         var errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'.";
                         throw new InvalidCastException(errorMessage);

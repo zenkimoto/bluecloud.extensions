@@ -32,6 +32,30 @@ namespace BlueCloud.Extensions.Tests
             connection = null;
         }
 
+        private void QueryEmployees()
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM employees";
+
+            reader = command.ExecuteReader();
+        }
+
+        private void QueryAlbums()
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM albums";
+
+            reader = command.ExecuteReader();
+        }
+
+        private void QueryInvoices()
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM invoices";
+
+            reader = command.ExecuteReader();
+        }
+
         [Fact]
         public void GetValue_ShouldReturnCorrectValue()
         {
@@ -117,19 +141,15 @@ namespace BlueCloud.Extensions.Tests
             });
         }
 
-        private void QueryEmployees() {
-            command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM employees";
+        [Fact]
+        public void MapToObjects_CustomOverride()
+        {
+            QueryInvoices();
 
-            reader = command.ExecuteReader();
+            var invoices = reader.MapToObjects<Invoice>(1);
+
+            Assert.Equal(new DateTime(2009, 1, 1, 8, 0, 0, DateTimeKind.Utc), invoices.First().InvoiceDate);
+            Assert.Equal(1001, invoices.First().InvoiceId);
         }
-
-        private void QueryAlbums() {
-            command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM albums";
-
-            reader = command.ExecuteReader();
-        }
-
     }
 }
