@@ -128,33 +128,30 @@ namespace BlueCloud.Extensions.Data
             }
         }
 
-        public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader) where T : class
+        /// <summary>
+        /// Maps to objects.
+        /// </summary>
+        /// <returns>The to objects.</returns>
+        /// <param name="dataReader">Data reader.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader) where T : class 
         {
-            List<Tuple<string, PropertyInfo, bool>> GetDatabaseProperties()
-            {
-                var type = typeof(T);
-                var properties = type.GetProperties();
-                var result = new List<Tuple<string, PropertyInfo, bool>>();
+            return dataReader.MapToObjects<T>(-1);
+        }
 
-                foreach (var property in properties)
-                {
-                    var attrib = property.GetCustomAttribute<DbFieldAttribute>(true);
-
-                    if (attrib != null)
-                    {
-                        var isNullable = Nullable.GetUnderlyingType(property.PropertyType) != null;
-                        var tuple = new Tuple<string, PropertyInfo, bool>(attrib.Field, property, isNullable);
-                        result.Add(tuple);
-                    }
-                }
-
-                return result;
-            }
-
-            var dbProperties = GetDatabaseProperties();
+        /// <summary>
+        /// Maps to objects.
+        /// </summary>
+        /// <returns>The to objects.</returns>
+        /// <param name="dataReader">Data reader.</param>
+        /// <param name="take">Take.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader, int take) where T : class
+        {
+            var dbProperties = GetDatabaseProperties<T>();
             var objects = new List<T>();
 
-            while (dataReader.Read())
+            for (int i = 0; dataReader.Read() && (i < take || take == -1); i++)
             {
                 T obj = (T)Activator.CreateInstance(typeof(T));
 
@@ -185,12 +182,34 @@ namespace BlueCloud.Extensions.Data
             return objects;
         }
 
+        private static List<Tuple<string, PropertyInfo, bool>> GetDatabaseProperties<T>()
+        {
+            var type = typeof(T);
+            var properties = type.GetProperties();
+            var result = new List<Tuple<string, PropertyInfo, bool>>();
+
+            foreach (var property in properties)
+            {
+                var attrib = property.GetCustomAttribute<DbFieldAttribute>(true);
+
+                if (attrib != null)
+                {
+                    var isNullable = Nullable.GetUnderlyingType(property.PropertyType) != null;
+                    var tuple = new Tuple<string, PropertyInfo, bool>(attrib.Field, property, isNullable);
+                    result.Add(tuple);
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Attempts to populate an object from the database with DbField attributes set.
         /// </summary>
         /// <typeparam name="T">Object Type to Populate</typeparam>
         /// <param name="dataReader">Data Reader</param>
         /// <returns></returns>
+        [Obsolete]
         private static T GetObject<T>(this IDataReader dataReader) where T : class
         {
             T obj = (T)Activator.CreateInstance(typeof(T));
@@ -207,6 +226,7 @@ namespace BlueCloud.Extensions.Data
         /// <typeparam name="T">Object Type to Populate</typeparam>
         /// <param name="dataReader">Data Reader</param>
         /// <returns></returns>
+        [Obsolete]
         public static List<T> GetObjects<T>(this IDataReader dataReader) where T : class
         {
             var result = new List<T>();
@@ -228,6 +248,7 @@ namespace BlueCloud.Extensions.Data
         /// <typeparam name="T">Object type to Populate</typeparam>
         /// <param name="dataReader">Data Reader</param>
         /// <returns></returns>
+        [Obsolete]
         public static T GetSingleObject<T>(this IDataReader dataReader) where T : class
         {
             T obj = null;

@@ -86,6 +86,26 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(8, employees.Count());
         }
 
+        [Fact]
+        public void MapToObjects_WhenTakingOne_ShouldReturnOneObject()
+        {
+            QueryEmployees();
+
+            var employees = reader.MapToObjects<Employee>(1);
+
+            Assert.Equal(1, employees.Count());
+        }
+
+        [Fact]
+        public void MapToObjects_WhenTakingMoreThanNumberOfRows_ShouldReturnWhatsInDatabase()
+        {
+            QueryEmployees();
+
+            var employees = reader.MapToObjects<Employee>(100);
+
+            Assert.Equal(8, employees.Count());
+        }
+
         private void QueryEmployees() {
             command = connection.CreateCommand();
             command.CommandText = "SELECT * FROM employees";
