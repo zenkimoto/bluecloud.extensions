@@ -72,6 +72,7 @@ namespace BlueCloud.Extensions.Data
 
         private static readonly Dictionary<IDataRecord, Dictionary<string, int>> memo = new Dictionary<IDataRecord, Dictionary<string, int>>();
 
+        [Obsolete]
         public static Dictionary<string, int> GetColumnOrdinals(this IDataRecord record)
         {
             if (memo.ContainsKey(record))

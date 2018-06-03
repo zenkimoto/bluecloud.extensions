@@ -96,9 +96,9 @@ namespace BlueCloud.Extensions.Data
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteQueryString / ExecuteQueryEmbeddedResource");
             if (sqlString == null)
-                throw new ArgumentNullException("sqlString");
+                throw new ArgumentNullException(nameof(sqlString));
             if (readerCallback == null)
-                throw new ArgumentNullException("readerCallback");
+                throw new ArgumentNullException(nameof(readerCallback));
 
             using (IDbCommand command = connection.CommandWithSqlString(sqlString))
             {
@@ -187,9 +187,9 @@ namespace BlueCloud.Extensions.Data
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteQueryString / ExecuteQueryEmbeddedResource");
             if (sqlString == null)
-                throw new ArgumentNullException("sqlString");
+                throw new ArgumentNullException(nameof(sqlString));
             if (readerCallback == null)
-                throw new ArgumentNullException("readerCallback");
+                throw new ArgumentNullException(nameof(readerCallback));
 
             using (IDbCommand command = connection.CommandWithSqlString(sqlString))
             {
@@ -242,9 +242,9 @@ namespace BlueCloud.Extensions.Data
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteQueryString / ExecuteQueryEmbeddedResource");
             if (sqlString == null)
-                throw new ArgumentNullException("sqlString");
+                throw new ArgumentNullException(nameof(sqlString));
             if (readerCallback == null)
-                throw new ArgumentNullException("readerCallback");
+                throw new ArgumentNullException(nameof(readerCallback));
 
             using (IDbCommand command = connection.CommandWithSqlString(sqlString))
             {
@@ -297,7 +297,7 @@ namespace BlueCloud.Extensions.Data
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteNonQueryString / ExecuteNonQueryEmbeddedResource");
             if (nonQuerySqlString == null)
-                throw new ArgumentNullException("sqlString");
+                throw new ArgumentNullException(nameof(nonQuerySqlString));
 
             using (IDbCommand command = connection.CommandWithSqlString(nonQuerySqlString))
             {
@@ -431,7 +431,7 @@ namespace BlueCloud.Extensions.Data
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteQueryString / ExecuteQueryEmbeddedResource");
             if (sqlString == null)
-                throw new ArgumentNullException("sqlString");
+                throw new ArgumentNullException(nameof(sqlString));
 
             using (IDbCommand command = connection.CommandWithSqlString(sqlString))
             {

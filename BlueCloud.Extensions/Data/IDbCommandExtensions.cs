@@ -117,7 +117,8 @@ namespace BlueCloud.Extensions.Data
             if (value is bool)
             {                
                 parameter.Value = (bool)Convert.ChangeType(value, typeof(bool)) ? 1 : 0;
-            } else
+            } 
+            else
             {
                 parameter.Value = value;
             }
