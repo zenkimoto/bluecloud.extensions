@@ -186,9 +186,15 @@ namespace BlueCloud.Extensions.Data
             return objects;
         }
 
+        private static readonly Dictionary<string, List<Tuple<string, PropertyInfo, bool>>> tupleMemo = new Dictionary<string, List<Tuple<string, PropertyInfo, bool>>>();
+
         private static List<Tuple<string, PropertyInfo, bool>> GetDatabaseProperties<T>()
         {
             var type = typeof(T);
+
+            if (tupleMemo.ContainsKey(type.FullName))
+                return tupleMemo[type.FullName];
+
             var properties = type.GetProperties();
             var result = new List<Tuple<string, PropertyInfo, bool>>();
 
@@ -203,6 +209,8 @@ namespace BlueCloud.Extensions.Data
                     result.Add(tuple);
                 }
             }
+
+            tupleMemo[type.FullName] = result;
 
             return result;
         }

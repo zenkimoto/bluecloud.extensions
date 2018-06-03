@@ -4,11 +4,13 @@ using System.Reflection;
 
 namespace BlueCloud.Extensions.Data
 {
+    [Obsolete]
     public static class DbFieldExtensions
     {
         private static readonly Dictionary<Type, IEnumerable<PropertyInfo>> memo = new Dictionary<Type, IEnumerable<PropertyInfo>>();
         private static readonly Dictionary<PropertyInfo, DbFieldAttribute> attribMemo = new Dictionary<PropertyInfo, DbFieldAttribute>();
 
+        [Obsolete]
         public static IEnumerable<PropertyInfo> DbFieldProperties<T>(this T obj)
         {
             Type type = typeof(T);
@@ -35,6 +37,7 @@ namespace BlueCloud.Extensions.Data
             return dbFieldProperties;
         }
 
+        [Obsolete]
         public static DbFieldAttribute GetDbField(this PropertyInfo property)
         {
             if (attribMemo.ContainsKey(property))
