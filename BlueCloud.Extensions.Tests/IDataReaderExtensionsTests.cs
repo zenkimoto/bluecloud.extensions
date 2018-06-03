@@ -106,6 +106,17 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(8, employees.Count());
         }
 
+        [Fact]
+        public void MapToObjects_WhenAttemptingToMapToInvalidMapping_ShouldThrowInvalidCastException()
+        {
+            QueryEmployees();
+
+            Assert.Throws(typeof(InvalidCastException), () =>
+            {
+                reader.MapToObjects<InvalidEmployee>(1);
+            });
+        }
+
         private void QueryEmployees() {
             command = connection.CreateCommand();
             command.CommandText = "SELECT * FROM employees";
