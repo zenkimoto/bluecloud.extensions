@@ -5,6 +5,7 @@ using Microsoft.Data.Sqlite;
 using BlueCloud.Extensions.Tests.Model;
 using System.Linq;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace BlueCloud.Extensions.Tests
 {
@@ -92,7 +93,101 @@ namespace BlueCloud.Extensions.Tests
                 }
             });
 
-            Assert.True(elapsedTime < 600, $"Actual Elapsed Time: {elapsedTime} milliseconds");
+            Assert.True(elapsedTime < 1, $"Actual Elapsed Time: {elapsedTime} milliseconds");
+        }
+
+        [Fact]
+        public void GetObjectsFromQueryString_ShouldBePerformant()
+        {
+            var elapsedTime = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    connection.GetObjectsFromQueryString<Album>("SELECT * FROM albums");
+                }
+            });
+
+            Assert.True(elapsedTime < 1, $"Actual Elapsed Time: {elapsedTime} milliseconds");
+        }
+
+        [Fact]
+        public void ExecuteQueryForObjects_ShouldBePerformant()
+        {
+            var elapsedTime = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    var list = new List<Album>();
+
+                    connection.ExecuteQueryForObjects<Album>("SELECT * FROM albums", reader => {
+                        return new Album()
+                        {
+                            AlbumId = reader.GetInt32(reader.GetOrdinal("AlbumId")),
+                            Title = reader.GetString(reader.GetOrdinal("Title")),
+                            ArtistId = reader.GetInt32(reader.GetOrdinal("ArtistId"))
+                        };
+                    });
+                }
+            });
+
+            Assert.True(elapsedTime < 1, $"Actual Elapsed Time: {elapsedTime} milliseconds");
+        }
+
+        [Fact]
+        public void ExecuteQueryForObjects2_ShouldBePerformant()
+        {
+            var elapsedTime = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    var list = new List<Album>();
+
+                    connection.ExecuteQueryForObjects<Album>("SELECT * FROM albums", reader => {
+                        return new Album()
+                        {
+                            AlbumId = reader.GetValue<int>("AlbumId"),
+                            Title = reader.GetValue<string>("Title"),
+                            ArtistId = reader.GetValue<int>("ArtistId")
+                        };
+                    });
+                }
+            });
+
+            Assert.True(elapsedTime < 1, $"Actual Elapsed Time: {elapsedTime} milliseconds");
+        }
+
+        [Fact]
+        public void BaseBenchmarkTest()
+        {
+            var elapsedTime = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    var list = new List<Album>();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "SELECT * FROM albums";
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var album = new Album()
+                                {
+                                    AlbumId = reader.GetInt32(reader.GetOrdinal("AlbumId")),
+                                    Title = reader.GetString(reader.GetOrdinal("Title")),
+                                    ArtistId = reader.GetInt32(reader.GetOrdinal("ArtistId"))
+                                };
+
+                                list.Add(album);
+                            }
+                        }
+                    }
+                }
+            });
+
+            Assert.True(elapsedTime < 1, $"Actual Elapsed Time: {elapsedTime} milliseconds");
         }
 
         private long MeasurePerformance(Action action) {
