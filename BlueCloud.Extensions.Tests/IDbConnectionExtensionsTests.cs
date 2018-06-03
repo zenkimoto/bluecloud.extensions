@@ -89,7 +89,7 @@ namespace BlueCloud.Extensions.Tests
             var elapsedTime = MeasurePerformance(() =>
             {
                 for (int i = 0; i < 100; i++) {
-                    connection.GetObjectsFromEmbeddedResource<Album>("GetAllAlbums.sql");    
+                    connection.GetObjectsFromEmbeddedResource<Album>("GetAllAlbums.sql", null, false);    
                 }
             });
 
@@ -103,7 +103,7 @@ namespace BlueCloud.Extensions.Tests
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    connection.GetObjectsFromQueryString<Album>("SELECT * FROM albums");
+                    connection.GetObjectsFromQueryString<Album>("SELECT * FROM albums", null, false);
                 }
             });
 
