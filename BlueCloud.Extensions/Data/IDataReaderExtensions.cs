@@ -163,7 +163,7 @@ namespace BlueCloud.Extensions.Data
                     try {
                         result = dataReader[mapping.Item1];   
                     } catch (ArgumentOutOfRangeException ex) {
-                        var errorMessage = $"The database field: '{mapping.Item1}' specified in the DbField attribute does not exist in the query result.";
+                        var errorMessage = $"The database field: '{mapping.Item1}' specified in the DbField attribute does not exist in query result.";
                         throw new InvalidOperationException(errorMessage, ex);
                     }
 
