@@ -478,7 +478,7 @@ namespace BlueCloud.Extensions.Data
         #endregion
 
 
-        #region Get Objects Methods
+        #region Objects Methods
 
 
         /// <summary>

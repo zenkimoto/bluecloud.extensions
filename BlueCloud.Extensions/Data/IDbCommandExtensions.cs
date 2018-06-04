@@ -80,7 +80,7 @@ namespace BlueCloud.Extensions.Data
             {
                 string sqlParamsMissing = sqlStringParameterNames.Aggregate((x, y) => x + ", " + y);
 
-                var ex = new Exception($"Missing parameters in Command.Parameters array or Model DbField Property: '{sqlParamsMissing}'");
+                var ex = new DataException($"Missing parameters in Command.Parameters array or Model DbField Property: '{sqlParamsMissing}'");
                 ex.Data["MissingParams"] = sqlStringParameterNames;
 
                 throw ex;
@@ -90,7 +90,7 @@ namespace BlueCloud.Extensions.Data
             {
                 string databaseParamsMissing = bindParameterNames.Aggregate((x, y) => x + ", " + y);
 
-                var ex = new Exception($"Parameters missing parameters in SQL String: '{databaseParamsMissing}'");
+                var ex = new DataException($"Parameters missing parameters in SQL String: '{databaseParamsMissing}'");
                 ex.Data["MissingParams"] = databaseParamsMissing;
 
                 throw ex;
@@ -113,6 +113,8 @@ namespace BlueCloud.Extensions.Data
 
             Type underlyingType = Nullable.GetUnderlyingType(typeof(T));
             bool isNullableType = underlyingType != null;
+
+            // TODO: Use Custom Mapping Instead
 
             if (value is bool)
             {                
