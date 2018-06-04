@@ -146,5 +146,19 @@ namespace BlueCloud.Extensions.Tests
                 reader.MapToObjects<InvalidInvoice>(1);
             });
         }
+
+        [Fact]
+        public void GetColumnOrdinals_ShouldReturnColumnOrdinalDictionary() {
+            QueryAlbums();
+
+            reader.Read();
+
+            var columnOrdinals = reader.GetColumnOrdinals();
+
+            Assert.Equal(0, columnOrdinals["albumid"]);
+            Assert.Equal(1, columnOrdinals["title"]);
+            Assert.Equal(2, columnOrdinals["artistid"]);
+            Assert.Equal(3, columnOrdinals.Count);
+        }
     }
 }

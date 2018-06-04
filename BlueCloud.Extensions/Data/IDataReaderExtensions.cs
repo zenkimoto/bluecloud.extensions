@@ -70,13 +70,16 @@ namespace BlueCloud.Extensions.Data
             }
         }
 
+
+        #region Mapper Functions
+
         /// <summary>
         /// Maps to objects.
         /// </summary>
         /// <returns>The to objects.</returns>
         /// <param name="dataReader">Data reader.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader) where T : class 
+        public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader) where T : class
         {
             return dataReader.MapToObjects<T>(-1);
         }
@@ -101,36 +104,45 @@ namespace BlueCloud.Extensions.Data
                 {
                     object result = null;
 
-                    try {
-                        result = dataReader[mapping.Item1];   
-                    } catch (ArgumentOutOfRangeException ex) {
+                    try
+                    {
+                        result = dataReader[mapping.Item1];
+                    }
+                    catch (ArgumentOutOfRangeException ex)
+                    {
                         var errorMessage = $"The database field: '{mapping.Item1}' specified in the DbField attribute does not exist in query result.";
                         throw new InvalidOperationException(errorMessage, ex);
                     }
 
-                    if (result == DBNull.Value) {
+                    if (result == DBNull.Value)
+                    {
                         result = null;
-                    } 
-                    else if (mapping.Item2.PropertyType == typeof(DateTime)) 
+                    }
+                    else if (mapping.Item2.PropertyType == typeof(DateTime))
                     {
                         result = (DateTime)Convert.ChangeType(result, typeof(DateTime));
                     }
 
                     // Allow for custom user mapping
-                    if (obj is IDbMappable && ((IDbMappable)obj).ShouldOverrideDatabaseMapping(mapping.Item2.Name, result)) {
+                    if (obj is IDbMappable && ((IDbMappable)obj).ShouldOverrideDatabaseMapping(mapping.Item2.Name, result))
+                    {
                         continue;
                     }
 
-                    if (result == null && mapping.Item3 == false) {
+                    if (result == null && mapping.Item3 == false)
+                    {
                         var errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'.";
                         throw new InvalidCastException(errorMessage);
                     }
 
-                    try {
+                    try
+                    {
                         mapping.Item2.SetValue(obj, result);
-                    } catch (ArgumentException ex) {
+                    }
+                    catch (ArgumentException ex)
+                    {
                         var errorMessage = $"Unable to convert database field: '{mapping.Item1}' to property: '{mapping.Item2.Name}'. Detail: {ex.Message}";
-                        throw new InvalidCastException(errorMessage, ex);   
+                        throw new InvalidCastException(errorMessage, ex);
                     }
                 }
 
@@ -168,5 +180,28 @@ namespace BlueCloud.Extensions.Data
 
             return result;
         }
+
+        #endregion
+
+
+        #region Helper Functions
+
+        /// <summary>
+        /// Gets the column ordinals.
+        /// </summary>
+        /// <returns>The column ordinals.</returns>
+        /// <param name="record">Record.</param>
+        public static Dictionary<string, int> GetColumnOrdinals(this IDataRecord record)
+        {
+            var result = new Dictionary<string, int>();
+            for (int i = 0; i < record.FieldCount; i++)
+            {
+                result.Add(record.GetName(i).ToLower(), i);
+            }
+
+            return result;
+        }
+
+        #endregion
     }
 }
