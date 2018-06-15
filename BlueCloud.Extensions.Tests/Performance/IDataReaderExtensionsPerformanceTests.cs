@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace BlueCloud.Extensions.Tests.Performance
 {
-    public class IDataReaderExtensionsPerformanceTests
+    public class IDataReaderExtensionsPerformanceTests: IDisposable
     {
         SqliteConnection connection;
         SqliteCommand command;
@@ -38,11 +38,10 @@ namespace BlueCloud.Extensions.Tests.Performance
         }
 
         [Fact]
-        public void BaseGetValueBenchark()
-        {
+        public void GetValue_ShouldBePerformant() {
             reader.Read();
 
-            var time = MeasurePerformance(() =>
+            var baseTime = MeasurePerformance(() =>
             {
                 for (int i = 0; i < 10000; i++)
                 {
@@ -52,15 +51,7 @@ namespace BlueCloud.Extensions.Tests.Performance
                 }
             });
 
-            Assert.True(time < 1, $"Base Benchmark Get Value: {time}");
-        }
-
-        [Fact]
-        public void GetValue_Benchmark()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
+            var actualTime = MeasurePerformance(() =>
             {
                 for (int i = 0; i < 10000; i++)
                 {
@@ -70,7 +61,7 @@ namespace BlueCloud.Extensions.Tests.Performance
                 }
             });
 
-            Assert.True(time < 1, $"Base Benchmark Get Value: {time}");
+            Assert.True(actualTime <= baseTime * 1.5, $"Actual Time: {actualTime} should be less than 1.5 times {baseTime}");
         }
 
         [Fact]
@@ -78,26 +69,7 @@ namespace BlueCloud.Extensions.Tests.Performance
         {
             reader.Read();
 
-            var time = MeasurePerformance(() =>
-            {
-                for (int i = 0; i < 100; i++)
-                {
-                    reader.MapToObjects<Album>();
-                    reader.Close();
-
-                    reader = command.ExecuteReader();
-                }
-            });
-
-            Assert.True(time < 1, $"New Benchmark Populate Properties: {time}");
-        }
-
-        [Fact]
-        public void MapToObjects_BaseBenchmark()
-        {
-            reader.Read();
-
-            var time = MeasurePerformance(() =>
+            var baseTime = MeasurePerformance(() =>
             {
                 for (int i = 0; i < 100; i++)
                 {
@@ -113,7 +85,18 @@ namespace BlueCloud.Extensions.Tests.Performance
                 }
             });
 
-            Assert.True(time < 1, $"New Base Benchmark Populate Properties: {time}");
+            var actualTime = MeasurePerformance(() =>
+            {
+                for (int i = 0; i < 100; i++)
+                {
+                    reader.MapToObjects<Album>();
+                    reader.Close();
+
+                    reader = command.ExecuteReader();
+                }
+            });
+
+            Assert.True(actualTime <= baseTime * 2.5, $"Actual Time: {actualTime} should be less than 2.5 times {baseTime}");
         }
 
         private long MeasurePerformance(Action action)

@@ -3,7 +3,7 @@ using BlueCloud.Extensions.Data;
 
 namespace BlueCloud.Extensions.Tests.Model
 {
-    public class Invoice : IDbMappable
+    public class Invoice : IDbHydrationOverridable
     {
         [DbField("InvoiceId")]
         public long InvoiceId { get; set; }
@@ -14,9 +14,10 @@ namespace BlueCloud.Extensions.Tests.Model
         [DbField("InvoiceDate")]
         public DateTime InvoiceDate { get; set; }
 
-        public bool ShouldOverrideDatabaseMapping(string propertyName, object value)
+        public bool ShouldOverridePropertyHydration(string propertyName, object value)
         {
-            switch (propertyName) {
+            switch (propertyName)
+            {
                 case "InvoiceDate":
                     InvoiceDate = ((DateTime)value).ToUniversalTime();
                     return true;

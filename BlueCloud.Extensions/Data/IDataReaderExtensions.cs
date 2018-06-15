@@ -124,7 +124,7 @@ namespace BlueCloud.Extensions.Data
                     }
 
                     // Allow for custom user mapping
-                    if (obj is IDbMappable && ((IDbMappable)obj).ShouldOverrideDatabaseMapping(mapping.Item2.Name, result))
+                    if (obj is IDbHydrationOverridable && ((IDbHydrationOverridable)obj).ShouldOverridePropertyHydration(mapping.Item2.Name, result))
                     {
                         continue;
                     }

@@ -371,11 +371,7 @@ namespace BlueCloud.Extensions.Data
 
                     Debug.WriteLine(property.Name.ToString() + " [" + property.PropertyType.ToString() + "]" + " <-> Database Field: " + dbField.Field);
 
-                    if (property.PropertyType == typeof(Boolean))
-                    {
-                        command.AddParameter(dbField.SqlParameterName, (bool)property.GetValue(obj) ? 1 : 0);
-                    }
-                    else
+
                     {
                         command.AddParameter(dbField.SqlParameterName, property.GetValue(obj));
                     }
@@ -594,6 +590,17 @@ namespace BlueCloud.Extensions.Data
             return connection.GetSingleObjectFromEmbeddedResource<T>(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), commandCallback, validateParameters);
         }
 
+
+        /// <summary>
+        /// Gets the single object from embedded resource.
+        /// </summary>
+        /// <returns>The single object from embedded resource.</returns>
+        /// <param name="connection">Connection.</param>
+        /// <param name="embeddedResource">Embedded resource.</param>
+        /// <param name="assembly">Assembly.</param>
+        /// <param name="commandCallback">Command callback.</param>
+        /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static T GetSingleObjectFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
         {
             T obj = null;
@@ -606,6 +613,16 @@ namespace BlueCloud.Extensions.Data
             return obj;
         }
 
+
+        /// <summary>
+        /// Gets the single object from query string.
+        /// </summary>
+        /// <returns>The single object from query string.</returns>
+        /// <param name="connection">Connection.</param>
+        /// <param name="sqlString">Sql string.</param>
+        /// <param name="commandCallback">Command callback.</param>
+        /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
         public static T GetSingleObjectFromQueryString<T>(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
         {
             T obj = null;

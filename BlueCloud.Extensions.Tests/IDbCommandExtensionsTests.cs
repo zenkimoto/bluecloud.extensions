@@ -42,7 +42,7 @@ namespace BlueCloud.Extensions.Tests
         {
             var command = connection.CreateCommand();
 
-            Assert.Throws(typeof(FileNotFoundException), () =>
+            Assert.Throws<FileNotFoundException>(() =>
             {
                 command.LoadEmbeddedResource("GetAllAlbums2.sql");
             });
@@ -72,7 +72,7 @@ namespace BlueCloud.Extensions.Tests
 
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = @albumid";
 
-            Assert.Throws(typeof(DataException), () =>
+            Assert.Throws<DataException>(() =>
             {
                 command.ValidateParameters();
             });
@@ -85,7 +85,7 @@ namespace BlueCloud.Extensions.Tests
 
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = @albumid AND ArtistId = @artistid";
 
-            Assert.Throws(typeof(DataException), () =>
+            Assert.Throws<DataException>(() =>
             {
                 command.ValidateParameters();
             });
@@ -133,7 +133,7 @@ namespace BlueCloud.Extensions.Tests
 
             var parameters = command.ParameterNamesFromCommandText();
 
-            Assert.Equal(0, parameters.Count);
+            Assert.Empty(parameters);
         }
 
         #endregion

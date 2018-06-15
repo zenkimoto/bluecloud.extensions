@@ -79,7 +79,7 @@ namespace BlueCloud.Extensions.Tests
 
             var employees = reader.MapToObjects<Employee>();
 
-            Assert.Equal(null, employees.First()?.ReportsTo);
+            Assert.Null(employees.First()?.ReportsTo);
         }
 
         [Fact]
@@ -101,7 +101,7 @@ namespace BlueCloud.Extensions.Tests
 
             var employees = reader.MapToObjects<Employee>(1);
 
-            Assert.Equal(1, employees.Count());
+            Assert.Single(employees);
         }
 
         [Fact]
@@ -119,7 +119,7 @@ namespace BlueCloud.Extensions.Tests
         {
             QueryEmployees();
 
-            Assert.Throws(typeof(InvalidCastException), () =>
+            Assert.Throws<InvalidCastException>(() =>
             {
                 reader.MapToObjects<InvalidEmployee>(1);
             });
@@ -141,7 +141,7 @@ namespace BlueCloud.Extensions.Tests
         {
             QueryInvoices();
 
-            Assert.Throws(typeof(InvalidOperationException), () =>
+            Assert.Throws<InvalidOperationException>(() =>
             {
                 reader.MapToObjects<InvalidInvoice>(1);
             });
