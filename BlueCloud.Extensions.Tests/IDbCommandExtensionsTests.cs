@@ -157,9 +157,9 @@ namespace BlueCloud.Extensions.Tests
 
             command.BindParametersFromObject(album);
 
-            Assert.Equal((long)100, command.Parameters["@AlbumId"].Value);
-            Assert.Equal("Test Album", command.Parameters["@Title"].Value);
-            Assert.Equal((long)101, command.Parameters["@ArtistId"].Value);
+            Assert.Equal((long)100, command.Parameters["AlbumId"].Value);
+            Assert.Equal("Test Album", command.Parameters["Title"].Value);
+            Assert.Equal((long)101, command.Parameters["ArtistId"].Value);
             Assert.Equal(3, command.Parameters.Count);
         }
 
@@ -198,7 +198,7 @@ namespace BlueCloud.Extensions.Tests
 
             command.BindParametersFromObject(album);
 
-            Assert.Equal((long)100, command.Parameters["@AlbumId"].Value);
+            Assert.Equal((long)100, command.Parameters["AlbumId"].Value);
             Assert.Equal(1, command.Parameters.Count);
         }
 
