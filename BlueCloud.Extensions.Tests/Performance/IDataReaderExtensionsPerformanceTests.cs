@@ -71,7 +71,7 @@ namespace BlueCloud.Extensions.Tests.Performance
                 }
             });
 
-            Assert.True(actualTime <= baseTime * 1.5, $"Actual Time: {actualTime} should be less than 1.5 times {baseTime}");
+            Assert.True(actualTime <= baseTime * 2.0, $"Actual Time: {actualTime} should be less than 2.0 times {baseTime}");
         }
 
         [Fact]
@@ -106,7 +106,7 @@ namespace BlueCloud.Extensions.Tests.Performance
                 }
             });
 
-            Assert.True(actualTime <= baseTime * 2.0, $"Actual Time: {actualTime} should be less than 2.0 times {baseTime}");
+            Assert.True(actualTime <= baseTime * 2.5, $"Actual Time: {actualTime} should be less than 2.5 times {baseTime}");
         }
 
         private long MeasurePerformance(Action action)
