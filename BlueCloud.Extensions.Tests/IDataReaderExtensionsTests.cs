@@ -5,6 +5,7 @@ using Microsoft.Data.Sqlite;
 using BlueCloud.Extensions.Tests.Model;
 using System.Linq;
 using System.Data;
+using BlueCloud.Extensions.Tests.Database;
 
 namespace BlueCloud.Extensions.Tests
 {
@@ -16,8 +17,10 @@ namespace BlueCloud.Extensions.Tests
 
         public IDataReaderExtensionsTests()
         {
-            connection = new SqliteConnection("Data Source=./Database/chinook.db");
+            connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
+
+            InMemoryDatabase.Setup(connection);
         }
 
         public void Dispose()
