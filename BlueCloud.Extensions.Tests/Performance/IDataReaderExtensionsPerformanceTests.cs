@@ -16,8 +16,18 @@ namespace BlueCloud.Extensions.Tests.Performance
 
         public IDataReaderExtensionsPerformanceTests()
         {
-            connection = new SqliteConnection("Data Source=./Database/chinook.db");
+            connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
+
+            using (command = connection.CreateCommand()) {
+                command.CommandText = "CREATE TABLE albums ([AlbumId] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, [Title] NVARCHAR(160)  NOT NULL, [ArtistId] INTEGER  NOT NULL)";
+
+                command.ExecuteNonQuery();
+
+                command.CommandText = "INSERT INTO albums VALUES (1, 'For Those About To Rock We Salute You', 1)";
+
+                command.ExecuteNonQuery();
+            }
 
             command = connection.CreateCommand();
             command.CommandText = "SELECT * FROM albums";
@@ -71,7 +81,7 @@ namespace BlueCloud.Extensions.Tests.Performance
 
             var baseTime = MeasurePerformance(() =>
             {
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 10000; i++)
                 {
                     while (reader.Read())
                     {
@@ -87,7 +97,7 @@ namespace BlueCloud.Extensions.Tests.Performance
 
             var actualTime = MeasurePerformance(() =>
             {
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 10000; i++)
                 {
                     reader.MapToObjects<Album>();
                     reader.Close();
@@ -96,7 +106,7 @@ namespace BlueCloud.Extensions.Tests.Performance
                 }
             });
 
-            Assert.True(actualTime <= baseTime * 2.5, $"Actual Time: {actualTime} should be less than 2.5 times {baseTime}");
+            Assert.True(actualTime <= baseTime * 2.0, $"Actual Time: {actualTime} should be less than 2.0 times {baseTime}");
         }
 
         private long MeasurePerformance(Action action)
