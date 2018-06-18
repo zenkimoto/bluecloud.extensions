@@ -87,9 +87,6 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void ExecuteNonQuery_ShouldExecuteDML()
         {
-            connection = new SqliteConnection("Data Source=:memory:");
-            connection.Open();
-
             connection.ExecuteNonQueryString("CREATE TABLE test_table (id VARCHAR(20))");
 
             connection.ExecuteQueryString("SELECT name FROM sqlite_master WHERE type='table' AND name='test_table'", reader =>
@@ -98,9 +95,6 @@ namespace BlueCloud.Extensions.Tests
 
                 Assert.Equal("test_table", reader[0]);
             });
-
-            connection.Close();
-            connection.Dispose();
         }
     }
 }
