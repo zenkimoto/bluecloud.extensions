@@ -137,6 +137,7 @@ namespace BlueCloud.Extensions.Tests
 
             Assert.Equal(new DateTime(2009, 1, 1, 8, 0, 0, DateTimeKind.Utc), invoices.First().InvoiceDate);
             Assert.Equal(1001, invoices.First().InvoiceId);
+            Assert.Equal(2, invoices.First().CustomerId);
         }
 
         [Fact]

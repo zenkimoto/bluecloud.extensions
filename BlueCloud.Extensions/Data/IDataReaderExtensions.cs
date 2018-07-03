@@ -102,11 +102,11 @@ namespace BlueCloud.Extensions.Data
 
                 foreach (var mapping in dbProperties)
                 {
-                    object result = null;
+                    object databaseValue = null;
 
                     try
                     {
-                        result = dataReader[mapping.Item1];
+                        databaseValue = dataReader[mapping.Item1];
                     }
                     catch (ArgumentOutOfRangeException ex)
                     {
@@ -114,22 +114,22 @@ namespace BlueCloud.Extensions.Data
                         throw new InvalidOperationException(errorMessage, ex);
                     }
 
-                    if (result == DBNull.Value)
+                    if (databaseValue == DBNull.Value)
                     {
-                        result = null;
+                        databaseValue = null;
                     }
                     else if (mapping.Item2.PropertyType == typeof(DateTime))
                     {
-                        result = (DateTime)Convert.ChangeType(result, typeof(DateTime));
+                        databaseValue = (DateTime)Convert.ChangeType(databaseValue, typeof(DateTime));
                     }
 
                     // Allow for custom user mapping
-                    if (obj is IDbHydrationOverridable && ((IDbHydrationOverridable)obj).ShouldOverridePropertyHydration(mapping.Item2.Name, result))
+                    if (obj is IDbHydrationOverridable && ((IDbHydrationOverridable)obj).ShouldOverridePropertyHydration(mapping.Item2.Name))
                     {
-                        continue;
+                        databaseValue = ((IDbHydrationOverridable)obj).OverridePropertyHydration(mapping.Item2.Name, databaseValue);
                     }
 
-                    if (result == null && mapping.Item3 == false)
+                    if (databaseValue == null && mapping.Item3 == false)
                     {
                         var errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'.";
                         throw new InvalidCastException(errorMessage);
@@ -137,7 +137,7 @@ namespace BlueCloud.Extensions.Data
 
                     try
                     {
-                        mapping.Item2.SetValue(obj, result);
+                        mapping.Item2.SetValue(obj, databaseValue);
                     }
                     catch (ArgumentException ex)
                     {
