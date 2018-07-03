@@ -48,29 +48,6 @@ namespace BlueCloud.Extensions.Collections
             return result;
         }
 
-
-        /// <summary>
-        /// Tos the dictionary.
-        /// </summary>
-        /// <returns>The dictionary.</returns>
-        /// <param name="collection">Collection.</param>
-        /// <param name="func">Func.</param>
-        /// <typeparam name="K">The 1st type parameter.</typeparam>
-        /// <typeparam name="T">The 2nd type parameter.</typeparam>
-        /*
-        public static Dictionary<K, T> ToDictionary<K, T>(this IEnumerable<T> collection, Func<T, K> func)
-        {
-            var result = new Dictionary<K, T>();
-
-            foreach (T obj in collection)
-            {
-                result.Add(func(obj), obj);
-            }
-
-            return result;
-        }
-        */
-
         /// <summary>
         /// Fors the each.
         /// </summary>

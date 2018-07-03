@@ -14,7 +14,7 @@ namespace BlueCloud.Extensions.String
         public static bool MatchesRegularExpression(this string str, string pattern)
         {
             if (pattern == null)
-                throw new ArgumentNullException("pattern");
+                throw new ArgumentNullException(nameof(pattern));
 
             var regex = new Regex(pattern);
 
