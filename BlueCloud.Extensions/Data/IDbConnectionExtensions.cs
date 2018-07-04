@@ -91,6 +91,7 @@ namespace BlueCloud.Extensions.Data
             ExecuteQueryString(connection, sqlString, null, readerCallback, validateParameters);
         }
 
+
         /// <summary>
         /// Executes a Non Query SQL Statement.  An exception will be thrown if the connection is not open.
         /// </summary>

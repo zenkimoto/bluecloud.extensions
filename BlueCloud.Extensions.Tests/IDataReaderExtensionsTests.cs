@@ -83,6 +83,18 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
+        public void GetValue_WhenAssigningToNullable_ShouldReturnCorrectValue() 
+        {
+            QueryAlbums();
+
+            reader.Read();
+
+            var albumId = reader.GetValue<int?>("AlbumId");
+
+            Assert.Equal(1, albumId.Value);
+        }
+
+        [Fact]
         public void GetValue_WhenNullParameterName_ShouldThrowArgumentNullException() 
         {
             QueryAlbums();
@@ -93,6 +105,31 @@ namespace BlueCloud.Extensions.Tests
             {
                 reader.GetValue<int>(null);
             });
+        }
+
+        [Fact]
+        public void GetValue_WhenAttemptingToAssignNullToAValueType_ShouldThrowException() 
+        {
+            QueryInvoices();
+
+            reader.Read();
+
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+                reader.GetValue<int>("BillingState");
+            });
+        }
+
+        [Fact]
+        public void GetValue_WhenAttemptingToAssignNullToAReferenceType_ShouldAssignSuccessfully()
+        {
+            QueryInvoices();
+
+            reader.Read();
+
+            string billingState = reader.GetValue<string>("BillingState");
+
+            Assert.Null(billingState);
         }
 
         #endregion

@@ -35,7 +35,7 @@ namespace BlueCloud.Extensions.Data
                 {
                     if (isValueType && !isNullableType)
                     {
-                        throw new Exception($"Attempting to assign null to a non-nullable type for field: '{fieldName}'");
+                        throw new InvalidOperationException($"Attempting to assign null to a non-nullable type for field: '{fieldName}'");
                     }
 
                     return default(T);
@@ -45,6 +45,7 @@ namespace BlueCloud.Extensions.Data
 
                 T result = isNullableType ? (T)Convert.ChangeType(value, underlyingType) : (T)Convert.ChangeType(value, type);
 
+                // TODO: Look at this...
                 if (type == typeof(DateTime))
                 {
                     var date = (DateTime)Convert.ChangeType(result, typeof(DateTime));
