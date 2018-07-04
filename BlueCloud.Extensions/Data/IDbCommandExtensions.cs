@@ -111,12 +111,14 @@ namespace BlueCloud.Extensions.Data
         /// <param name="name">Name.</param>
         /// <param name="value">Value.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static void AddParameter<T>(this IDbCommand command, string name, T value)
+        public static void AddParameter<T>(this IDbCommand command, string name, T value, Action<IDbDataParameter> parameterCallback = null)
         {
             IDbDataParameter parameter = command.CreateParameter();
 
             parameter.ParameterName = name ?? throw new ArgumentNullException(nameof(name));
             parameter.Value = value;
+
+            parameterCallback?.Invoke(parameter);
 
             command.Parameters.Add(parameter);
         }
@@ -129,12 +131,14 @@ namespace BlueCloud.Extensions.Data
         /// <param name="command">Command.</param>
         /// <param name="name">Name.</param>
         /// <param name="type">Type.</param>
-        public static void AddOutputParameter(this IDbCommand command, string name, DbType type)
+        public static void AddOutputParameter(this IDbCommand command, string name, DbType type, Action<IDbDataParameter> parameterCallback = null)
         {
             IDbDataParameter outputParameter = command.CreateParameter();
             outputParameter.Direction = ParameterDirection.Output;
             outputParameter.DbType = type;
             outputParameter.ParameterName = name ?? throw new ArgumentNullException(nameof(name));
+
+            parameterCallback?.Invoke(outputParameter);
 
             command.Parameters.Add(outputParameter);
         }
