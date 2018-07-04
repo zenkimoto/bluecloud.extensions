@@ -133,17 +133,32 @@ namespace BlueCloud.Extensions.Tests
         {
             var title = "";
 
-            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = @albumId", command =>
-            {
-                command.AddParameter<int>("albumId", 1);
-            }, reader =>
-            {
-                reader.Read();
-                title = reader.GetValue<string>("Title");
+            string sql = "SELECT * FROM albums WHERE AlbumId = @albumId";
+
+            connection.ExecuteQueryString(sql, command => command.AddParameter("albumId", 1), reader => 
+            { 
+                reader.Read(); 
+
+                title = reader.GetValue<string>("Title"); 
             });
 
             Assert.Equal("For Those About To Rock We Salute You", title);
         }
+
+        [Fact]
+        public void ExecuteQueryString_WhenReaderCallbackIsNull_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.ExecuteQueryString("SELECT * FROM albums", null);
+            });
+        }
+
+
+        #endregion
+
+
+        #region ExecuteQueryEmbeddedResource Tests
 
         [Fact]
         public void ExecuteQueryEmbeddedResource_ShouldReturnRows()
@@ -159,6 +174,24 @@ namespace BlueCloud.Extensions.Tests
             });
 
             Assert.Equal(347, count);
+        }
+
+        [Fact]
+        public void ExecuteQueryEmbeddedResource_WhenEmbeddedResourceIsNull_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.ExecuteQueryEmbeddedResource(null, reader => { });
+            }); 
+        }
+
+        [Fact]
+        public void ExecuteQueryEmbeddedResource_WhenReaderCallbackIsNull_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.ExecuteQueryEmbeddedResource("GetAllAlbums.sql", null);
+            });
         }
 
         #endregion

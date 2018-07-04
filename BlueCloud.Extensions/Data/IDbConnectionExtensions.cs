@@ -133,6 +133,9 @@ namespace BlueCloud.Extensions.Data
         /// <returns></returns>
         public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback, Action<IDataReader> readerCallback, bool validateParameters = true)
         {
+            if (embeddedResource == null)
+                throw new ArgumentNullException(nameof(embeddedResource));
+
             string sql = assembly.GetEmbeddedResourceString(embeddedResource);
             connection.ExecuteQueryString(sql, commandCallback, readerCallback, validateParameters);
         }
@@ -354,36 +357,9 @@ namespace BlueCloud.Extensions.Data
         /// <param name="nonQuerySqlString">Non Query SQL String</param>
         /// <param name="obj">Object from which parameters are to be populated</param>
         /// <returns></returns>
-        public static int ExecuteNonQueryStringForObject<T>(this IDbConnection connection, string nonQuerySqlString, T obj, bool validateParameters = true)
+        public static int ExecuteNonQueryStringForObject<T>(this IDbConnection connection, string nonQuerySqlString, T obj, bool validateParameters = true) where T : class
         {
-            return connection.ExecuteNonQueryString(nonQuerySqlString, (command) =>
-            {
-                List<string> bindParameters = command.ParameterNamesFromCommandText().Map(x => x.TrimStart(':', '@').ToLower());
-
-                PropertyInfo[] properties = typeof(T).GetProperties();
-
-                foreach (PropertyInfo property in properties)
-                {
-                    var dbField = (DbFieldAttribute)property.GetCustomAttribute(typeof(DbFieldAttribute), true);
-
-                    if (dbField == null)
-                        continue;
-
-                    if (dbField.SqlParameterName == null)
-                        continue;
-
-                    if (bindParameters.Contains(dbField.SqlParameterName.TrimStart(':', '@').ToLower()) == false)
-                        continue;
-
-                    Debug.WriteLine(property.Name.ToString() + " [" + property.PropertyType.ToString() + "]" + " <-> Database Field: " + dbField.Field);
-
-
-                    {
-                        command.AddParameter(dbField.SqlParameterName, property.GetValue(obj));
-                    }
-
-                }
-            }, validateParameters);
+            return connection.ExecuteNonQueryString(nonQuerySqlString, command => command.BindParametersFromObject(obj), validateParameters);
         }
 
 
@@ -395,7 +371,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="embeddedResource">Embedded Resource Name</param>
         /// <param name="obj">Object from which parameters are to be populated</param>
         /// <returns></returns>
-        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, T obj, bool validateParameters = true)
+        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, T obj, bool validateParameters = true) where T : class
         {
             return ExecuteNonQueryEmbeddedResourceForObject(connection, embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), obj, validateParameters);
         }
@@ -410,7 +386,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="assembly">Assembly Where Embedded Resource is Located</param>
         /// <param name="obj">Object from which parameters are to be populated</param>
         /// <returns></returns>
-        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, T obj, bool validateParameters = true)
+        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, T obj, bool validateParameters = true) where T : class
         {
             string sql = assembly.GetEmbeddedResourceString(embeddedResource);
 
@@ -512,10 +488,7 @@ namespace BlueCloud.Extensions.Data
         {
             IEnumerable<T> result = null;
 
-            connection.ExecuteQueryEmbeddedResource(embeddedResource, assembly, commandCallback, reader => 
-            {
-                result = reader.MapToObjects<T>();
-            }, validateParameters);
+            connection.ExecuteQueryEmbeddedResource(embeddedResource, assembly, commandCallback, reader => result = reader.MapToObjects<T>(), validateParameters);
 
             return result;
         }
