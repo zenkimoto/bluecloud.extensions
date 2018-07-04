@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using BlueCloud.Extensions.Tests.Model;
 using BlueCloud.Extensions.Tests.Database;
+using System.Linq;
 
 namespace BlueCloud.Extensions.Tests
 {
@@ -85,6 +86,24 @@ namespace BlueCloud.Extensions.Tests
             });
         }
 
+        [Fact]
+        public void LoadEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowArgumentNullException() 
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                command.LoadEmbeddedResource(null);
+            });  
+        }
+
+        [Fact]
+        public void LoadEmbeddedResource_WhenNullAssembly_ShouldThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                command.LoadEmbeddedResource("GetAllAlbums.sql", null);
+            });
+        }
+
         #endregion
 
 
@@ -125,6 +144,43 @@ namespace BlueCloud.Extensions.Tests
         #endregion
 
 
+        #region AddParameter Tests
+
+        [Fact]
+        public void AddParameter_ShouldAddParameterToCommandParameters() 
+        {
+            command.AddParameter("testParam", 1);
+
+            Assert.Equal(1, command.Parameters["testParam"].Value);
+        }
+
+        [Fact]
+        public void AddParameter_WhenNullParameterName_ShouldThrowArgumentNullException() 
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                command.AddParameter(null, 1);
+            });
+        }
+
+        #endregion
+
+
+        #region AddOutputParameterTests
+
+        [Fact]
+        public void AddOutputParameter_ShouldAddParameterToCommandParameters()
+        {
+            command.AddOutputParameter("testParam", DbType.Double);
+
+            Assert.Equal("testParam", command.Parameters[0].ParameterName);
+            Assert.Equal(DbType.Double, command.Parameters[0].DbType);
+            Assert.Equal(ParameterDirection.Output, command.Parameters[0].Direction);
+        }
+
+        #endregion
+
+
         #region ParameterNamesFromCommandText Tests
 
         [Fact]
@@ -132,7 +188,7 @@ namespace BlueCloud.Extensions.Tests
         {
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = @albumid AND ArtistId = @artistid";
 
-            var parameters = command.ParameterNamesFromCommandText();
+            var parameters = command.ParameterNamesFromCommandText().ToList();
 
             Assert.True(parameters.Contains("@albumid"), "Parameter list should contain 'albumid'");
             Assert.True(parameters.Contains("@artistid"), "Parameter list should contain 'artistid'");
@@ -144,7 +200,7 @@ namespace BlueCloud.Extensions.Tests
         {
             command.CommandText = "SELECT * FROM albums WHERE (AlbumId=@albumid) AND (ArtistId=@artistid)";
 
-            var parameters = command.ParameterNamesFromCommandText();
+            var parameters = command.ParameterNamesFromCommandText().ToList();
 
             Assert.True(parameters.Contains("@albumid"), "Parameter list should contain 'albumid'");
             Assert.True(parameters.Contains("@artistid"), "Parameter list should contain 'artistid'");
@@ -221,10 +277,41 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(3, command.Parameters.Count);
         }
 
+        [Fact]
+        public void BindParametersFromObject_WhenPassingInANull_ShouldThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => 
+            { 
+                command.BindParametersFromObject<Invoice>(null); 
+            });
+        }
+
         #endregion
 
 
-        #region Remove Parameter Tests
+        #region ParameterNames Tests
+
+        [Fact]
+        public void ParameterNames_ShouldReturnListOfParameterNames() 
+        {
+            var invoice = BuildInvoiceItem();
+
+            command.CommandText = GetInvoiceInsertSql();
+
+            command.BindParametersFromObject(invoice);
+
+            var names = command.ParameterNames().ToList();
+
+            Assert.Equal(3, names.Count);
+            Assert.Equal("InvoiceId", names[0]);
+            Assert.Equal("CustomerId", names[1]);
+            Assert.Equal("InvoiceDate", names[2]);
+        }
+
+        #endregion
+
+
+        #region RemoveParameter Tests
 
         [Fact]
         public void RemoveParameter_ShouldRemoveCorrectCommandParameter()
@@ -254,6 +341,21 @@ namespace BlueCloud.Extensions.Tests
             command.RemoveParameter("RandomParameter");
 
             Assert.Equal(3, command.Parameters.Count);
+        }
+
+        [Fact]
+        public void RemoveParameter_WhenParameterNameIsNull_ShouldThrowArgumentException()
+        {
+            var invoice = BuildInvoiceItem();
+
+            command.CommandText = GetInvoiceInsertSql();
+
+            command.BindParametersFromObject(invoice);
+
+            Assert.Throws<ArgumentNullException>(() => 
+            {
+                command.RemoveParameter(null);
+            });
         }
 
         #endregion

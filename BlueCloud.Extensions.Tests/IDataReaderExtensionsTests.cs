@@ -82,6 +82,19 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(1, artistId);
         }
 
+        [Fact]
+        public void GetValue_WhenNullParameterName_ShouldThrowArgumentNullException() 
+        {
+            QueryAlbums();
+
+            reader.Read();
+
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                reader.GetValue<int>(null);
+            });
+        }
+
         #endregion
 
 

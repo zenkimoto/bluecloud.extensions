@@ -33,6 +33,11 @@ namespace BlueCloud.Extensions.Data
         /// <param name="assembly">Assembly</param>
         public static void LoadEmbeddedResource(this IDbCommand command, string embeddedResource, System.Reflection.Assembly assembly)
         {
+            if (embeddedResource == null)
+                throw new ArgumentNullException(nameof(embeddedResource));
+            if (assembly == null)
+                throw new ArgumentNullException(nameof(assembly));
+
             string sql = assembly.GetEmbeddedResourceString(embeddedResource);
 
             command.CommandText = sql;
@@ -110,7 +115,7 @@ namespace BlueCloud.Extensions.Data
         {
             IDbDataParameter parameter = command.CreateParameter();
 
-            parameter.ParameterName = name;
+            parameter.ParameterName = name ?? throw new ArgumentNullException(nameof(name));
             parameter.Value = value;
 
             command.Parameters.Add(parameter);
@@ -124,60 +129,14 @@ namespace BlueCloud.Extensions.Data
         /// <param name="command">Command.</param>
         /// <param name="name">Name.</param>
         /// <param name="type">Type.</param>
-        public static IDbDataParameter AddOutputParameter(this IDbCommand command, string name, DbType type)
+        public static void AddOutputParameter(this IDbCommand command, string name, DbType type)
         {
             IDbDataParameter outputParameter = command.CreateParameter();
             outputParameter.Direction = ParameterDirection.Output;
             outputParameter.DbType = type;
-            outputParameter.ParameterName = name;
+            outputParameter.ParameterName = name ?? throw new ArgumentNullException(nameof(name));
 
             command.Parameters.Add(outputParameter);
-
-            return outputParameter;
-        }
-
-
-        /// <summary>
-        /// Adds the parameter collection.
-        /// </summary>
-        /// <param name="command">Command.</param>
-        /// <param name="name">Name.</param>
-        /// <param name="type">Type.</param>
-        /// <param name="collection">Collection.</param>
-        /// <typeparam name="TValue">The 1st type parameter.</typeparam>
-        public static void AddParameterCollection<TValue>(this IDbCommand command, string name, DbType type, IEnumerable<TValue> collection)
-        {
-            if (name == null)
-                throw new ArgumentException(nameof(name));
-            if (collection == null)
-                throw new ArgumentException(nameof(collection));
-
-            var parameters = new List<IDbDataParameter>();
-            var counter = 0;
-            var parameterBuilder = new StringBuilder(":");
-
-            foreach (var obj in collection)
-            {
-                var parameterName = name + counter;
-                parameterBuilder.Append(parameterName);
-                parameterBuilder.Append(", :");
-
-                IDbDataParameter parameter = command.CreateParameter();
-                parameter.DbType = type;
-                parameter.ParameterName = parameterName;
-                parameter.Value = obj;
-                parameters.Add(parameter);
-
-                counter++;
-            }
-
-            parameterBuilder.Remove(parameterBuilder.Length - 3, 3);
-            command.CommandText = command.CommandText.ToUpper().Replace(":" + name.ToUpper(), parameterBuilder.ToString());
-
-            foreach (IDbDataParameter parameter in parameters)
-            {
-                command.Parameters.Add(parameter);
-            }
         }
 
 
@@ -187,8 +146,11 @@ namespace BlueCloud.Extensions.Data
         /// <param name="command">Command.</param>
         /// <param name="model">Model.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static void BindParametersFromObject<T>(this IDbCommand command, T model)
+        public static void BindParametersFromObject<T>(this IDbCommand command, T model) where T : class
         {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
             List<string> bindParameters = command.ParameterNamesFromCommandText().Map(x => x.TrimStart(':', '@').ToLower());
 
             PropertyInfo[] properties = typeof(T).GetProperties();
@@ -226,13 +188,13 @@ namespace BlueCloud.Extensions.Data
         /// </summary>
         /// <returns>The names from command text.</returns>
         /// <param name="command">Command.</param>
-        public static List<string> ParameterNamesFromCommandText(this IDbCommand command)
+        public static IEnumerable<string> ParameterNamesFromCommandText(this IDbCommand command)
         {
             var regex = new Regex("[:@][a-zA-Z0-9-_]+");
 
             MatchCollection matches = regex.Matches(command.CommandText);
 
-            return matches.Map(match => match.Value);
+            return matches.Map(match => match.Value).AsEnumerable();
         }
 
 
@@ -241,7 +203,7 @@ namespace BlueCloud.Extensions.Data
         /// </summary>
         /// <returns>The names.</returns>
         /// <param name="command">Command.</param>
-        public static List<string> ParameterNames(this IDbCommand command)
+        public static IEnumerable<string> ParameterNames(this IDbCommand command)
         {
             var bindParameterNames = new List<string>();
 
@@ -250,17 +212,20 @@ namespace BlueCloud.Extensions.Data
                 bindParameterNames.Add(param.ParameterName);
             }
 
-            return bindParameterNames;
+            return bindParameterNames.AsEnumerable();
         }
 
 
         /// <summary>
-        /// Removes the parameter.
+        /// Removes a database parameter from the command object.
         /// </summary>
         /// <param name="command">Command.</param>
         /// <param name="parameterName">Parameter name.</param>
         public static void RemoveParameter(this IDbCommand command, string parameterName)
         {
+            if (parameterName == null)
+                throw new ArgumentNullException(nameof(parameterName));
+
             DbParameter paramToDelete = null;
 
             foreach (DbParameter param in command.Parameters)
