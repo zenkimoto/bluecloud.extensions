@@ -35,6 +35,8 @@ namespace BlueCloud.Extensions.Tests
             connection = null;
         }
 
+        #region Helper Functions
+
         private void QueryEmployees()
         {
             command = connection.CreateCommand();
@@ -59,6 +61,11 @@ namespace BlueCloud.Extensions.Tests
             reader = command.ExecuteReader();
         }
 
+        #endregion
+
+
+        #region GetValue Tests
+
         [Fact]
         public void GetValue_ShouldReturnCorrectValue()
         {
@@ -75,6 +82,11 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(1, artistId);
         }
 
+        #endregion
+
+
+        #region MapToObjects Tests
+
         [Fact]
         public void MapToObjects_ShouldSetNullableValuesToNull()
         {
@@ -86,7 +98,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void MapToObjects_PopulateObjectsCorrectly() 
+        public void MapToObjects_PopulateObjectsCorrectly()
         {
             QueryEmployees();
 
@@ -151,8 +163,14 @@ namespace BlueCloud.Extensions.Tests
             });
         }
 
+        #endregion
+
+
+        #region GetColumnOrdinals Tests
+
         [Fact]
-        public void GetColumnOrdinals_ShouldReturnColumnOrdinalDictionary() {
+        public void GetColumnOrdinals_ShouldReturnColumnOrdinalDictionary()
+        {
             QueryAlbums();
 
             reader.Read();
@@ -164,5 +182,7 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(2, columnOrdinals["artistid"]);
             Assert.Equal(3, columnOrdinals.Count);
         }
+
+        #endregion
     }
 }

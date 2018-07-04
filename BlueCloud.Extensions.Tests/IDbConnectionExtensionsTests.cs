@@ -5,6 +5,7 @@ using Microsoft.Data.Sqlite;
 using BlueCloud.Extensions.Tests.Model;
 using System.Linq;
 using BlueCloud.Extensions.Tests.Database;
+using System.Data;
 
 namespace BlueCloud.Extensions.Tests
 {
@@ -26,6 +27,31 @@ namespace BlueCloud.Extensions.Tests
             connection.Dispose();
             connection = null;
         }
+
+        #region Command Builder Tests
+
+        [Fact]
+        public void CommandWithSqlString_ShouldCreateCommandWithSQL()
+        {
+            var command = connection.CommandWithSqlString("SELECT * FROM invoice");
+
+            Assert.Equal("SELECT * FROM invoice", command.CommandText);
+            Assert.Equal(CommandType.Text, command.CommandType);
+        }
+
+        [Fact]
+        public void CommandWithEmbeddedResource_ShouldCreateCommandFromEmbeddedResource()
+        {
+            var command = connection.CommandWithEmbeddedResource("GetAllAlbums.sql");
+
+            Assert.Equal("SELECT * FROM albums", command.CommandText);
+            Assert.Equal(CommandType.Text, command.CommandType);
+        }
+
+        #endregion
+
+
+        #region ExecuteQueryString Tests
 
         [Fact]
         public void ExecuteQueryString_ShouldReturnRows()
@@ -76,6 +102,11 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(347, count);
         }
 
+        #endregion
+
+
+        #region GetObjectsFromEmbeddedResource Tests
+
         [Fact]
         public void GetObjectsFromEmbeddedResource_ShouldReturnAlbumObjects()
         {
@@ -83,6 +114,11 @@ namespace BlueCloud.Extensions.Tests
 
             Assert.Equal(347, albums.ToList().Count);
         }
+
+        #endregion
+
+
+        #region ExecuteNonQuery Tests
 
         [Fact]
         public void ExecuteNonQuery_ShouldExecuteDML()
@@ -96,5 +132,7 @@ namespace BlueCloud.Extensions.Tests
                 Assert.Equal("test_table", reader[0]);
             });
         }
+
+        #endregion
     }
 }

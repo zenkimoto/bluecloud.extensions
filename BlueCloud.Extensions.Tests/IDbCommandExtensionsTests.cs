@@ -12,39 +12,73 @@ namespace BlueCloud.Extensions.Tests
     public class IDbCommandExtensionsTests : IDisposable
     {
         SqliteConnection connection;
+        SqliteCommand command;
 
-        public IDbCommandExtensionsTests() 
+        public IDbCommandExtensionsTests()
         {
             connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
             InMemoryDatabase.Setup(connection);
+
+            command = connection.CreateCommand();
         }
 
         public void Dispose()
         {
             connection.Close();
             connection.Dispose();
+            connection = null;
+
+            command.Dispose();
+            command = null;
         }
+
+
+        #region Helper Functions
+
+        private Album BuildAlbumItem()
+        {
+            return new Album
+            {
+                AlbumId = 100,
+                Title = "Test Album",
+                ArtistId = 101
+            };
+        }
+
+        private Invoice BuildInvoiceItem()
+        {
+            return new Invoice
+            {
+                InvoiceId = 998,
+                CustomerId = 999,
+                InvoiceDate = new DateTime(2018, 1, 1, 0, 0, 0, DateTimeKind.Utc)
+            };
+        }
+
+        private string GetInvoiceInsertSql()
+        {
+            return "INSERT INTO invoice (InvoiceId, CustomerId, InvoiceDate) VALUES (@InvoiceId, @CustomerId, @InvoiceDate)";
+        }
+
+        #endregion
 
 
         #region LoadEmbeddedResource Tests
 
         [Fact]
-        public void LoadEmbeddedResource_ShouldReadFileSuccessfully() 
+        public void LoadEmbeddedResource_ShouldReadFileSuccessfully()
         {
-            var command = connection.CreateCommand();
-
             command.LoadEmbeddedResource("GetAllAlbums.sql");
 
             Assert.Equal("SELECT * FROM albums", command.CommandText);
+            Assert.Equal(CommandType.Text, command.CommandType);
         }
 
         [Fact]
         public void LoadEmbeddedResource_WhenFileDoesntExist_ShouldThrowException()
         {
-            var command = connection.CreateCommand();
-
             Assert.Throws<FileNotFoundException>(() =>
             {
                 command.LoadEmbeddedResource("GetAllAlbums2.sql");
@@ -57,13 +91,11 @@ namespace BlueCloud.Extensions.Tests
         #region ValidateParameters Tests
 
         [Fact]
-        public void ValidateParameters_WhenParametersMatch_ShouldNotThrowException() 
+        public void ValidateParameters_WhenParametersMatch_ShouldNotThrowException()
         {
-            var command = connection.CreateCommand();
-
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = @albumid";
 
-            command.AddParameter<int>("albumid", 1);
+            command.AddParameter("albumid", 1);
 
             command.ValidateParameters();
         }
@@ -71,8 +103,6 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void ValidateParameters_NoParameters_ShouldThrowException()
         {
-            var command = connection.CreateCommand();
-
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = @albumid";
 
             Assert.Throws<DataException>(() =>
@@ -84,8 +114,6 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void ValidateParameters_WhenTooManyParametersInSql_ShouldThrowException()
         {
-            var command = connection.CreateCommand();
-
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = @albumid AND ArtistId = @artistid";
 
             Assert.Throws<DataException>(() =>
@@ -102,8 +130,6 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void ParameterNamesFromCommandText_ShouldReturnAllParametersInSQL()
         {
-            var command = connection.CreateCommand();
-
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = @albumid AND ArtistId = @artistid";
 
             var parameters = command.ParameterNamesFromCommandText();
@@ -116,8 +142,6 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void ParameterNamesFromCommandText_WhenSpacesAreRemovedAndParenthesisAdded_ShouldReturnAllParametersInSQL()
         {
-            var command = connection.CreateCommand();
-
             command.CommandText = "SELECT * FROM albums WHERE (AlbumId=@albumid) AND (ArtistId=@artistid)";
 
             var parameters = command.ParameterNamesFromCommandText();
@@ -130,8 +154,6 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void ParameterNamesFromCommandText_WhenNoParametersSpecified_ShouldReturnEmptyArray()
         {
-            var command = connection.CreateCommand();
-
             command.CommandText = "SELECT * FROM albums WHERE AlbumId = 1";
 
             var parameters = command.ParameterNamesFromCommandText();
@@ -147,14 +169,7 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void BindParametersFromObject_ShouldAddParametersFromProjectProperties()
         {
-            var command = connection.CreateCommand();
-
-            var album = new Album
-            {
-                AlbumId = 100,
-                Title = "Test Album",
-                ArtistId = 101
-            };
+            var album = BuildAlbumItem();
 
             command.CommandText = "INSERT INTO albums (AlbumId, Title, ArtistId) VALUES (@AlbumId, @Title, @ArtistId)";
 
@@ -169,14 +184,7 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void BindParametersFromObject_WhenParametersDontExistInSQL_ShouldNotAddAnyParameters()
         {
-            var command = connection.CreateCommand();
-
-            var album = new Album
-            {
-                AlbumId = 100,
-                Title = "Test Album",
-                ArtistId = 101
-            };
+            var album = BuildAlbumItem();
 
             command.CommandText = "INSERT INTO albums (AlbumId, Title, ArtistId) VALUES (100, 'Test Album', 102)";
 
@@ -188,14 +196,7 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void BindParametersFromObject_WhenPartialParametersExistInSQL_ShouldOnlyParatialParameters()
         {
-            var command = connection.CreateCommand();
-
-            var album = new Album
-            {
-                AlbumId = 100,
-                Title = "Test Album",
-                ArtistId = 101
-            };
+            var album = BuildAlbumItem();
 
             command.CommandText = "INSERT INTO albums (AlbumId, Title, ArtistId) VALUES (@AlbumId, 'Test Album', 102)";
 
@@ -203,6 +204,56 @@ namespace BlueCloud.Extensions.Tests
 
             Assert.Equal((long)100, command.Parameters["AlbumId"].Value);
             Assert.Equal(1, command.Parameters.Count);
+        }
+
+        [Fact]
+        public void BindParametersFromObject_WhenUsingCustomParameterMapping_ShouldPopulateParametersCorrectly()
+        {
+            var invoice = BuildInvoiceItem();
+
+            command.CommandText = GetInvoiceInsertSql();
+
+            command.BindParametersFromObject(invoice);
+
+            Assert.Equal((long)1998, command.Parameters["InvoiceId"].Value);
+            Assert.Equal((long)1999, command.Parameters["CustomerId"].Value);
+            Assert.Equal(new DateTime(2018, 2, 1, 0, 0, 0, DateTimeKind.Utc), command.Parameters["InvoiceDate"].Value);
+            Assert.Equal(3, command.Parameters.Count);
+        }
+
+        #endregion
+
+
+        #region Remove Parameter Tests
+
+        [Fact]
+        public void RemoveParameter_ShouldRemoveCorrectCommandParameter()
+        {
+            var invoice = BuildInvoiceItem();
+
+            command.CommandText = GetInvoiceInsertSql();
+
+            command.BindParametersFromObject(invoice);
+
+            command.RemoveParameter("CustomerId");
+
+            Assert.Equal(2, command.Parameters.Count);
+            Assert.Equal("InvoiceId", command.Parameters[0].ParameterName);
+            Assert.Equal("InvoiceDate", command.Parameters[1].ParameterName);
+        }
+
+        [Fact]
+        public void RemoveParameter_WhenParameterDoesNotExist_ShouldNotRemoveAny()
+        {
+            var invoice = BuildInvoiceItem();
+
+            command.CommandText = GetInvoiceInsertSql();
+
+            command.BindParametersFromObject(invoice);
+
+            command.RemoveParameter("RandomParameter");
+
+            Assert.Equal(3, command.Parameters.Count);
         }
 
         #endregion
