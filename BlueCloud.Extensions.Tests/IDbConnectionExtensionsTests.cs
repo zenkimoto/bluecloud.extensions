@@ -28,7 +28,7 @@ namespace BlueCloud.Extensions.Tests
             connection = null;
         }
 
-        #region Command Builder Tests
+        #region CommandWithSqlString Tests
 
         [Fact]
         public void CommandWithSqlString_ShouldCreateCommandWithSQL()
@@ -40,12 +40,71 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
+        public void CommandWithSqlString_WhenNullSqlString_ShouldThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.CommandWithSqlString(null);
+            });
+        }
+
+        #endregion
+
+
+        #region CommandWithStoredProcedure Tests
+
+        // TODO: Stored Procedures not supported with Sqlite
+
+        /*
+        [Fact]
+        public void CommandWithStoredProcedure_ShouldCreateCommand() 
+        {
+            var command = connection.CommandWithStoredProcedure("storedProcedure()");
+
+            Assert.Equal("storedProcedure()", command.CommandText);
+            Assert.Equal(CommandType.StoredProcedure, command.CommandType);
+        }
+
+        [Fact]
+        public void CommandWithStoredProcedure_WhenNullSqlString_ShouldThrowArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.CommandWithStoredProcedure(null);
+            });
+        }
+        */
+
+        #endregion
+
+
+        #region CommandWithEmbeddedResource Tests
+
+        [Fact]
         public void CommandWithEmbeddedResource_ShouldCreateCommandFromEmbeddedResource()
         {
             var command = connection.CommandWithEmbeddedResource("GetAllAlbums.sql");
 
             Assert.Equal("SELECT * FROM albums", command.CommandText);
             Assert.Equal(CommandType.Text, command.CommandType);
+        }
+
+        [Fact]
+        public void CommandWithEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.CommandWithEmbeddedResource(null);
+            });
+        }
+
+        [Fact]
+        public void CommandWithEmbeddedResource_WhenNullAssembly_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.CommandWithEmbeddedResource("GetAllAlbums.sql", null);
+            });
         }
 
         #endregion

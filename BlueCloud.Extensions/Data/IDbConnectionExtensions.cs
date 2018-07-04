@@ -22,7 +22,7 @@ namespace BlueCloud.Extensions.Data
         {
             IDbCommand command = connection.CreateCommand();
             command.CommandType = CommandType.Text;
-            command.CommandText = sqlString;
+            command.CommandText = sqlString ?? throw new ArgumentNullException(nameof(sqlString));
 
             command.GetType().GetProperty("BindByName")?.SetValue(command, true);
 
@@ -33,7 +33,7 @@ namespace BlueCloud.Extensions.Data
         /// <summary>
         /// Creates a new IDbCommand with an initialized Stored Procedure Name.
         /// </summary>
-        /// <param name="sqlString">Stored Procedure to Execute</param>
+        /// <param name="storedProcedure">Stored Procedure to Execute</param>
         public static IDbCommand CommandWithStoredProcedure(this IDbConnection connection, string storedProcedure)
         {
             IDbCommand command = CommandWithSqlString(connection, storedProcedure);
@@ -65,6 +65,11 @@ namespace BlueCloud.Extensions.Data
         /// <param name="assembly">Assembly.</param>
         public static IDbCommand CommandWithEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly)
         {
+            if (embeddedResource == null)
+                throw new ArgumentNullException(nameof(embeddedResource));
+            if (assembly == null)
+                throw new ArgumentNullException(nameof(assembly));
+
             string sql = assembly.GetEmbeddedResourceString(embeddedResource);
 
             return connection.CommandWithSqlString(sql);
