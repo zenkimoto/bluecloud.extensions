@@ -436,6 +436,11 @@ namespace BlueCloud.Extensions.Data
         /// <returns></returns>
         public static object ExecuteScalarEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = true)
         {
+            if (embeddedResource == null)
+                throw new ArgumentNullException(nameof(embeddedResource));
+            if (assembly == null)
+                throw new ArgumentNullException(nameof(assembly));
+
             string sql = assembly.GetEmbeddedResourceString(embeddedResource);
             return connection.ExecuteQueryScalar(sql, commandCallback, validateParameters);
         }

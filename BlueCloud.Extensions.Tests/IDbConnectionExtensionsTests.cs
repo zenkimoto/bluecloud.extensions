@@ -135,11 +135,11 @@ namespace BlueCloud.Extensions.Tests
 
             string sql = "SELECT * FROM albums WHERE AlbumId = @albumId";
 
-            connection.ExecuteQueryString(sql, command => command.AddParameter("albumId", 1), reader => 
-            { 
-                reader.Read(); 
+            connection.ExecuteQueryString(sql, command => command.AddParameter("albumId", 1), reader =>
+            {
+                reader.Read();
 
-                title = reader.GetValue<string>("Title"); 
+                title = reader.GetValue<string>("Title");
             });
 
             Assert.Equal("For Those About To Rock We Salute You", title);
@@ -182,7 +182,7 @@ namespace BlueCloud.Extensions.Tests
             Assert.Throws<ArgumentNullException>(() =>
             {
                 connection.ExecuteQueryEmbeddedResource(null, reader => { });
-            }); 
+            });
         }
 
         [Fact]
@@ -222,6 +222,59 @@ namespace BlueCloud.Extensions.Tests
                 reader.Read();
 
                 Assert.Equal("test_table", reader[0]);
+            });
+        }
+
+        #endregion
+
+
+        #region ExecuteQueryScalar Tests
+
+        [Fact]
+        public void ExecuteQueryScalar_ShouldReturnScalarValue()
+        {
+            long scalar = (long)connection.ExecuteQueryScalar("SELECT AlbumId FROM albums WHERE AlbumId = 1");
+
+            Assert.Equal(1, scalar);
+        }
+
+        [Fact]
+        public void ExecuteQueryScalar_WhenNullSqlString_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.ExecuteQueryScalar(null);
+            });
+        }
+
+        #endregion
+
+
+        #region ExecuteScalarEmbeddedResource Tests
+
+        [Fact]
+        public void ExecuteScalarEmbeddedResource_ShouldReturnScalarValue() 
+        {
+            long scalar = (long)connection.ExecuteScalarEmbeddedResource("GetAlbumScalar.sql", System.Reflection.Assembly.GetExecutingAssembly());
+
+            Assert.Equal(1, scalar);
+        }
+
+        [Fact]
+        public void ExecuteScalarEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.ExecuteScalarEmbeddedResource(null);
+            });
+        }
+
+        [Fact]
+        public void ExecuteScalarEmbeddedResource_WhenNullAssembly_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                connection.ExecuteScalarEmbeddedResource("GetAlbumScalar.sql", (System.Reflection.Assembly)null);
             });
         }
 

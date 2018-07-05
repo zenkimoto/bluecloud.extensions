@@ -1,0 +1,1 @@
+﻿SELECT AlbumId FROM albums WHERE AlbumId = 1
