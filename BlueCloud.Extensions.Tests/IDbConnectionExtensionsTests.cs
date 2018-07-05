@@ -226,7 +226,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void ExecuteNonQuery_ShouldInsertRow() 
+        public void ExecuteNonQuery_ShouldInsertRow()
         {
             string sql = "INSERT INTO albums VALUES (@AlbumId, @Title, @ArtistId)";
 
@@ -237,7 +237,8 @@ namespace BlueCloud.Extensions.Tests
                 command.AddParameter("ArtistId", 274);
             });
 
-            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = 348", reader => {
+            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = 348", reader =>
+            {
                 reader.Read();
 
                 Assert.Equal("Duo Sonatas 2", reader.GetValue<string>("Title"));
@@ -279,7 +280,7 @@ namespace BlueCloud.Extensions.Tests
         #region ExecuteScalarEmbeddedResource Tests
 
         [Fact]
-        public void ExecuteScalarEmbeddedResource_ShouldReturnScalarValue() 
+        public void ExecuteScalarEmbeddedResource_ShouldReturnScalarValue()
         {
             long scalar = (long)connection.ExecuteScalarEmbeddedResource("GetAlbumScalar.sql", System.Reflection.Assembly.GetExecutingAssembly());
 
@@ -302,6 +303,37 @@ namespace BlueCloud.Extensions.Tests
             {
                 connection.ExecuteScalarEmbeddedResource("GetAlbumScalar.sql", (System.Reflection.Assembly)null);
             });
+        }
+
+        #endregion
+
+
+        #region GetSingleObjectFromQueryString Tests 
+
+        [Fact]
+        public void GetSingleObjectFromQueryString_ShouldReturnSingleObjectFromDatabase()
+        {
+            var album = connection.GetSingleObjectFromQueryString<Album>("SELECT * FROM albums WHERE AlbumId = 1");
+
+            Assert.Equal(1, album.AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", album.Title);
+            Assert.Equal(1, album.ArtistId);
+        }
+
+        [Fact]
+        public void GetSingleObjectFromQueryString_WhenNullQueryString_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.GetSingleObjectFromQueryString<Album>(null));
+        }
+
+        [Fact]
+        public void GetSingleObjectFromQueryString_WhenMoreThanOneResult_ShouldReturnSingleObjectFromDatabase()
+        {
+            var album = connection.GetSingleObjectFromQueryString<Album>("SELECT * FROM albums");
+
+            Assert.Equal(1, album.AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", album.Title);
+            Assert.Equal(1, album.ArtistId);
         }
 
         #endregion
