@@ -225,6 +225,32 @@ namespace BlueCloud.Extensions.Tests
             });
         }
 
+        [Fact]
+        public void ExecuteNonQuery_ShouldInsertRow() 
+        {
+            string sql = "INSERT INTO albums VALUES (@AlbumId, @Title, @ArtistId)";
+
+            connection.ExecuteNonQueryString(sql, command =>
+            {
+                command.AddParameter("AlbumId", 348);
+                command.AddParameter("Title", "Duo Sonatas 2");
+                command.AddParameter("ArtistId", 274);
+            });
+
+            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = 348", reader => {
+                reader.Read();
+
+                Assert.Equal("Duo Sonatas 2", reader.GetValue<string>("Title"));
+                Assert.Equal(274, reader.GetValue<int>("ArtistId"));
+            });
+        }
+
+        [Fact]
+        public void ExecuteNonQueryString_WhenNullSqlString_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryString(null));
+        }
+
         #endregion
 
 
