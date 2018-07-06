@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using System.Data.Common;
 using System.Data;
 using System.Reflection;
-using System.Text;
 using BlueCloud.Extensions.Collections;
 using BlueCloud.Extensions.Assembly;
 using System.Diagnostics;
@@ -18,7 +17,7 @@ namespace BlueCloud.Extensions.Data
         /// Loads an Embedded Resource into the Command Text
         /// </summary>
         /// <param name="command">IDbCommand</param>
-        /// <param name="embeddedResource">Embedded Resource</param>
+        /// <param name="embeddedResource">Embedded Resource Name</param>
         public static void LoadEmbeddedResource(this IDbCommand command, string embeddedResource)
         {
             command.LoadEmbeddedResource(embeddedResource, System.Reflection.Assembly.GetCallingAssembly());
@@ -46,10 +45,11 @@ namespace BlueCloud.Extensions.Data
 
         /// <summary>
         /// Validates if parameters specified in the SQL Statement matches the parameters added to the Parameter Collection.
-        /// Not Optimized.  This method is meant to be executed in DEBUG mode.
+        /// This method is not Optimized.  This method is ONLY meant to be executed in DEBUG mode during development.
         /// </summary>
         public static void ValidateParameters(this IDbCommand command)
         {
+#if DEBUG
             if (command.CommandType != CommandType.Text)
             {
                 return;
@@ -101,16 +101,18 @@ namespace BlueCloud.Extensions.Data
 
                 throw ex;
             }
+#endif
         }
 
 
         /// <summary>
-        /// Adds the parameter.
+        /// Adds a new database parameter.
         /// </summary>
-        /// <param name="command">Command.</param>
-        /// <param name="name">Name.</param>
-        /// <param name="value">Value.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        /// <param name="command">IDbCommand</param>
+        /// <param name="name">Parameter Name</param>
+        /// <param name="value">Value</param>
+        /// <param name="parameterCallback">Callback to modify additional parameter properties.</param>
+        /// <typeparam name="T">Data Type</typeparam>
         public static void AddParameter<T>(this IDbCommand command, string name, T value, Action<IDbDataParameter> parameterCallback = null)
         {
             IDbDataParameter parameter = command.CreateParameter();
@@ -125,12 +127,13 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Adds the output parameter.
+        /// Adds a new output database parameter.
         /// </summary>
         /// <returns>The output parameter.</returns>
-        /// <param name="command">Command.</param>
-        /// <param name="name">Name.</param>
-        /// <param name="type">Type.</param>
+        /// <param name="command">IDbCommand</param>
+        /// <param name="name">Parameter Name</param>
+        /// <param name="type">Database Type</param>
+        /// <param name="parameterCallback">Callback to modify additional parameter properties.</param>
         public static void AddOutputParameter(this IDbCommand command, string name, DbType type, Action<IDbDataParameter> parameterCallback = null)
         {
             IDbDataParameter outputParameter = command.CreateParameter();
@@ -145,11 +148,11 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Binds the parameters from object.
+        /// Creates parameters and binds mapped properties to database parameters.
         /// </summary>
-        /// <param name="command">Command.</param>
-        /// <param name="model">Model.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        /// <param name="command">IDbCommand</param>
+        /// <param name="model">Model Object to Bind</param>
+        /// <typeparam name="T">Data Type</typeparam>
         public static void BindParametersFromObject<T>(this IDbCommand command, T model) where T : class
         {
             if (model == null)
@@ -188,10 +191,10 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Parameters the names from command text.
+        /// Parameter names in SQL (CommandText)
         /// </summary>
-        /// <returns>The names from command text.</returns>
-        /// <param name="command">Command.</param>
+        /// <returns>An enumerable list of parameter names.</returns>
+        /// <param name="command">IDbCommand</param>
         public static IEnumerable<string> ParameterNamesFromCommandText(this IDbCommand command)
         {
             var regex = new Regex("[:@][a-zA-Z0-9-_]+");
@@ -203,10 +206,10 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Parameters the names.
+        /// Parameter names in the Parameters collection.
         /// </summary>
-        /// <returns>The names.</returns>
-        /// <param name="command">Command.</param>
+        /// <returns>Enumerable List of Parameter Names</returns>
+        /// <param name="command">IDbCommand</param>
         public static IEnumerable<string> ParameterNames(this IDbCommand command)
         {
             var bindParameterNames = new List<string>();
@@ -223,8 +226,8 @@ namespace BlueCloud.Extensions.Data
         /// <summary>
         /// Removes a database parameter from the command object.
         /// </summary>
-        /// <param name="command">Command.</param>
-        /// <param name="parameterName">Parameter name.</param>
+        /// <param name="command">IDbCommand</param>
+        /// <param name="parameterName">Parameter name of parameter to remove.</param>
         public static void RemoveParameter(this IDbCommand command, string parameterName)
         {
             if (parameterName == null)

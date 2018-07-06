@@ -87,12 +87,12 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void LoadEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowArgumentNullException() 
+        public void LoadEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
                 command.LoadEmbeddedResource(null);
-            });  
+            });
         }
 
         [Fact]
@@ -147,7 +147,7 @@ namespace BlueCloud.Extensions.Tests
         #region AddParameter Tests
 
         [Fact]
-        public void AddParameter_ShouldAddParameterToCommandParameters() 
+        public void AddParameter_ShouldAddParameterToCommandParameters()
         {
             command.AddParameter("testParam", 1);
 
@@ -155,7 +155,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void AddParameter_WhenPassingInParameterCallback_ShouldAllowCustomization() 
+        public void AddParameter_WhenPassingInParameterCallback_ShouldAllowCustomization()
         {
             command.AddParameter("testParam", 1, (parameter) =>
             {
@@ -166,7 +166,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void AddParameter_WhenNullParameterName_ShouldThrowArgumentNullException() 
+        public void AddParameter_WhenNullParameterName_ShouldThrowArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
@@ -302,9 +302,9 @@ namespace BlueCloud.Extensions.Tests
         [Fact]
         public void BindParametersFromObject_WhenPassingInANull_ShouldThrowArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>(() => 
-            { 
-                command.BindParametersFromObject<Invoice>(null); 
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                command.BindParametersFromObject<Invoice>(null);
             });
         }
 
@@ -314,7 +314,7 @@ namespace BlueCloud.Extensions.Tests
         #region ParameterNames Tests
 
         [Fact]
-        public void ParameterNames_ShouldReturnListOfParameterNames() 
+        public void ParameterNames_ShouldReturnListOfParameterNames()
         {
             var invoice = BuildInvoiceItem();
 
@@ -374,13 +374,12 @@ namespace BlueCloud.Extensions.Tests
 
             command.BindParametersFromObject(invoice);
 
-            Assert.Throws<ArgumentNullException>(() => 
+            Assert.Throws<ArgumentNullException>(() =>
             {
                 command.RemoveParameter(null);
             });
         }
 
         #endregion
-
     }
 }

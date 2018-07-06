@@ -8,11 +8,11 @@ namespace BlueCloud.Extensions.Data
     public static class IDataReaderExtensions
     {
         /// <summary>
-        /// Returns a value from the database with the given type.
+        /// Returns a value from the database with a given type.
         /// </summary>
         /// <typeparam name="T">Data Type</typeparam>
         /// <param name="fieldName">Database Field Name</param>
-        /// <returns></returns>
+        /// <returns>Value from database</returns>
         public static T GetValue<T>(this IDataReader dataReader, string fieldName)
         {
             if (fieldName == null)
@@ -45,11 +45,10 @@ namespace BlueCloud.Extensions.Data
 
                 T result = isNullableType ? (T)Convert.ChangeType(value, underlyingType) : (T)Convert.ChangeType(value, type);
 
-                // TODO: Look at this...
+                // Handle DateTimes
                 if (type == typeof(DateTime))
                 {
-                    var date = (DateTime)Convert.ChangeType(result, typeof(DateTime));
-                    result = (T)Convert.ChangeType(DateTime.SpecifyKind(date, DateTimeKind.Local), typeof(T));
+                    result = (T)Convert.ChangeType(result, typeof(DateTime));
                 }
 
                 return result;
@@ -75,23 +74,26 @@ namespace BlueCloud.Extensions.Data
         #region Mapper Functions
 
         /// <summary>
-        /// Maps to objects.
+        /// Maps a data reader result to model classes
         /// </summary>
-        /// <returns>The to objects.</returns>
-        /// <param name="dataReader">Data reader.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        /// <returns>Mapped Model Objects</returns>
+        /// <param name="dataReader">Data reader</param>
+        /// <typeparam name="T">Data Type</typeparam>
         public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader) where T : class
         {
             return dataReader.MapToObjects<T>(-1);
         }
 
+
         /// <summary>
-        /// Maps to objects.
+        /// Maps a data reader result to model classes
+        /// 
+        /// Amount of records to map. A negative 1 (-1) will map all records.
         /// </summary>
-        /// <returns>The to objects.</returns>
-        /// <param name="dataReader">Data reader.</param>
-        /// <param name="take">Take.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        /// <returns>Mapped Model Objects</returns>
+        /// <param name="dataReader">Data reader</param>
+        /// <param name="take">Amount of records to map. A negative 1 (-1) will map all records.</param>
+        /// <typeparam name="T">Data Type</typeparam>
         public static IEnumerable<T> MapToObjects<T>(this IDataReader dataReader, int take) where T : class
         {
             var dbProperties = GetDatabaseProperties<T>();
@@ -153,8 +155,20 @@ namespace BlueCloud.Extensions.Data
             return objects;
         }
 
+
+        /// <summary>
+        /// Memoize tuple information.
+        /// </summary>
         private static readonly Dictionary<string, List<Tuple<string, PropertyInfo, bool>>> tupleMemo = new Dictionary<string, List<Tuple<string, PropertyInfo, bool>>>();
 
+
+        /// <summary>
+        /// Get all mapped properties of type T.  (Properties with the DbField attribute)
+        /// Returns a list of tuples with the following:
+        ///   ( Database Field Name, Reflected Property, If the property is a nullable type )
+        /// </summary>
+        /// <typeparam name="T">Data Type</typeparam>
+        /// <returns>List of Tuples</returns>
         private static List<Tuple<string, PropertyInfo, bool>> GetDatabaseProperties<T>()
         {
             var type = typeof(T);
@@ -188,10 +202,10 @@ namespace BlueCloud.Extensions.Data
         #region Helper Functions
 
         /// <summary>
-        /// Gets the column ordinals.
+        /// Returns a dictionary mapping of a database field name to column ordinal.
         /// </summary>
-        /// <returns>The column ordinals.</returns>
-        /// <param name="record">Record.</param>
+        /// <returns>Mapping of field name to column ordinal</returns>
+        /// <param name="record">Data Record</param>
         public static Dictionary<string, int> GetColumnOrdinals(this IDataRecord record)
         {
             var result = new Dictionary<string, int>();

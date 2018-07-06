@@ -1,39 +1,38 @@
-﻿using System;
-namespace BlueCloud.Extensions.Data
+﻿namespace BlueCloud.Extensions.Data
 {
     public interface IDbHydrationOverridable
     {
         /// <summary>
-        /// Shoulds the override property hydration.
+        /// Should the model override property hydration.
         /// </summary>
-        /// <returns><c>true</c>, if override property hydration was shoulded, <c>false</c> otherwise.</returns>
-        /// <param name="propertyName">Property name.</param>
+        /// <returns><c>true</c>, if override property hydration, <c>false</c> otherwise.</returns>
+        /// <param name="propertyName">Property Name</param>
         bool ShouldOverridePropertyHydration(string propertyName);
 
         /// <summary>
         /// Overrides the property hydration.
         /// </summary>
-        /// <returns>The property hydration.</returns>
-        /// <param name="propertyName">Property name.</param>
-        /// <param name="value">Value.</param>
+        /// <returns>New Value</returns>
+        /// <param name="propertyName">Property Name</param>
+        /// <param name="value">Original Value</param>
         object OverridePropertyHydration(string propertyName, object value);
     }
 
     public interface IDbSerializationOverridable
     {
         /// <summary>
-        /// Shoulds the override property serialization.
+        /// Should the model override property serialization.
         /// </summary>
-        /// <returns><c>true</c>, if override property serialization was shoulded, <c>false</c> otherwise.</returns>
-        /// <param name="propertyName">Property name.</param>
+        /// <returns><c>true</c>, if override property serialization, <c>false</c> otherwise.</returns>
+        /// <param name="propertyName">Property Name</param>
         bool ShouldOverridePropertySerialization(string propertyName);
 
         /// <summary>
         /// Overrides the property serialization.
         /// </summary>
-        /// <returns>The property serialization.</returns>
-        /// <param name="propertyName">Property name.</param>
-        /// <param name="value">Value.</param>
+        /// <returns>New Value</returns>
+        /// <param name="propertyName">Property Name</param>
+        /// <param name="value">Original Value</param>
         object OverridePropertySerialization(string propertyName, object value);
     }
 }

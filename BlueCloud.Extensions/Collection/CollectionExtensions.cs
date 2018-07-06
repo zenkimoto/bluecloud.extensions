@@ -7,12 +7,12 @@ namespace BlueCloud.Extensions.Collections
     public static class MatchCollectionExtensions
     {
         /// <summary>
-        /// Map the specified collection and func.
+        /// Map a Regular Expression MatchCollection into a List<typeparamref name="T"/>
         /// </summary>
-        /// <returns>The map.</returns>
-        /// <param name="collection">Collection.</param>
-        /// <param name="func">Func.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        /// <returns>Mapped List</returns>
+        /// <param name="collection">Match Collection</param>
+        /// <param name="func">Function to map values</param>
+        /// <typeparam name="T">Type</typeparam>
         public static List<T> Map<T>(this MatchCollection collection, Func<Match, T> func)
         {
             var result = new List<T>();
@@ -29,13 +29,13 @@ namespace BlueCloud.Extensions.Collections
     public static class IEnumerableExtensions
     {
         /// <summary>
-        /// Map the specified collection and func.
+        /// Map an IEnumerable into a List<typeparamref name="T"/>
         /// </summary>
-        /// <returns>The map.</returns>
-        /// <param name="collection">Collection.</param>
-        /// <param name="func">Func.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
-        /// <typeparam name="U">The 2nd type parameter.</typeparam>
+        /// <returns>Mapped List</returns>
+        /// <param name="collection">IEnumerable</param>
+        /// <param name="func">Function to map values</param>
+        /// <typeparam name="T">Original Type</typeparam>
+        /// <typeparam name="U">Mapped Type</typeparam>
         public static List<U> Map<T, U>(this IEnumerable<T> collection, Func<T, U> func)
         {
             var result = new List<U>();
@@ -49,11 +49,11 @@ namespace BlueCloud.Extensions.Collections
         }
 
         /// <summary>
-        /// Fors the each.
+        /// Loops through each element in an IEnumerable and performs an action.
         /// </summary>
-        /// <param name="enumeration">Enumeration.</param>
-        /// <param name="action">Action.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        /// <param name="enumeration">IEnumerable</param>
+        /// <param name="action">Action to execute against each element</param>
+        /// <typeparam name="T">Type</typeparam>
         public static void ForEach<T>(this IEnumerable<T> enumeration, Action<T> action)
         {
             foreach (T item in enumeration)

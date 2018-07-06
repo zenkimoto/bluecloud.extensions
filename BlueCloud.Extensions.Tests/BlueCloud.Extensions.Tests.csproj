@@ -20,6 +20,9 @@
     <None Remove="SQL\GetAllAlbums.sql" />
     <None Remove="Database\chinook.db" />
     <None Remove="SQL\GetAlbumScalar.sql" />
+    <None Remove="SQL\InsertIntoAlbums.sql" />
+    <None Remove="SQL\GetThreeAlbums.sql" />
+    <None Remove="SQL\GetSingleAlbum.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\chinook.db">
@@ -35,6 +38,9 @@
   <ItemGroup>
     <EmbeddedResource Include="SQL\GetAllAlbums.sql" />
     <EmbeddedResource Include="SQL\GetAlbumScalar.sql" />
+    <EmbeddedResource Include="SQL\InsertIntoAlbums.sql" />
+    <EmbeddedResource Include="SQL\GetThreeAlbums.sql" />
+    <EmbeddedResource Include="SQL\GetSingleAlbum.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="IDbConnectionExtensionsTests.cs">

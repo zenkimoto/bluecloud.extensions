@@ -1,0 +1,1 @@
+﻿SELECT * FROM albums WHERE AlbumId IN (1, 2, 3)

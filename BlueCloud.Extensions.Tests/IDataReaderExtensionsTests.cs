@@ -83,7 +83,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void GetValue_WhenAssigningToNullable_ShouldReturnCorrectValue() 
+        public void GetValue_WhenAssigningToNullable_ShouldReturnCorrectValue()
         {
             QueryAlbums();
 
@@ -95,7 +95,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void GetValue_WhenNullParameterName_ShouldThrowArgumentNullException() 
+        public void GetValue_WhenNullParameterName_ShouldThrowArgumentNullException()
         {
             QueryAlbums();
 
@@ -108,7 +108,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void GetValue_WhenAttemptingToAssignNullToAValueType_ShouldThrowException() 
+        public void GetValue_WhenAttemptingToAssignNullToAValueType_ShouldThrowException()
         {
             QueryInvoices();
 

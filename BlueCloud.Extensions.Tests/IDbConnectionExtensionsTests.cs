@@ -6,6 +6,7 @@ using BlueCloud.Extensions.Tests.Model;
 using System.Linq;
 using BlueCloud.Extensions.Tests.Database;
 using System.Data;
+using System.Collections.Generic;
 
 namespace BlueCloud.Extensions.Tests
 {
@@ -255,6 +256,42 @@ namespace BlueCloud.Extensions.Tests
         #endregion
 
 
+        #region ExecuteNonQueryEmbeddedResource Tests
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResource_ShouldInsertRow()
+        {
+            connection.ExecuteNonQueryEmbeddedResource("InsertIntoAlbums.sql", command =>
+            {
+                command.AddParameter("AlbumId", 348);
+                command.AddParameter("Title", "Duo Sonatas 2");
+                command.AddParameter("ArtistId", 274);
+            });
+
+            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = 348", reader =>
+            {
+                reader.Read();
+
+                Assert.Equal("Duo Sonatas 2", reader.GetValue<string>("Title"));
+                Assert.Equal(274, reader.GetValue<int>("ArtistId"));
+            });
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResource(null));
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResource_WhenNullAssembly_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResource("InsertIntoAlbums.sql", (System.Reflection.Assembly)null));
+        }
+
+        #endregion
+
+
         #region ExecuteQueryScalar Tests
 
         [Fact]
@@ -334,6 +371,270 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(1, album.AlbumId);
             Assert.Equal("For Those About To Rock We Salute You", album.Title);
             Assert.Equal(1, album.ArtistId);
+        }
+
+        #endregion
+
+
+        #region GetSingleObjectFromEmbeddedResource Tests
+
+        [Fact]
+        public void GetSingleObjectFromEmbeddedResource_GetSingleObjectFromQueryString_ShouldReturnSingleObjectFromDatabase()
+        {
+            var album = connection.GetSingleObjectFromEmbeddedResource<Album>("GetSingleAlbum.sql", command =>
+            {
+                command.AddParameter("AlbumId", 1);
+            });
+
+            Assert.Equal(1, album.AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", album.Title);
+            Assert.Equal(1, album.ArtistId);
+        }
+
+        [Fact]
+        public void GetSingleObjectFromEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.GetSingleObjectFromEmbeddedResource<Album>(null));
+        }
+
+        [Fact]
+        public void GetSingleObjectFromEmbeddedResource_WhenNullAssembly_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.GetSingleObjectFromEmbeddedResource<Album>("GetSingleAlbum.sql", (System.Reflection.Assembly)null));
+        }
+
+        #endregion
+
+        #region GetObjectsFromQueryString Tests
+
+        [Fact]
+        public void GetObjectsFromQueryString_ShouldReturnObjectsFromDatabase()
+        {
+            var albums = connection.GetObjectsFromQueryString<Album>("SELECT * FROM albums WHERE AlbumId IN (1, 2, 3)").ToList();
+
+            Assert.Equal(1, albums[0].AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", albums[0].Title);
+            Assert.Equal(1, albums[0].ArtistId);
+
+            Assert.Equal(2, albums[1].AlbumId);
+            Assert.Equal("Balls to the Wall", albums[1].Title);
+            Assert.Equal(2, albums[1].ArtistId);
+
+            Assert.Equal(3, albums[2].AlbumId);
+            Assert.Equal("Restless and Wild", albums[2].Title);
+            Assert.Equal(2, albums[2].ArtistId);
+        }
+
+        [Fact]
+        public void GetObjectsFromQueryString_WhenNullSqlString_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.GetObjectsFromQueryString<Album>(null));
+        }
+
+        #endregion
+
+
+        #region GetObjectsFromEmbeddedResource Tests
+
+        [Fact]
+        public void GetObjectsFromEmbeddedResource_ShouldReturnObjectsFromDatabase()
+        {
+            var albums = connection.GetObjectsFromEmbeddedResource<Album>("GetThreeAlbums.sql").ToList();
+
+            Assert.Equal(1, albums[0].AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", albums[0].Title);
+            Assert.Equal(1, albums[0].ArtistId);
+
+            Assert.Equal(2, albums[1].AlbumId);
+            Assert.Equal("Balls to the Wall", albums[1].Title);
+            Assert.Equal(2, albums[1].ArtistId);
+
+            Assert.Equal(3, albums[2].AlbumId);
+            Assert.Equal("Restless and Wild", albums[2].Title);
+            Assert.Equal(2, albums[2].ArtistId);
+        }
+
+        [Fact]
+        public void GetObjectsFromEmbeddedResource_WhenNullEmbeddedResource_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.GetObjectsFromEmbeddedResource<Album>(null));
+        }
+
+        [Fact]
+        public void GetObjectsFromEmbeddedResource_WhenNullAssembly_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.GetObjectsFromEmbeddedResource<Album>("GetThreeAlbums.sql", (System.Reflection.Assembly)null));
+        }
+
+        #endregion
+
+
+        #region ExecuteNonQueryStringForObject Tests
+
+        [Fact]
+        public void ExecuteNonQueryStringForObject_ShouldInsertPropertiesIntoDatabase()
+        {
+            var album = new Album()
+            {
+                AlbumId = 348,
+                Title = "Duo Sonatas 2",
+                ArtistId = 274
+            };
+
+            connection.ExecuteNonQueryStringForObject("INSERT INTO albums VALUES (@AlbumId, @Title, @ArtistId)", album);
+
+            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = 348", reader =>
+            {
+                reader.Read();
+
+                Assert.Equal("Duo Sonatas 2", reader.GetValue<string>("Title"));
+                Assert.Equal(274, reader.GetValue<int>("ArtistId"));
+            });
+        }
+
+        [Fact]
+        public void ExecuteNonQueryStringForObject_WhenNullSqlString_ShouldThrowException()
+        {
+            var album = new Album()
+            {
+                AlbumId = 348,
+                Title = "Duo Sonatas 2",
+                ArtistId = 274
+            };
+
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryStringForObject(null, album));
+        }
+
+        [Fact]
+        public void ExecuteNonQueryStringForObject_WhenNullModel_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryStringForObject("INSERT INTO albums VALUES (@AlbumId, @Title, @ArtistId)", (Album)null));
+        }
+
+        #endregion
+
+
+        #region ExecuteNonQueryEmbeddedResourceForObject Tests
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObject_ShouldInsertPropertiesIntoDatabase()
+        {
+            var album = new Album()
+            {
+                AlbumId = 348,
+                Title = "Duo Sonatas 2",
+                ArtistId = 274
+            };
+
+            connection.ExecuteNonQueryEmbeddedResourceForObject("InsertIntoAlbums.sql", album);
+
+            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId = 348", reader =>
+            {
+                reader.Read();
+
+                Assert.Equal("Duo Sonatas 2", reader.GetValue<string>("Title"));
+                Assert.Equal(274, reader.GetValue<int>("ArtistId"));
+            });
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObject_WhenNullEmbeddedResource_ShouldThrowException()
+        {
+            var album = new Album()
+            {
+                AlbumId = 348,
+                Title = "Duo Sonatas 2",
+                ArtistId = 274
+            };
+
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResourceForObject(null, album));
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObject_WhenNullModel_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResourceForObject("InsertIntoAlbums.sql", (Album)null));
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObject_WhenNullAssembly_ShouldThrowException()
+        {
+            var album = new Album()
+            {
+                AlbumId = 348,
+                Title = "Duo Sonatas 2",
+                ArtistId = 274
+            };
+
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResourceForObject("InsertIntoAlbums.sql", null, album));
+        }
+
+        #endregion
+
+        #region ExecuteNonQueryEmbeddedResourceForObjects Tests
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObjects_ShouldInsertRecordsIntoDatabase()
+        {
+            var albums = new List<Album>()
+            {
+                new Album()
+                {
+                    AlbumId = 348,
+                    Title = "Duo Sonatas 2",
+                    ArtistId = 274
+                },
+                new Album()
+                {
+                    AlbumId = 349,
+                    Title = "Duo Sonatas 3",
+                    ArtistId = 274
+                },
+                new Album()
+                {
+                    AlbumId = 350,
+                    Title = "Duo Sonatas 4",
+                    ArtistId = 274
+                },
+            };
+
+            connection.ExecuteNonQueryEmbeddedResourceForObjects("InsertIntoAlbums.sql", albums);
+
+            connection.ExecuteQueryString("SELECT * FROM albums WHERE AlbumId IN (348, 349, 350)", reader =>
+            {
+                reader.Read();
+
+                Assert.Equal(348, reader.GetValue<int>("AlbumId"));
+                Assert.Equal("Duo Sonatas 2", reader.GetValue<string>("Title"));
+
+                reader.Read();
+
+                Assert.Equal(349, reader.GetValue<int>("AlbumId"));
+                Assert.Equal("Duo Sonatas 3", reader.GetValue<string>("Title"));
+
+                reader.Read();
+
+                Assert.Equal(350, reader.GetValue<int>("AlbumId"));
+                Assert.Equal("Duo Sonatas 4", reader.GetValue<string>("Title"));
+            });
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObjects_WhenNullEmbeddedResource_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResourceForObjects(null, new List<Album>()));
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObjects_WhenNullModel_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResourceForObjects("InsertIntoAlbums.sql", (List<Album>)null));
+        }
+
+        [Fact]
+        public void ExecuteNonQueryEmbeddedResourceForObjects_WhenNullAssembly_ShouldThrowException()
+        {
+            Assert.Throws<ArgumentNullException>(() => connection.ExecuteNonQueryEmbeddedResourceForObjects("InsertIntoAlbums.sql", null, new List<Album>()));
         }
 
         #endregion
