@@ -3,13 +3,13 @@
 # bluecloud.extensions C# extension library
 
 
->[![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://github.com/zenkimoto/bluecloud.extensions)
+>[![NuGet](https://img.shields.io/nuget/v/bluecloud.extensions.svg)](https://github.com/zenkimoto/bluecloud.extensions)
 
 **bluecloud.extensions** is a helpful set of C# extensions used to map database results to object models.
 
 ## Installation
 
-The bluecloud.extensions Library is available through [NuGet](https://nuget.org). 
+The bluecloud.extensions Library is available through [NuGet](https://www.nuget.org/packages/bluecloud.extensions). 
 
 To install it with package manager:
 
@@ -23,9 +23,10 @@ To install it with .NET CLI:
 dotnet add package bluecloud.extensions --version 1.0.0
 ```
 
+
 ## Getting Started
 
-To get started, please take a look at our usage guide.
+To get started, please take a look at our [usage guide](USAGE.md).
 
 ## API Documentation
 
