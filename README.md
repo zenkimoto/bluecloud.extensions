@@ -1,4 +1,4 @@
-# ![Bluecloud](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Logo.svg) 
+# ![Bluecloud](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/3506f513649403c5d076db9e46e36ba5ca5f0e74/Logo.svg) 
 
 # bluecloud.extensions C# extension library
 
