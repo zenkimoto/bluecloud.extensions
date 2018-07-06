@@ -1,4 +1,4 @@
-#bluecloud.extensions
+# bluecloud.extensions
 
 >[![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://github.com/zenkimoto/bluecloud.extensions)
 
@@ -28,7 +28,7 @@ To get started, please take a look at our usage guide.
 
 You can find the generated here:
 
- * [API Documentation](./Documentation/html/annotated.html)
+ * [API Documentation](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Documentation/html/annotated.html)
 
 ## Issues and Bug Reports
 
