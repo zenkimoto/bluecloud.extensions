@@ -31,7 +31,6 @@ Start by using the `BlueCloud.Extensions.Data` namespace.
 
 ```
 using BlueCloud.Extensions.Data;
-
 ```
 
 All data extension methods extends the `IDbConnection`, `IDbCommand` and `IDataReader` interfaces.  As such, this library is database agnostic.
@@ -56,7 +55,7 @@ public class Album
 
 ### Mapping The Result Set
 
-Call the GetObjectsFromQueryString() method from your connection and pass it in a query string.  It will map the result set to an IEnumerable of model objects with decorated `DbField` attributes.
+Call the GetObjectsFromQueryString() extension method from your connection and pass it in a query string.  It will map the result set to an IEnumerable of model objects with decorated `DbField` attributes.
 
 ```
 connection.Open();
