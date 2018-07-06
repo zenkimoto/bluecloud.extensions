@@ -43,6 +43,9 @@
     <EmbeddedResource Include="SQL\GetSingleAlbum.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Remove="Performance\IDbConnectionExtensionsPerformanceTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="IDbConnectionExtensionsTests.cs">
       <LogicalName>GetAlbumScalar.sql</LogicalName>
     </Compile>
