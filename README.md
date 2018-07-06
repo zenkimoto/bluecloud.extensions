@@ -1,4 +1,7 @@
-# bluecloud.extensions
+# ![Bluecloud](https://raw.githubusercontent.com/zenkimoto/bluecloud.extensions/master/Logo.png) 
+
+# bluecloud.extensions C# extension library
+
 
 >[![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://github.com/zenkimoto/bluecloud.extensions)
 
