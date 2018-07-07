@@ -12,7 +12,7 @@
 
 ### Method Naming
 
-The extension methods have consistent naming.  Methods where you pass in a SQL String will end in _QueryString_.  Methods where you pass in an Embedded Resource name will end in _EmbeddedResouce_.
+The extension methods have consistent naming.  Methods where you pass in a SQL String will end with _...QueryString()_.  Methods where you pass in an Embedded Resource name will end with _...EmbeddedResource()_.
 
 ### Data Extensions
 
@@ -20,7 +20,7 @@ _To be completed..._
 
 ### Embedded Resources
 
-Embedded resources are files that get encapsulated as part of your assembly.  For more information, click [here](https://support.microsoft.com/en-us/help/816181/how-to-embed-and-to-access-resources-by-using-visual-c-net-or-visual-c).  Bluecloud Extensions makes extensive use of embedded resources to store your SQL files.
+Embedded resources are files that get encapsulated as part of your assembly.  For more information, click [here](https://support.microsoft.com/en-us/help/816181/how-to-embed-and-to-access-resources-by-using-visual-c-net-or-visual-c).  Bluecloud Extensions makes extensive use of embedded resources to read your SQL files.
 
 _To be completed..._
 

@@ -1,11 +1,11 @@
 # ![Bluecloud](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/3506f513649403c5d076db9e46e36ba5ca5f0e74/Logo.svg) 
 
-# bluecloud.extensions C# extension library
+# bluecloud.extensions C# Method Extension Library
 
 
 >[![NuGet](https://img.shields.io/nuget/v/bluecloud.extensions.svg)](https://github.com/zenkimoto/bluecloud.extensions)
 
-**bluecloud.extensions** is a helpful set of C# extensions used to map database results to object models.  It is a lightweight SQL Result to Model Object mapper.
+**bluecloud.extensions** is a helpful set of C# extensions used to map database results to object models.  It is a lightweight SQL Result to Object mapper.
 
 ## Installation
 
@@ -37,7 +37,7 @@ All data extension methods extends the `IDbConnection`, `IDbCommand` and `IDataR
 
 ### Decorating Your Objects
 
-Add the `DbField` attribute to all properties that you want to map to a database result query on any plain old C# object. (POCO)
+Add the `DbField` attribute to all properties that you want to map to a database result query on any plain old C# object. (POCO). Not all object properties need to be annotated with `DbField`, just the ones you want mapped.
 
 ```
 public class Album
@@ -74,9 +74,9 @@ connection.Dispose();
 
 Use `albums` like you would any list of objects!  
 
-Replace `SqliteConnection` with your database connection of choice.
+Replace `SqliteConnection` with a database connection of choice.
 
-_**Note:** Model objects do not have to have a 1-1 match with database tables._
+_**Note:** Model objects do not have to have to be a 1-1 match with database tables._
 
 ## Documentation and Usage Guide
 
@@ -91,6 +91,7 @@ You can find the generated API documentation here: [API Documentation](https://c
 1. **Why Bluecloud Extensions instead of an ORM like EntityFramework?**  _We feel you know your database model best and can write better and more optimized database queries than a framework can generate.  That's why Bluecloud Extensions is not really an ORM (in the traditional sense) but a SQL/database result to Object mapper._
 2. **Do I need to know SQL?** _Yes, you need to know SQL in order to use Bluecloud Extensions._
 3. **Is this library tested?** _Yes, there's a full battery of tests. Take a look [here](https://github.com/zenkimoto/bluecloud.extensions/tree/master/BlueCloud.Extensions.Tests)._
+4. **What is the primary inspiration behind this project?** _This project was inspired by a Java SQL mapper project called [myBatis](http://blog.mybatis.org) (previously iBatis).  It is not a .NET port and only shares the primary concept of a SQL to Object mapper._
 
 ### Issues and Bug Reports
 
