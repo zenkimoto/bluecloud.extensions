@@ -1,2 +1,0 @@
-## BlueCloud.Extensions Usage Guide
-
