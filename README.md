@@ -58,6 +58,7 @@ public class Album
 Call the GetObjectsFromQueryString() extension method from your connection and pass it in a query string.  It will map the result set to an IEnumerable of model objects with decorated `DbField` attributes.
 
 ```
+var connection = new SqliteConnection(…);
 connection.Open();
 
 …
@@ -71,7 +72,9 @@ connection.Dispose();
 
 ```
 
-Use `albums` like you would any list of objects!
+Use `albums` like you would any list of objects!  
+
+Replace `SqliteConnection` with your database connection of choice.
 
 _**Note:** Model objects do not have to have a 1-1 match with database tables._
 
