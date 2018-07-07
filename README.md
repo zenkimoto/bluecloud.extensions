@@ -78,11 +78,19 @@ Replace `SqliteConnection` with your database connection of choice.
 
 _**Note:** Model objects do not have to have a 1-1 match with database tables._
 
-## Additional Information
+## Documentation and Usage Guide
 
 For more details on using this library, check out the [usage guide](Usage/USAGE.md).
 
 You can find the generated API documentation here: [API Documentation](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Documentation/html/annotated.html)
+
+## Additional Information
+
+### Frequently Asked Questions
+
+1. **Why Bluecloud Extensions instead of an ORM like EntityFramework?**  _We feel you know your database model best and can write better and more optimized database queries than a framework can generate.  That's why Bluecloud Extensions is not really an ORM (in the traditional sense) but a SQL/database result to Object mapper._
+2. **Do I need to know SQL?** _Yes, you need to know SQL in order to use Bluecloud Extensions._
+3. **Is this library tested?** _Yes, there's a full battery of tests. Take a look [here](https://github.com/zenkimoto/bluecloud.extensions/tree/master/BlueCloud.Extensions.Tests)._
 
 ### Issues and Bug Reports
 
@@ -94,9 +102,4 @@ If you discover any bugs, feel free to create an issue on GitHub. We also welcom
 
 If you'd like to contribute, please look [here](CONTRIBUTING.md).
 
-## Frequently Asked Questions
-
-1. **Why Bluecloud Extensions instead of an ORM like EntityFramework?**  _We feel you know your database model best and can write better and more optimized database queries than a framework can generate.  That's why Bluecloud Extensions is not really an ORM (in the traditional sense) but a SQL/database result to Object mapper._
-2. **Do I need to know SQL?** _Yes, you need to know SQL in order to use Bluecloud Extensions._
-3. **Is this library tested?** _Yes, there's a full battery of tests. Take a look [here](https://github.com/zenkimoto/bluecloud.extensions/tree/master/BlueCloud.Extensions.Tests)._
 
