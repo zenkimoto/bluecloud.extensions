@@ -30,6 +30,21 @@ _To be completed..._
 
 ## Mapping Overrides (Advanced)
 
+When persisting and hydrating objects from the database, sometimes you need to customize how properties get mapped to the database.  
+
+Some examples include:
+
+ * **Supporting booleans** - _true and false could be mapped to a 1 and 0 respectively as a `NUMBER` type or a "TRUE" or "FALSE" `VARCHAR` string..._
+ * **Supporting enumerated types** - _convert enums to strings and back_
+ * **Persisting dates in UTC and hydrating them in local time.**
+
+### IDbHydrationOverridable and IDbSerializationOverridable Interfaces
+
+In your model objects, you would need to implement the `IDbHydrationOverridable` and `IDbSerializationOverridable` interfaces.
+
+ * `IDbHydrationOverridable` - Override how model properties get populated from database values.  Example: Converting a 1 or 0 to a boolean model property.
+ * `IDbSerializationOverridable` - Override how database fields get populated from model properties.  Example: Converting a boolean true/false value to a NUMBER database type.
+
 _To be completed..._
 
 ## Additional Method Extensions

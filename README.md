@@ -74,7 +74,7 @@ connection.Dispose();
 
 Use `albums` like you would any list of objects!  
 
-Replace `SqliteConnection` with a database connection of choice.
+Replace `SqliteConnection` with a database connection of your choice.
 
 _**Note:** Model objects do not have to have to be a 1-1 match with database tables._
 
