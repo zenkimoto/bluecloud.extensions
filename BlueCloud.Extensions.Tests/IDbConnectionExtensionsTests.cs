@@ -638,5 +638,22 @@ namespace BlueCloud.Extensions.Tests
         }
 
         #endregion
+
+        #region IDbMappable Tests
+
+        [Fact]
+        public void TestBooleanDatabaseConversion_ShouldConvertCorrectly() {
+            var booleanTest = new BooleanTest();
+
+            connection.ExecuteNonQueryString("CREATE TABLE BOOLEAN_TEST (boolean_value NUMBER)");
+
+            connection.ExecuteNonQueryStringForObject<BooleanTest>("INSERT INTO BOOLEAN_TEST (BOOLEAN_VALUE) VALUES (@boolean_value)", booleanTest);
+
+            var actualTest = connection.GetSingleObjectFromQueryString<BooleanTest>("SELECT * FROM BOOLEAN_TEST");
+
+            Assert.Equal(booleanTest.BooleanValue, actualTest.BooleanValue);
+        }
+
+        #endregion
     }
 }
