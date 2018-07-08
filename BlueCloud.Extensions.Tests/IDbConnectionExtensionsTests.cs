@@ -645,13 +645,15 @@ namespace BlueCloud.Extensions.Tests
         public void TestBooleanDatabaseConversion_ShouldConvertCorrectly() {
             var booleanTest = new BooleanTest();
 
-            connection.ExecuteNonQueryString("CREATE TABLE BOOLEAN_TEST (boolean_value NUMBER)");
+            connection.ExecuteNonQueryString("CREATE TABLE BOOLEAN_TEST (boolean_value NUMBER, long_value NUMBER)");
 
-            connection.ExecuteNonQueryStringForObject<BooleanTest>("INSERT INTO BOOLEAN_TEST (BOOLEAN_VALUE) VALUES (@boolean_value)", booleanTest);
+            connection.ExecuteNonQueryStringForObject<BooleanTest>("INSERT INTO BOOLEAN_TEST (boolean_value, long_value) VALUES (@boolean_value, @long_value)", booleanTest);
 
             var actualTest = connection.GetSingleObjectFromQueryString<BooleanTest>("SELECT * FROM BOOLEAN_TEST");
 
             Assert.Equal(booleanTest.BooleanValue, actualTest.BooleanValue);
+            Assert.True(actualTest.BooleanValue);
+            Assert.Equal(123, actualTest.LongValue);
         }
 
         #endregion

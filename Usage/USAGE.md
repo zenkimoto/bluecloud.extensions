@@ -45,7 +45,81 @@ In your model objects, you would need to implement the `IDbHydrationOverridable`
  * `IDbHydrationOverridable` - Override how model properties get populated from database values.  Example: Converting a 1 or 0 to a boolean model property.
  * `IDbSerializationOverridable` - Override how database fields get populated from model properties.  Example: Converting a boolean true/false value to a NUMBER database type.
 
-_To be completed..._
+ **The `IDbHydrationOverridable` interface has two methods:**
+
+ * `bool ShouldOverridePropertyHydration(string propertyName);` The name of each property the mapper is trying to hydrate will be passed to this method first.  Return `true` if you want to override how a property is being hydrated, otherwise you should always return `false`.
+ * `object OverridePropertyHydration(string propertyName, object value);` If a property is marked as overriden from the previous method, the mapper will call this method and allow you to customize hydration.  This is where you would change types, modify values, etc.
+
+ **The `IDbSerializationOverridable` interface also has two methods:**
+ 
+ * `bool ShouldOverridePropertySerialization(string propertyName);` The name of each property the mapper is trying to serialized will be passed to this method first.  Return `true` if you want to override how a property is being serialized, otherwise you should always return `false`.
+ * `object OverridePropertySerialization(string propertyName, object value);` If a property is marked as overriden from the previous method, the mapper will call this method and allow you to customize serialization.  This is where you would change types, modify values, etc. 
+
+#### Example
+
+The following is an example of how to override a property mapping.  In the example, we want to override how booleans get stored in the database.  In this case, a NUMBER where 0 represents `false` and a 1 represents `true`.
+
+This test assumes a database table with the following structure:
+
+```
+CREATE TABLE boolean_test 
+(
+	boolean_value NUMBER, 
+	long_value NUMBER
+)
+```
+
+The property mapping overriding code lives in the model object code:
+
+```
+public class BooleanTest : IDbHydrationOverridable, IDbSerializationOverridable
+{
+    [DbField("boolean_value")]
+    public bool BooleanValue { get; set; }
+
+    [DbField("long_value")]
+    public long LongValue { get; set; }
+
+    public BooleanTest() 
+    {
+        BooleanValue = true;
+        LongValue = 123;
+    }
+
+    #region IDbHydrationOverridable
+
+    public bool ShouldOverridePropertyHydration(string propertyName)
+    {
+        return propertyName == "BooleanValue" ? true : false;
+    }
+
+    public object OverridePropertyHydration(string propertyName, object value)
+    {
+        // This method only gets called when the propertyName is BooleanValue.
+
+        return (long)value == 1 ? true : false;  // Hydrate property value to C# Boolean Type
+    }
+
+    #endregion
+
+    #region IDbSerializationOverridable
+
+    public bool ShouldOverridePropertySerialization(string propertyName)
+    {
+        return propertyName == "BooleanValue" ? true : false;
+    }
+
+    public object OverridePropertySerialization(string propertyName, object value)
+    {
+        // This method only gets called when the propertyName is BooleanValue.
+
+        return (bool)value == true ? 1 : 0; // Persist to the database as a database NUMBER type
+    }
+
+    #endregion
+}
+```
+
 
 ## Additional Method Extensions
 
