@@ -26,6 +26,10 @@ _To be completed..._
 
 ## Lightweight Database Result to Object Mapper
 
+Methods related to the mapper will always have the word "object" in the method name to indicate that it is either _"Get"_ retrieving objects or _"ExecuteNonQuery"_ performing some operation on the database.
+
+
+
 _To be completed..._
 
 ## Mapping Overrides (Advanced)
