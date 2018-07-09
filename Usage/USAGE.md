@@ -20,7 +20,7 @@ _To be completed..._
 
 ### Embedded Resources
 
-Embedded resources are files that get encapsulated as part of your assembly.  For more information, click [here](https://support.microsoft.com/en-us/help/816181/how-to-embed-and-to-access-resources-by-using-visual-c-net-or-visual-c).  Bluecloud Extensions makes extensive use of embedded resources to read your SQL files.
+Embedded resources are files that get encapsulated as part of your assembly.  For more information, click [here](https://support.microsoft.com/en-us/help/816181/how-to-embed-and-to-access-resources-by-using-visual-c-net-or-visual-c).  Bluecloud Extensions makes extensive use of embedded resources to read your SQL files to keep SQL out of your C# code base.  
 
 _To be completed..._
 
@@ -28,6 +28,27 @@ _To be completed..._
 
 Methods related to the mapper will always have the word "object" in the method name to indicate that it is either _"Get"_ retrieving objects or _"ExecuteNonQuery"_ performing some operation on the database.
 
+All extension methods related to the object mapper have a _"QueryString"_ and _"EmbeddedResource"_ versions.  
+
+#### Get Object(s) Extension Methods
+
+`T GetSingleObjectFromQueryString<T>(...)` _Returns a single mapped object from a SQL Query_
+
+`T GetSingleObjectFromEmbeddedResource<T>(...)` _Returns a single mapped object from a SQL Query stored as an embedded resource_
+
+`IEnumerable<T> GetObjectsFromQueryString<T>(...)` _Returns an IEnumerable of mapped objects from a SQL Query_
+
+`IEnumerable<T> GetObjectsFromEmbeddedResource()` _Returns an IEnumerable of mapped objects from a SQL Query stored as an embedded resource_
+
+#### ExecuteNonQuery Extension Methods
+
+`int ExecuteNonQueryStringForObject<T>(...)` _Executes a non query SQL binding parameters from a mapped object_
+
+`int ExecuteNonQueryEmbeddedResourceForObject<T>(...)` _Executes a non query SQL from an embedded resource binding parameters from a mapped object_
+
+`void ExecuteNonQueryStringForObjects<T>(...)` _Executes a non SQL binding parameters from an IEnumerable of mapped objects_
+
+`void ExecuteNonQueryEmbeddedResourceForObjects<T>(...)` _Executes a non SQL from an embedded resource binding parameters from an IEnumerable of mapped objects_
 
 
 _To be completed..._
