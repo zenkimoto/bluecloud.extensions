@@ -492,7 +492,7 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Executes a Non Query SQL Statement for a DbField decorated object.  Sql Parameters will be automatically populated.
+        /// Executes a Non Query SQL Statement from an embedded resource for a DbField decorated object.  Sql Parameters will be automatically populated.
         /// An exception will be thrown if the connection is not open.
         /// </summary>
         /// <param name="connection">IDbConnection</param>
@@ -508,7 +508,7 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Executes a Non Query SQL Statement for a DbField decorated object.  Sql Parameters will be automatically populated.
+        /// Executes a Non Query SQL Statement from an embedded resource for a DbField decorated object.  Sql Parameters will be automatically populated.
         /// An exception will be thrown if the connection is not open.
         /// </summary>
         /// <param name="connection">IDbConnection</param>
@@ -535,10 +535,33 @@ namespace BlueCloud.Extensions.Data
         #endregion
 
 
-        #region ExecuteNonQueryEmbeddedResourceForObjects Methods
+        #region ExecuteNonQueryForObjects Methods
 
         /// <summary>
         /// Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects.  Sql Parameters will be automatically populated.
+        /// An exception will be thrown if the connection is not open.
+        /// </summary>
+        /// <param name="connection">IDbConnection</param>
+        /// <param name="nonQuerySqlString">Non Query SQL String</param>
+        /// <param name="objects">Enumerable list of model objects from which parameters are to be populated</param>
+        /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
+        /// <returns>Number of records affected</returns>
+        /// <typeparam name="T">Data Type</typeparam>
+        public static void ExecuteNonQueryStringForObjects<T>(this IDbConnection connection, string nonQuerySqlString, IEnumerable<T> objects, bool validateParameters = true) where T : class
+        {
+            if (nonQuerySqlString == null)
+                throw new ArgumentNullException(nameof(nonQuerySqlString));
+            if (objects == null)
+                throw new ArgumentNullException(nameof(objects));
+
+            foreach (T obj in objects) {
+                connection.ExecuteNonQueryString(nonQuerySqlString, command => command.BindParametersFromObject(obj), validateParameters);   
+            }
+             
+        }
+
+        /// <summary>
+        /// Executes a Non Query SQL Statement from an embedded resource for a enumerable list of DbField decorated objects.  Sql Parameters will be automatically populated.
         /// An exception will be thrown if the connection is not open.
         /// </summary>
         /// <param name="connection">IDbConnection</param>
@@ -553,7 +576,7 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects.  Sql Parameters will be automatically populated.
+        /// Executes a Non Query SQL Statement from an embedded resource for a enumerable list of DbField decorated objects.  Sql Parameters will be automatically populated.
         /// An exception will be thrown if the connection is not open.
         /// </summary>
         /// <param name="connection">IDbConnection</param>
