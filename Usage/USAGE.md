@@ -26,7 +26,7 @@ _To be completed..._
 
 ## Lightweight Database Result to Object Mapper
 
-Methods related to the mapper will always have the word "object" in the method name to indicate that it is either _"Get"_ retrieving objects or _"ExecuteNonQuery"_ performing some operation on the database.
+Methods related to the mapper will always have the word _"object"_ in the method name to indicate that it is either _"Get"_ retrieving objects or _"ExecuteNonQuery"_ performing some operation on the database.
 
 All extension methods related to the object mapper have a _"QueryString"_ and _"EmbeddedResource"_ versions.  
 
@@ -49,6 +49,8 @@ All extension methods related to the object mapper have a _"QueryString"_ and _"
 `void ExecuteNonQueryStringForObjects<T>(...)` _Executes a non SQL binding parameters from an IEnumerable of mapped objects_
 
 `void ExecuteNonQueryEmbeddedResourceForObjects<T>(...)` _Executes a non SQL from an embedded resource binding parameters from an IEnumerable of mapped objects_
+
+#### Example
 
 
 _To be completed..._
