@@ -14,13 +14,27 @@
 
 The extension methods have consistent naming.  Methods where you pass in a SQL String will end with _...QueryString()_.  Methods where you pass in an Embedded Resource name will end with _...EmbeddedResource()_.
 
-### Data Extensions
+### DbFieldAttribute
+
+The `DbField` attribute is used to annotate your model classes with the SQL result column names from `IDataReader`.  **Not all** properties in an object need to be annotated with `DbField` attribute, just the ones you want mapped.  In addition, you could create read only calculated properties based on `DbField` mapped properties.
+
+> 💡 **Tip:** You can alias your columns in your SELECT queries to change the `IDataReader` column name result.
+
+> 💡 **Tip:** Model objects do not have to have to be a 1-1 match with database tables.
+
+### IDataReader Method Extensions
+
+_To be completed..._
+
+### IDbCommand Method Extensions
 
 _To be completed..._
 
 ### Embedded Resources
 
-Embedded resources are files that get encapsulated as part of your assembly.  For more information, click [here](https://support.microsoft.com/en-us/help/816181/how-to-embed-and-to-access-resources-by-using-visual-c-net-or-visual-c).  Bluecloud Extensions makes extensive use of embedded resources to read your SQL files to keep SQL out of your C# code base.  
+Embedded resources are files that get encapsulated as part of your assembly.  For more information about Embedded Resources, click [here](https://support.microsoft.com/en-us/help/816181/how-to-embed-and-to-access-resources-by-using-visual-c-net-or-visual-c).  Bluecloud Extensions makes extensive use of embedded resources to read your SQL files to keep SQL out of your C# code base.  
+
+To create an embedded resource, just simply add a SQL file in your project.  Select the SQL file, go to the properties pane and select _"Embedded Resource"_.  The SQL file will be embedded in the output assembly.  This allows you to write our SQL without worry about string concatenation or special string structures that muddy up the C# code base.
 
 _To be completed..._
 
@@ -51,7 +65,6 @@ All extension methods related to the object mapper have a _"QueryString"_ and _"
 `void ExecuteNonQueryEmbeddedResourceForObjects<T>(...)` _Executes a non SQL from an embedded resource binding parameters from an IEnumerable of mapped objects_
 
 #### Example
-
 
 _To be completed..._
 
