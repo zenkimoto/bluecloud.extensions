@@ -101,58 +101,72 @@ namespace BlueCloud.Extensions.Data
 
             for (int i = 0; dataReader.Read() && (i < take || take == -1); i++)
             {
-                T obj = (T)Activator.CreateInstance(typeof(T));
-
-                foreach (var mapping in dbProperties)
-                {
-                    object databaseValue = null;
-
-                    try
-                    {
-                        databaseValue = dataReader[mapping.Item1];
-                    }
-                    catch (ArgumentOutOfRangeException ex)
-                    {
-                        var errorMessage = $"The database field: '{mapping.Item1}' specified in the DbField attribute does not exist in query result.";
-                        throw new InvalidOperationException(errorMessage, ex);
-                    }
-
-                    if (databaseValue == DBNull.Value)
-                    {
-                        databaseValue = null;
-                    }
-                    else if (mapping.Item2.PropertyType == typeof(DateTime))
-                    {
-                        databaseValue = (DateTime)Convert.ChangeType(databaseValue, typeof(DateTime));
-                    }
-
-                    // Allow for custom user mapping
-                    if (obj is IDbHydrationOverridable && ((IDbHydrationOverridable)obj).ShouldOverridePropertyHydration(mapping.Item2.Name))
-                    {
-                        databaseValue = ((IDbHydrationOverridable)obj).OverridePropertyHydration(mapping.Item2.Name, databaseValue);
-                    }
-
-                    if (databaseValue == null && mapping.Item3 == false)
-                    {
-                        var errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'.";
-                        throw new InvalidCastException(errorMessage);
-                    }
-
-                    try
-                    {
-                        mapping.Item2.SetValue(obj, databaseValue);
-                    }
-                    catch (ArgumentException ex)
-                    {
-                        var errorMessage = $"Unable to convert database field: '{mapping.Item1}' to property: '{mapping.Item2.Name}'. Detail: {ex.Message}";
-                        throw new InvalidCastException(errorMessage, ex);
-                    }
-                }
+                T obj = dataReader.MapToObject<T>(dbProperties);
 
                 objects.Add(obj);
             }
 
             return objects;
+        }
+
+
+        /// <summary>
+        /// Maps a single database row to an object.
+        /// </summary>
+        /// <returns>The to object.</returns>
+        /// <param name="dataReader">Data reader</param>
+        /// <param name="dbProperties">Cached Mapping Properties</param>
+        /// <typeparam name="T">Data Type</typeparam>
+        private static T MapToObject<T>(this IDataReader dataReader, List<Tuple<string, PropertyInfo, bool>> dbProperties) {
+            T obj = (T)Activator.CreateInstance(typeof(T));
+
+            foreach (var mapping in dbProperties)
+            {
+                object databaseValue = null;
+
+                try
+                {
+                    databaseValue = dataReader[mapping.Item1];
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    var errorMessage = $"The database field: '{mapping.Item1}' specified in the DbField attribute does not exist in query result.";
+                    throw new InvalidOperationException(errorMessage, ex);
+                }
+
+                if (databaseValue == DBNull.Value)
+                {
+                    databaseValue = null;
+                }
+                else if (mapping.Item2.PropertyType == typeof(DateTime))
+                {
+                    databaseValue = (DateTime)Convert.ChangeType(databaseValue, typeof(DateTime));
+                }
+
+                // Allow for custom user mapping
+                if (obj is IDbHydrationOverridable && ((IDbHydrationOverridable)obj).ShouldOverridePropertyHydration(mapping.Item2.Name))
+                {
+                    databaseValue = ((IDbHydrationOverridable)obj).OverridePropertyHydration(mapping.Item2.Name, databaseValue);
+                }
+
+                if (databaseValue == null && mapping.Item3 == false)
+                {
+                    var errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'.";
+                    throw new InvalidCastException(errorMessage);
+                }
+
+                try
+                {
+                    mapping.Item2.SetValue(obj, databaseValue);
+                }
+                catch (ArgumentException ex)
+                {
+                    var errorMessage = $"Unable to convert database field: '{mapping.Item1}' to property: '{mapping.Item2.Name}'. Detail: {ex.Message}";
+                    throw new InvalidCastException(errorMessage, ex);
+                }
+            }
+
+            return obj;
         }
 
 
