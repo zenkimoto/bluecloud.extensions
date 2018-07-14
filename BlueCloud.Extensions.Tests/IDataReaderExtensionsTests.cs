@@ -61,6 +61,22 @@ namespace BlueCloud.Extensions.Tests
             reader = command.ExecuteReader();
         }
 
+        private void SetupInvalidNumberTest()
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "CREATE TABLE NUMBER_TEST (ID NUMBER NOT NULL, VALUE NUMBER)";
+            command.ExecuteNonQuery();
+            command.Dispose();
+
+            command = connection.CreateCommand();
+            command.CommandText = "INSERT INTO NUMBER_TEST (ID, VALUE) VALUES (1, NULL)";
+            command.ExecuteNonQuery();
+
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM NUMBER_TEST";
+            reader = command.ExecuteReader();
+        }
+
         #endregion
 
 
@@ -210,6 +226,17 @@ namespace BlueCloud.Extensions.Tests
             Assert.Throws<InvalidOperationException>(() =>
             {
                 reader.MapToObjects<InvalidInvoice>(1);
+            });
+        }
+
+        [Fact]
+        public void MapToObjects_WhenAttemptingToMapNullableToNonNullableField_ShouldThrowInvalidOperationException()
+        {
+            SetupInvalidNumberTest();
+
+            Assert.Throws<InvalidCastException>(() =>
+            {
+                reader.MapToObjects<NumberTest>();
             });
         }
 
