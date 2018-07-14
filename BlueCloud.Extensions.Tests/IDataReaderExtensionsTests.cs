@@ -61,6 +61,14 @@ namespace BlueCloud.Extensions.Tests
             reader = command.ExecuteReader();
         }
 
+        private void QueryJoin()
+        {
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM albums, artists WHERE albums.ArtistId = artists.ArtistId";
+
+            reader = command.ExecuteReader();
+        }
+
         private void SetupInvalidNumberTest()
         {
             command = connection.CreateCommand();
@@ -193,6 +201,21 @@ namespace BlueCloud.Extensions.Tests
             var employees = reader.MapToObjects<Employee>(100);
 
             Assert.Equal(8, employees.Count());
+        }
+
+        [Fact]
+        public void MapToObjects_WhenMappingToTwoDifferentObjectsWithAOneToOneJoin_ShouldReturnATuple()
+        {
+            QueryJoin();
+
+            var tuple = reader.MapToObjects<Album, Artist>(1).First();
+
+            Assert.Equal(1, tuple.Item1.AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", tuple.Item1.Title);
+            Assert.Equal(1, tuple.Item1.ArtistId);
+
+            Assert.Equal(1, tuple.Item2.ArtistId);
+            Assert.Equal("AC/DC", tuple.Item2.Name);
         }
 
         [Fact]

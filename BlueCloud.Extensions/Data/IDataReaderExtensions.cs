@@ -111,6 +111,33 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
+        /// Maps to objects.
+        /// </summary>
+        /// <returns>The to objects.</returns>
+        /// <param name="dataReader">Data reader.</param>
+        /// <param name="take">Take.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        /// <typeparam name="U">The 2nd type parameter.</typeparam>
+        public static IEnumerable<Tuple<T, U>> MapToObjects<T, U>(this IDataReader dataReader, int take) where T : class where U : class
+        {
+            var dbPropertiesT = GetDatabaseProperties<T>();
+            var dbPropertiesU = GetDatabaseProperties<U>();
+
+            var results = new List<Tuple<T, U>>();
+
+            for (int i = 0; dataReader.Read() && (i < take || take == -1); i++)
+            {
+                T objT = dataReader.MapToObject<T>(dbPropertiesT);
+                U objU = dataReader.MapToObject<U>(dbPropertiesU);
+
+                results.Add(new Tuple<T, U>(objT, objU));
+            }
+
+            return results;
+        }
+
+
+        /// <summary>
         /// Maps a single database row to an object.
         /// </summary>
         /// <returns>The to object.</returns>
