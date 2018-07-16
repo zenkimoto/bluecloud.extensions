@@ -2,12 +2,18 @@
 using System.Data;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.Caching;
+using BlueCloud.Extensions.Cache;
 
 namespace BlueCloud.Extensions.Data
 {
     public static class IDataReaderExtensions
     {
+        /// <summary>
+        /// ICacheable interface used to cache reflected property information.  By default, items are cached in a sliding 4 hour window.
+        /// </summary>
+        public static ICacheable<List<Tuple<string, PropertyInfo, bool>>> cache = new DefaultCache<List<Tuple<string, PropertyInfo, bool>>>();
+
+
         /// <summary>
         /// Returns a value from the database with a given type.
         /// </summary>
@@ -209,8 +215,7 @@ namespace BlueCloud.Extensions.Data
         {
             var type = typeof(T);
 
-            ObjectCache cache = MemoryCache.Default;
-            var cachedObject = (List<Tuple<string, PropertyInfo, bool>>)cache[type.FullName];
+            var cachedObject = cache.Get(type.FullName);
 
             if (cachedObject != null)
                 return cachedObject;
@@ -230,12 +235,7 @@ namespace BlueCloud.Extensions.Data
                 }
             }
 
-            CacheItemPolicy policy = new CacheItemPolicy
-            {
-                SlidingExpiration = new TimeSpan(4, 0, 0)
-            };
-
-            cache.Set(type.FullName, result, policy);
+            cache.Set(type.FullName, result);
 
             return result;
         }
