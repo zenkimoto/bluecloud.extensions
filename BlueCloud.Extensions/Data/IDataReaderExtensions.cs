@@ -2,6 +2,7 @@
 using System.Data;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.Caching;
 
 namespace BlueCloud.Extensions.Data
 {
@@ -198,12 +199,6 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
-        /// Memoize tuple information.
-        /// </summary>
-        private static readonly Dictionary<string, List<Tuple<string, PropertyInfo, bool>>> tupleMemo = new Dictionary<string, List<Tuple<string, PropertyInfo, bool>>>();
-
-
-        /// <summary>
         /// Get all mapped properties of type T.  (Properties with the DbField attribute)
         /// Returns a list of tuples with the following:
         ///   ( Database Field Name, Reflected Property, If the property is a nullable type )
@@ -214,8 +209,11 @@ namespace BlueCloud.Extensions.Data
         {
             var type = typeof(T);
 
-            if (tupleMemo.ContainsKey(type.FullName))
-                return tupleMemo[type.FullName];
+            ObjectCache cache = MemoryCache.Default;
+            var cachedObject = (List<Tuple<string, PropertyInfo, bool>>)cache[type.FullName];
+
+            if (cachedObject != null)
+                return cachedObject;
 
             var properties = type.GetProperties();
             var result = new List<Tuple<string, PropertyInfo, bool>>();
@@ -232,7 +230,12 @@ namespace BlueCloud.Extensions.Data
                 }
             }
 
-            tupleMemo[type.FullName] = result;
+            CacheItemPolicy policy = new CacheItemPolicy
+            {
+                SlidingExpiration = new TimeSpan(4, 0, 0)
+            };
+
+            cache.Set(type.FullName, result, policy);
 
             return result;
         }

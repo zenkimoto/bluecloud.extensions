@@ -49,11 +49,13 @@ namespace BlueCloud.Extensions.Tests.Performance
 
         [Fact]
         public void GetValue_ShouldBePerformant() {
+            const int ITERATIONS = 10000;
+
             reader.Read();
 
             var baseTime = MeasurePerformance(() =>
             {
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < ITERATIONS; i++)
                 {
                     reader.GetInt32(reader.GetOrdinal("AlbumId"));
                     reader.GetString(reader.GetOrdinal("Title"));
@@ -63,7 +65,7 @@ namespace BlueCloud.Extensions.Tests.Performance
 
             var actualTime = MeasurePerformance(() =>
             {
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < ITERATIONS; i++)
                 {
                     reader.GetValue<int>("AlbumId");
                     reader.GetValue<string>("Title");
@@ -77,11 +79,12 @@ namespace BlueCloud.Extensions.Tests.Performance
         [Fact]
         public void MapToObjects_ShouldBePerformant()
         {
+            const int ITERATIONS = 40000;
             reader.Read();
 
             var baseTime = MeasurePerformance(() =>
             {
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < ITERATIONS; i++)
                 {
                     while (reader.Read())
                     {
@@ -97,7 +100,7 @@ namespace BlueCloud.Extensions.Tests.Performance
 
             var actualTime = MeasurePerformance(() =>
             {
-                for (int i = 0; i < 10000; i++)
+                for (int i = 0; i < ITERATIONS; i++)
                 {
                     reader.MapToObjects<Album>();
                     reader.Close();
@@ -106,7 +109,7 @@ namespace BlueCloud.Extensions.Tests.Performance
                 }
             });
 
-            Assert.True(actualTime <= baseTime * 2.5, $"Actual Time: {actualTime} should be less than 2.5 times {baseTime}");
+            Assert.True(actualTime <= baseTime * 3.5, $"Actual Time: {actualTime} should be less than 3.5 times {baseTime}");
         }
 
         private long MeasurePerformance(Action action)

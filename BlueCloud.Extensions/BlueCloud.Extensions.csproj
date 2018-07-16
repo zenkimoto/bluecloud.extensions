@@ -8,4 +8,8 @@
     <Compile Remove="Class1.cs" />
     <Compile Remove="Data\DbFieldExtensions.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Runtime.Caching" Version="4.5.0" />
+  </ItemGroup>
 </Project>
