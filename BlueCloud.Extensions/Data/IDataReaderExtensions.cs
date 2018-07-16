@@ -11,7 +11,7 @@ namespace BlueCloud.Extensions.Data
         /// <summary>
         /// ICacheable interface used to cache reflected property information.  By default, items are cached in a sliding 4 hour window.
         /// </summary>
-        public static ICacheable<List<Tuple<string, PropertyInfo, bool>>> cache = new DefaultCache<List<Tuple<string, PropertyInfo, bool>>>();
+        public static ICacheable<List<DbMapping>> cache = new DefaultCache<List<DbMapping>>();
 
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="dataReader">Data reader</param>
         /// <param name="dbProperties">Cached Mapping Properties</param>
         /// <typeparam name="T">Data Type</typeparam>
-        private static T MapToObject<T>(this IDataReader dataReader, List<Tuple<string, PropertyInfo, bool>> dbProperties) {
+        private static T MapToObject<T>(this IDataReader dataReader, List<DbMapping> dbProperties) {
             T obj = (T)Activator.CreateInstance(typeof(T));
 
             foreach (var mapping in dbProperties)
@@ -160,11 +160,11 @@ namespace BlueCloud.Extensions.Data
 
                 try
                 {
-                    databaseValue = dataReader[mapping.Item1];
+                    databaseValue = dataReader[mapping.DatabaseField];
                 }
                 catch (ArgumentOutOfRangeException ex)
                 {
-                    var errorMessage = $"The database field: '{mapping.Item1}' specified in the DbField attribute does not exist in query result.";
+                    var errorMessage = $"The database field: '{mapping.DatabaseField}' specified in the DbField attribute does not exist in query result.";
                     throw new InvalidOperationException(errorMessage, ex);
                 }
 
@@ -172,30 +172,30 @@ namespace BlueCloud.Extensions.Data
                 {
                     databaseValue = null;
                 }
-                else if (mapping.Item2.PropertyType == typeof(DateTime))
+                else if (mapping.ObjectProperty.PropertyType == typeof(DateTime))
                 {
                     databaseValue = (DateTime)Convert.ChangeType(databaseValue, typeof(DateTime));
                 }
 
                 // Allow for custom user mapping
-                if (obj is IDbHydrationOverridable && ((IDbHydrationOverridable)obj).ShouldOverridePropertyHydration(mapping.Item2.Name))
+                if (obj is IDbHydrationOverridable && ((IDbHydrationOverridable)obj).ShouldOverridePropertyHydration(mapping.ObjectProperty.Name))
                 {
-                    databaseValue = ((IDbHydrationOverridable)obj).OverridePropertyHydration(mapping.Item2.Name, databaseValue);
+                    databaseValue = ((IDbHydrationOverridable)obj).OverridePropertyHydration(mapping.ObjectProperty.Name, databaseValue);
                 }
 
-                if (databaseValue == null && mapping.Item3 == false)
+                if (databaseValue == null && mapping.IsNullable == false)
                 {
-                    var errorMessage = $"Attempting to assign NULL in database field: '{mapping.Item1}' to a non-nullable property: '{mapping.Item2.Name}'.";
+                    var errorMessage = $"Attempting to assign NULL in database field: '{mapping.DatabaseField}' to a non-nullable property: '{mapping.ObjectProperty.Name}'.";
                     throw new InvalidCastException(errorMessage);
                 }
 
                 try
                 {
-                    mapping.Item2.SetValue(obj, databaseValue);
+                    mapping.ObjectProperty.SetValue(obj, databaseValue);
                 }
                 catch (ArgumentException ex)
                 {
-                    var errorMessage = $"Unable to convert database field: '{mapping.Item1}' to property: '{mapping.Item2.Name}'. Detail: {ex.Message}";
+                    var errorMessage = $"Unable to convert database field: '{mapping.DatabaseField}' to property: '{mapping.ObjectProperty.Name}'. Detail: {ex.Message}";
                     throw new InvalidCastException(errorMessage, ex);
                 }
             }
@@ -210,8 +210,8 @@ namespace BlueCloud.Extensions.Data
         ///   ( Database Field Name, Reflected Property, If the property is a nullable type )
         /// </summary>
         /// <typeparam name="T">Data Type</typeparam>
-        /// <returns>List of Tuples</returns>
-        private static List<Tuple<string, PropertyInfo, bool>> GetDatabaseProperties<T>()
+        /// <returns>List of DbMappings</returns>
+        private static List<DbMapping> GetDatabaseProperties<T>()
         {
             var type = typeof(T);
 
@@ -221,7 +221,7 @@ namespace BlueCloud.Extensions.Data
                 return cachedObject;
 
             var properties = type.GetProperties();
-            var result = new List<Tuple<string, PropertyInfo, bool>>();
+            var result = new List<DbMapping>();
 
             foreach (var property in properties)
             {
@@ -230,8 +230,13 @@ namespace BlueCloud.Extensions.Data
                 if (attrib != null)
                 {
                     var isNullable = Nullable.GetUnderlyingType(property.PropertyType) != null;
-                    var tuple = new Tuple<string, PropertyInfo, bool>(attrib.Field, property, isNullable);
-                    result.Add(tuple);
+                    var mapping = new DbMapping() 
+                    { 
+                        DatabaseField = attrib.Field, 
+                        ObjectProperty = property, 
+                        IsNullable = isNullable 
+                    };
+                    result.Add(mapping);
                 }
             }
 
