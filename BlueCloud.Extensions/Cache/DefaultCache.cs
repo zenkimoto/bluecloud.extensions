@@ -10,6 +10,18 @@ namespace BlueCloud.Extensions.Cache
     {
         private readonly MemoryCache cache = new MemoryCache("DbProperties");
 
+        public TimeSpan SlidingExpiration { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:BlueCloud.Extensions.Cache.DefaultCache`1"/> class.
+        /// </summary>
+        /// <param name="slidingExpiration">Sliding Expiration</param>
+        public DefaultCache(TimeSpan slidingExpiration)
+        {
+            SlidingExpiration = slidingExpiration;
+        }
+
+
         /// <summary>
         /// Releases all resource used by the <see cref="T:BlueCloud.Extensions.Cache.DefaultCache`1"/> object.
         /// </summary>
@@ -24,6 +36,7 @@ namespace BlueCloud.Extensions.Cache
             cache.Dispose();
         }
 
+
         /// <summary>
         /// Get cached object with specified key.
         /// </summary>
@@ -34,6 +47,7 @@ namespace BlueCloud.Extensions.Cache
             return (T)cache[key];
         }
 
+
         /// <summary>
         /// Caches an object with specified key.
         /// </summary>
@@ -41,9 +55,9 @@ namespace BlueCloud.Extensions.Cache
         /// <param name="value">Value</param>
         public void Set(string key, T value)
         {
-            CacheItemPolicy policy = new CacheItemPolicy
+            var policy = new CacheItemPolicy
             {
-                SlidingExpiration = new TimeSpan(4, 0, 0)
+                SlidingExpiration = SlidingExpiration
             };
 
             cache.Set(key, value, policy);

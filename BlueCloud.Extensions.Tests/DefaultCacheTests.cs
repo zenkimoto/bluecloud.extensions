@@ -11,7 +11,7 @@ namespace BlueCloud.Extensions.Tests
 
         public DefaultCacheTests()
         {
-            cache = new DefaultCache<string>();
+            cache = new DefaultCache<string>(new TimeSpan(4, 0, 0));
         }
 
         public void Dispose()
