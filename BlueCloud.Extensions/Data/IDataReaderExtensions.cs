@@ -94,6 +94,19 @@ namespace BlueCloud.Extensions.Data
 
         /// <summary>
         /// Maps a data reader result to model classes
+        /// </summary>
+        /// <returns>Tuple of Mapped Model Objects</returns>
+        /// <param name="dataReader">Data reader</param>
+        /// <typeparam name="T">First Data Type</typeparam>
+        /// <typeparam name="U">Second Data Type</typeparam>
+        public static IEnumerable<Tuple<T, U>> MapToObjects<T, U>(this IDataReader dataReader) where T : class where U : class
+        {
+            return dataReader.MapToObjects<T, U>(-1);
+        }
+
+
+        /// <summary>
+        /// Maps a data reader result to model classes
         /// 
         /// Amount of records to map. A negative 1 (-1) will map all records.
         /// </summary>

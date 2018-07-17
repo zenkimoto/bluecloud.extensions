@@ -424,6 +424,29 @@ namespace BlueCloud.Extensions.Data
 
 
         /// <summary>
+        /// Gets mapped objects from a query string.  An exception will be thrown if the connection is not open.
+        /// </summary>
+        /// <returns>Enumerable of Mapped Objects</returns>
+        /// <param name="connection">IDbConnection</param>
+        /// <param name="sqlString">Query SQL String to Execute</param>
+        /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
+        /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
+        /// <typeparam name="T">First Data Type</typeparam>
+        /// <typeparam name="U">Second Data Type</typeparam>
+        public static IEnumerable<Tuple<T, U>> GetObjectsFromQueryString<T, U>(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class where U: class
+        {
+            IEnumerable<Tuple<T, U>> result = null;
+
+            connection.ExecuteQueryString(sqlString, commandCallback, reader =>
+            {
+                result = reader.MapToObjects<T, U>();
+            }, validateParameters);
+
+            return result;
+        }
+
+
+        /// <summary>
         /// Gets mapped objects from an embedded resource.  An exception will be thrown if the connection is not open.
         /// </summary>
         /// <returns>Enumerable of Mapped Objects</returns>
@@ -435,6 +458,22 @@ namespace BlueCloud.Extensions.Data
         public static IEnumerable<T> GetObjectsFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class
         {
             return connection.GetObjectsFromEmbeddedResource<T>(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), commandCallback, validateParameters);
+        }
+
+
+        /// <summary>
+        /// Gets mapped objects from an embedded resource.  An exception will be thrown if the connection is not open.
+        /// </summary>
+        /// <returns>Enumerable of Mapped Objects</returns>
+        /// <param name="connection">IDbConnection</param>
+        /// <param name="embeddedResource">Embedded Resource Name</param>
+        /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
+        /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
+        /// <typeparam name="T">First Data Type</typeparam>
+        /// <typeparam name="U">Second Data Type</typeparam>
+        public static IEnumerable<Tuple<T, U>> GetObjectsFromEmbeddedResource<T, U>(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class where U : class
+        {
+            return connection.GetObjectsFromEmbeddedResource<T, U>(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), commandCallback, validateParameters);
         }
 
 
@@ -460,6 +499,35 @@ namespace BlueCloud.Extensions.Data
             connection.ExecuteQueryEmbeddedResource(embeddedResource, assembly, commandCallback, reader =>
             {
                 result = reader.MapToObjects<T>();
+            }, validateParameters);
+
+            return result;
+        }
+
+
+        /// <summary>
+        /// Gets mapped objects from an embedded resource.  An exception will be thrown if the connection is not open.
+        /// </summary>
+        /// <returns>Enumerable of Mapped Objects</returns>
+        /// <param name="connection">IDbConnection</param>
+        /// <param name="embeddedResource">Embedded Resource Name</param>
+        /// <param name="assembly">Assembly Where Embedded Resource Resides</param>
+        /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
+        /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
+        /// <typeparam name="T">First Data Type</typeparam>
+        /// <typeparam name="U">Second Data Type</typeparam>
+        public static IEnumerable<Tuple<T, U>> GetObjectsFromEmbeddedResource<T, U>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class where U : class
+        {
+            if (embeddedResource == null)
+                throw new ArgumentNullException(nameof(embeddedResource));
+            if (assembly == null)
+                throw new ArgumentNullException(nameof(assembly));
+
+            IEnumerable<Tuple<T, U>> result = null;
+
+            connection.ExecuteQueryEmbeddedResource(embeddedResource, assembly, commandCallback, reader =>
+            {
+                result = reader.MapToObjects<T, U>();
             }, validateParameters);
 
             return result;
