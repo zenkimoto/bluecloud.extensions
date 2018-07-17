@@ -23,6 +23,7 @@
     <None Remove="SQL\InsertIntoAlbums.sql" />
     <None Remove="SQL\GetThreeAlbums.sql" />
     <None Remove="SQL\GetSingleAlbum.sql" />
+    <None Remove="SQL\QueryJoin.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\chinook.db">
@@ -41,6 +42,7 @@
     <EmbeddedResource Include="SQL\InsertIntoAlbums.sql" />
     <EmbeddedResource Include="SQL\GetThreeAlbums.sql" />
     <EmbeddedResource Include="SQL\GetSingleAlbum.sql" />
+    <EmbeddedResource Include="SQL\QueryJoin.sql" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Performance\IDbConnectionExtensionsPerformanceTests.cs" />

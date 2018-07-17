@@ -426,6 +426,23 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
+        public void GetObjectsFromQueryString_WhenJoiningOneToOne_ShouldReturnTuples()
+        {
+            var albumArtists = connection.GetObjectsFromQueryString<Album, Artist>("SELECT * FROM albums, artists WHERE albums.ArtistId = artists.ArtistId").ToList();
+
+            var first = albumArtists.First();
+
+            Assert.Equal(1, first.Item1.AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", first.Item1.Title);
+            Assert.Equal(1, first.Item1.ArtistId);
+
+            Assert.Equal(1, first.Item2.ArtistId);
+            Assert.Equal("AC/DC", first.Item2.Name);
+
+            Assert.Equal(347, albumArtists.Count());
+        }
+
+        [Fact]
         public void GetObjectsFromQueryString_WhenNullSqlString_ShouldThrowException()
         {
             Assert.Throws<ArgumentNullException>(() => connection.GetObjectsFromQueryString<Album>(null));
@@ -452,6 +469,23 @@ namespace BlueCloud.Extensions.Tests
             Assert.Equal(3, albums[2].AlbumId);
             Assert.Equal("Restless and Wild", albums[2].Title);
             Assert.Equal(2, albums[2].ArtistId);
+        }
+
+        [Fact]
+        public void GetObjectsFromEmbeddedResource_WhenJoiningOneToOne_ShouldReturnTuples()
+        {
+            var albumArtists = connection.GetObjectsFromEmbeddedResource<Album, Artist>("QueryJoin.sql").ToList();
+
+            var first = albumArtists.First();
+
+            Assert.Equal(1, first.Item1.AlbumId);
+            Assert.Equal("For Those About To Rock We Salute You", first.Item1.Title);
+            Assert.Equal(1, first.Item1.ArtistId);
+
+            Assert.Equal(1, first.Item2.ArtistId);
+            Assert.Equal("AC/DC", first.Item2.Name);
+
+            Assert.Equal(347, albumArtists.Count());
         }
 
         [Fact]

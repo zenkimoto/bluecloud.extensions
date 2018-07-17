@@ -204,7 +204,7 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
-        public void MapToObjects_WhenMappingToTwoDifferentObjectsWithAOneToOneJoin_ShouldReturnATuple()
+        public void MapToObjects_WhenMappingToOneRowWithTwoDifferentObjectsWithAOneToOneJoin_ShouldReturnATuple()
         {
             QueryJoin();
 
@@ -216,6 +216,21 @@ namespace BlueCloud.Extensions.Tests
 
             Assert.Equal(1, tuple.Item2.ArtistId);
             Assert.Equal("AC/DC", tuple.Item2.Name);
+        }
+
+        [Fact]
+        public void MapToObjects_WhenMappingToTwoDifferentObjectsWithAOneToOneJoin_ShouldReturnTuples()
+        {
+            QueryJoin();
+
+            var tuple = reader.MapToObjects<Album, Artist>().Last();
+
+            Assert.Equal(347, tuple.Item1.AlbumId);
+            Assert.Equal("Koyaanisqatsi (Soundtrack from the Motion Picture)", tuple.Item1.Title);
+            Assert.Equal(275, tuple.Item1.ArtistId);
+
+            Assert.Equal(275, tuple.Item2.ArtistId);
+            Assert.Equal("Philip Glass Ensemble", tuple.Item2.Name);
         }
 
         [Fact]
