@@ -87,7 +87,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="sqlString">Sql string to execute</param>
         /// <param name="readerCallback">Reader callback</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
-        public static void ExecuteQueryString(this IDbConnection connection, string sqlString, Action<IDataReader> readerCallback, bool validateParameters = true)
+        public static void ExecuteQueryString(this IDbConnection connection, string sqlString, Action<IDataReader> readerCallback, bool validateParameters = false)
         {
             ExecuteQueryString(connection, sqlString, null, readerCallback, validateParameters);
         }
@@ -101,7 +101,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="readerCallback">Reader lambda expression callback in the form (reader) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
-        public static void ExecuteQueryString(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback, Action<IDataReader> readerCallback, bool validateParameters = true)
+        public static void ExecuteQueryString(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback, Action<IDataReader> readerCallback, bool validateParameters = false)
         {
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteQueryString / ExecuteQueryEmbeddedResource");
@@ -137,7 +137,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="readerCallback">Reader lambda expression callback in the form (reader) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
-        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback, Action<IDataReader> readerCallback, bool validateParameters = true)
+        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback, Action<IDataReader> readerCallback, bool validateParameters = false)
         {
             if (embeddedResource == null)
                 throw new ArgumentNullException(nameof(embeddedResource));
@@ -155,7 +155,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="assembly">Assembly Where Embedded Resource Resides</param>
         /// <param name="readerCallback">Reader lambda expression callback in the form (reader) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
-        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDataReader> readerCallback, bool validateParameters = true)
+        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDataReader> readerCallback, bool validateParameters = false)
         {
             string sql = assembly.GetEmbeddedResourceString(embeddedResource);
             connection.ExecuteQueryString(sql, null, readerCallback, validateParameters);
@@ -170,7 +170,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="readerCallback">Reader lambda expression callback in the form (reader) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
-        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback, Action<IDataReader> readerCallback, bool validateParameters = true)
+        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback, Action<IDataReader> readerCallback, bool validateParameters = false)
         {
             connection.ExecuteQueryEmbeddedResource(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), commandCallback, readerCallback, validateParameters);
         }
@@ -183,7 +183,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="embeddedResource">Embedded Resource Name</param>
         /// <param name="readerCallback">Reader lambda expression callback in the form (reader) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
-        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDataReader> readerCallback, bool validateParameters = true)
+        public static void ExecuteQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDataReader> readerCallback, bool validateParameters = false)
         {
             connection.ExecuteQueryEmbeddedResource(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), null, readerCallback, validateParameters);
         }
@@ -201,7 +201,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Number of rows affected</returns>
-        public static int ExecuteNonQueryString(this IDbConnection connection, string nonQuerySqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = true)
+        public static int ExecuteNonQueryString(this IDbConnection connection, string nonQuerySqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = false)
         {
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteNonQueryString / ExecuteNonQueryEmbeddedResource");
@@ -229,7 +229,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Number of rows affected</returns>
-        public static int ExecuteNonQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = true)
+        public static int ExecuteNonQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = false)
         {
             return connection.ExecuteNonQueryEmbeddedResource(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), commandCallback, validateParameters);
         }
@@ -244,7 +244,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Number of rows affected</returns>
-        public static int ExecuteNonQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = true)
+        public static int ExecuteNonQueryEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = false)
         {
             if (embeddedResource == null)
                 throw new ArgumentNullException(nameof(embeddedResource));
@@ -269,7 +269,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Scalar value</returns>
-        public static object ExecuteQueryScalar(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = true)
+        public static object ExecuteQueryScalar(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = false)
         {
             if (connection.State != ConnectionState.Open)
                 throw new InvalidOperationException("Connection must be open to call ExecuteQueryString / ExecuteQueryEmbeddedResource");
@@ -299,7 +299,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Scalar value</returns>
-        public static object ExecuteScalarEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = true)
+        public static object ExecuteScalarEmbeddedResource(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = false)
         {
             if (embeddedResource == null)
                 throw new ArgumentNullException(nameof(embeddedResource));
@@ -319,7 +319,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Scalar value</returns>
-        public static object ExecuteScalarEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = true)
+        public static object ExecuteScalarEmbeddedResource(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = false)
         {
             return connection.ExecuteScalarEmbeddedResource(embeddedResource, System.Reflection.Assembly.GetExecutingAssembly(), commandCallback, validateParameters);
         }
@@ -339,7 +339,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static T GetSingleObjectFromQueryString<T>(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
+        public static T GetSingleObjectFromQueryString<T>(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class
         {
             T obj = null;
 
@@ -362,7 +362,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static T GetSingleObjectFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
+        public static T GetSingleObjectFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class
         {
             return connection.GetSingleObjectFromEmbeddedResource<T>(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), commandCallback, validateParameters);
         }
@@ -379,7 +379,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static T GetSingleObjectFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
+        public static T GetSingleObjectFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class
         {
             if (embeddedResource == null)
                 throw new ArgumentNullException(nameof(embeddedResource));
@@ -410,7 +410,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static IEnumerable<T> GetObjectsFromQueryString<T>(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
+        public static IEnumerable<T> GetObjectsFromQueryString<T>(this IDbConnection connection, string sqlString, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class
         {
             IEnumerable<T> result = null;
 
@@ -432,7 +432,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static IEnumerable<T> GetObjectsFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
+        public static IEnumerable<T> GetObjectsFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class
         {
             return connection.GetObjectsFromEmbeddedResource<T>(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), commandCallback, validateParameters);
         }
@@ -448,7 +448,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="commandCallback">Parameter lambda expression callback in the form (command) => { }</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static IEnumerable<T> GetObjectsFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = true) where T : class
+        public static IEnumerable<T> GetObjectsFromEmbeddedResource<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action<IDbCommand> commandCallback = null, bool validateParameters = false) where T : class
         {
             if (embeddedResource == null)
                 throw new ArgumentNullException(nameof(embeddedResource));
@@ -480,7 +480,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Number of records affected</returns>
         /// <typeparam name="T">Data Type</typeparam>
-        public static int ExecuteNonQueryStringForObject<T>(this IDbConnection connection, string nonQuerySqlString, T obj, bool validateParameters = true) where T : class
+        public static int ExecuteNonQueryStringForObject<T>(this IDbConnection connection, string nonQuerySqlString, T obj, bool validateParameters = false) where T : class
         {
             if (nonQuerySqlString == null)
                 throw new ArgumentNullException(nameof(nonQuerySqlString));
@@ -501,7 +501,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Number of records affected</returns>
         /// <typeparam name="T">Data Type</typeparam>
-        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, T obj, bool validateParameters = true) where T : class
+        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, T obj, bool validateParameters = false) where T : class
         {
             return ExecuteNonQueryEmbeddedResourceForObject(connection, embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), obj, validateParameters);
         }
@@ -518,7 +518,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Number of records affected</returns>
         /// <typeparam name="T">Data Type</typeparam>
-        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, T obj, bool validateParameters = true) where T : class
+        public static int ExecuteNonQueryEmbeddedResourceForObject<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, T obj, bool validateParameters = false) where T : class
         {
             if (embeddedResource == null)
                 throw new ArgumentNullException(nameof(embeddedResource));
@@ -547,7 +547,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <returns>Number of records affected</returns>
         /// <typeparam name="T">Data Type</typeparam>
-        public static void ExecuteNonQueryStringForObjects<T>(this IDbConnection connection, string nonQuerySqlString, IEnumerable<T> objects, bool validateParameters = true) where T : class
+        public static void ExecuteNonQueryStringForObjects<T>(this IDbConnection connection, string nonQuerySqlString, IEnumerable<T> objects, bool validateParameters = false) where T : class
         {
             if (nonQuerySqlString == null)
                 throw new ArgumentNullException(nameof(nonQuerySqlString));
@@ -569,7 +569,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="objects">Enumerable list of model objects from which parameters are to be populated</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static void ExecuteNonQueryEmbeddedResourceForObjects<T>(this IDbConnection connection, string embeddedResource, IEnumerable<T> objects, bool validateParameters = true) where T : class
+        public static void ExecuteNonQueryEmbeddedResourceForObjects<T>(this IDbConnection connection, string embeddedResource, IEnumerable<T> objects, bool validateParameters = false) where T : class
         {
             connection.ExecuteNonQueryEmbeddedResourceForObjects(embeddedResource, System.Reflection.Assembly.GetCallingAssembly(), objects, validateParameters);
         }
@@ -585,7 +585,7 @@ namespace BlueCloud.Extensions.Data
         /// <param name="objects">Enumerable list of model objects from which parameters are to be populated</param>
         /// <param name="validateParameters">If set to <c>true</c> validate parameters.</param>
         /// <typeparam name="T">Data Type</typeparam>
-        public static void ExecuteNonQueryEmbeddedResourceForObjects<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, IEnumerable<T> objects, bool validateParameters = true) where T : class
+        public static void ExecuteNonQueryEmbeddedResourceForObjects<T>(this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, IEnumerable<T> objects, bool validateParameters = false) where T : class
         {
             if (embeddedResource == null)
                 throw new ArgumentNullException(nameof(embeddedResource));

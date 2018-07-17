@@ -191,7 +191,7 @@ namespace BlueCloud.Extensions.Tests
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                connection.ExecuteQueryEmbeddedResource("GetAllAlbums.sql", null);
+                connection.ExecuteQueryEmbeddedResource("GetAllAlbums.sql", System.Reflection.Assembly.GetExecutingAssembly(), null);
             });
         }
 

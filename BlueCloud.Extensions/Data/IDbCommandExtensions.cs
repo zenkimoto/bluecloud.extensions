@@ -49,7 +49,6 @@ namespace BlueCloud.Extensions.Data
         /// </summary>
         public static void ValidateParameters(this IDbCommand command)
         {
-#if DEBUG
             if (command.CommandType != CommandType.Text)
             {
                 return;
@@ -101,7 +100,6 @@ namespace BlueCloud.Extensions.Data
 
                 throw ex;
             }
-#endif
         }
 
 
