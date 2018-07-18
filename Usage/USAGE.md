@@ -4,7 +4,9 @@
 
 * Data Extensions and Embedded Resources
 * Lightweight Database Result to SQL Mapper
+* Validate Parameters
 * Mapping Overrides (Advanced)
+* Custom Caching (Advanced)
 * Additional Method Extensions
 
 
@@ -65,6 +67,14 @@ All extension methods related to the object mapper have a _"QueryString"_ and _"
 `void ExecuteNonQueryEmbeddedResourceForObjects<T>(...)` _Executes a non SQL from an embedded resource binding parameters from an IEnumerable of mapped objects_
 
 #### Example
+
+_To be completed..._
+
+## Validate Parameters
+
+On all extension methods, there is a validateParameters parameter that validates the mapping between SQL and parameters in the `IDbCommand` object.
+
+By default, validateParameters is set to `false` assuming that code executed is in release mode.
 
 _To be completed..._
 
@@ -160,6 +170,19 @@ public class BooleanTest : IDbHydrationOverridable, IDbSerializationOverridable
 }
 ```
 
+## Custom Caching (Advanced)
+
+BlueCloud.Extensions utilizes [MemoryCache](https://msdn.microsoft.com/en-us/library/system.runtime.caching.memorycache(v=vs.110).aspx) under the covers with a default 2 hour sliding window.  
+
+If you want to change the Timespan of the sliding window to 30 minutes, you can assign a new DefaultCache like so:
+
+```
+IDataReaderExtensions.cache = new DefaultCache<List<DbMapping>>(new TimeSpan(0, 30, 0));
+```
+
+If you want to create your own cache, create a new class that implements the [`BlueCloud.Extensions.Data.ICacheable`](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Documentation/html/interface_blue_cloud_1_1_extensions_1_1_cache_1_1_i_cacheable.html) Interface.
+
+_To be completed..._
 
 ## Additional Method Extensions
 
