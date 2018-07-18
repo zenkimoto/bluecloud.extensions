@@ -6,9 +6,9 @@ namespace BlueCloud.Extensions.Cache
     /// <summary>
     /// Default cache utilizing System.Runtime.Caching.MemoryCache
     /// </summary>
-    public class DefaultCache<T> : ICacheable<T>, IDisposable
+    public sealed class DefaultCache<T> : ICacheable<T>, IDisposable
     {
-        private readonly MemoryCache cache = new MemoryCache("DbProperties");
+        private readonly MemoryCache cache = new MemoryCache("BlueCloud.Extensions.Cache.DbProperties");
 
         public TimeSpan SlidingExpiration { get; set; }
 

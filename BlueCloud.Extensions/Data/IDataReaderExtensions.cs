@@ -9,9 +9,9 @@ namespace BlueCloud.Extensions.Data
     public static class IDataReaderExtensions
     {
         /// <summary>
-        /// ICacheable interface used to cache reflected property information.  By default, items are cached in a sliding 4 hour window.
+        /// ICacheable interface used to cache reflected property information.  By default, items are cached in a sliding 2 hour window.
         /// </summary>
-        public static ICacheable<List<DbMapping>> cache = new DefaultCache<List<DbMapping>>(new TimeSpan(4, 0, 0));
+        public static ICacheable<List<DbMapping>> cache = new DefaultCache<List<DbMapping>>(new TimeSpan(2, 0, 0));
 
 
         /// <summary>
