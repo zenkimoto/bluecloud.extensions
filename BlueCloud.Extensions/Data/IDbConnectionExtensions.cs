@@ -6,6 +6,9 @@ using BlueCloud.Extensions.Assembly;
 
 namespace BlueCloud.Extensions.Data
 {
+    /// <summary>
+    /// Extension Methods for System.Data.IDbConnection
+    /// </summary>
     public static class IDbConnectionExtensions
     {
         #region IDbCommand Factory Methods

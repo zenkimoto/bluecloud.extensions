@@ -4,7 +4,8 @@ var indexSectionsWithContent =
   1: "adims",
   2: "b",
   3: "abcdefglmoprsv",
-  4: "fs"
+  4: "c",
+  5: "dfios"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "namespaces",
   3: "functions",
-  4: "properties"
+  4: "variables",
+  5: "properties"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Classes",
   2: "Namespaces",
   3: "Functions",
-  4: "Properties"
+  4: "Variables",
+  5: "Properties"
 };
 

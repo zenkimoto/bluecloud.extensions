@@ -20,9 +20,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo_Small.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">bluecloud.extensions
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.0.1</span>
    </div>
   </td>
  </tr>
@@ -73,6 +74,9 @@ $(function() {
 <div class="title">BlueCloud.Extensions.Data.IDbConnectionExtensions Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Extension Methods for System.Data.IDbConnection  
+ <a href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -88,77 +92,91 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a46009b6907850de6e6d764d5dabd4d4a"><td class="memItemLeft" align="right" valign="top">static IDbCommand&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a46009b6907850de6e6d764d5dabd4d4a">CommandWithEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly)</td></tr>
 <tr class="memdesc:a46009b6907850de6e6d764d5dabd4d4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new IDbCommand with an initialized from a specifed embedded resource.  <a href="#a46009b6907850de6e6d764d5dabd4d4a">More...</a><br /></td></tr>
 <tr class="separator:a46009b6907850de6e6d764d5dabd4d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75afa37354f81fa82c594e06d5bda02c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a75afa37354f81fa82c594e06d5bda02c">ExecuteQueryString</a> (this IDbConnection connection, string sqlString, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a75afa37354f81fa82c594e06d5bda02c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement. An exception will be thrown if the connection is not open.  <a href="#a75afa37354f81fa82c594e06d5bda02c">More...</a><br /></td></tr>
-<tr class="separator:a75afa37354f81fa82c594e06d5bda02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6bda36c6d7ca4641d58888ffdd3fb7a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ad6bda36c6d7ca4641d58888ffdd3fb7a">ExecuteQueryString</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=true)</td></tr>
-<tr class="memdesc:ad6bda36c6d7ca4641d58888ffdd3fb7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement. An exception will be thrown if the connection is not open.  <a href="#ad6bda36c6d7ca4641d58888ffdd3fb7a">More...</a><br /></td></tr>
-<tr class="separator:ad6bda36c6d7ca4641d58888ffdd3fb7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf6d4a060eb0a30d358d31aa66555f1c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#adf6d4a060eb0a30d358d31aa66555f1c">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=true)</td></tr>
-<tr class="memdesc:adf6d4a060eb0a30d358d31aa66555f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#adf6d4a060eb0a30d358d31aa66555f1c">More...</a><br /></td></tr>
-<tr class="separator:adf6d4a060eb0a30d358d31aa66555f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29824247ed676b9d944fc63bfc48875f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a29824247ed676b9d944fc63bfc48875f">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a29824247ed676b9d944fc63bfc48875f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a29824247ed676b9d944fc63bfc48875f">More...</a><br /></td></tr>
-<tr class="separator:a29824247ed676b9d944fc63bfc48875f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af955729e166df12ee7c5856798c7e047"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#af955729e166df12ee7c5856798c7e047">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=true)</td></tr>
-<tr class="memdesc:af955729e166df12ee7c5856798c7e047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#af955729e166df12ee7c5856798c7e047">More...</a><br /></td></tr>
-<tr class="separator:af955729e166df12ee7c5856798c7e047"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b2fc0f0635efd4c13fc3201abc8757f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a7b2fc0f0635efd4c13fc3201abc8757f">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a7b2fc0f0635efd4c13fc3201abc8757f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a7b2fc0f0635efd4c13fc3201abc8757f">More...</a><br /></td></tr>
-<tr class="separator:a7b2fc0f0635efd4c13fc3201abc8757f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5556c5cbfe794c4669a4dd9ba80475b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ab5556c5cbfe794c4669a4dd9ba80475b">ExecuteNonQueryString</a> (this IDbConnection connection, string nonQuerySqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:ab5556c5cbfe794c4669a4dd9ba80475b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement. An exception will be thrown if the connection is not open.  <a href="#ab5556c5cbfe794c4669a4dd9ba80475b">More...</a><br /></td></tr>
-<tr class="separator:ab5556c5cbfe794c4669a4dd9ba80475b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1771dc6ce56e06896c5166aedb9865f6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a1771dc6ce56e06896c5166aedb9865f6">ExecuteNonQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a1771dc6ce56e06896c5166aedb9865f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a1771dc6ce56e06896c5166aedb9865f6">More...</a><br /></td></tr>
-<tr class="separator:a1771dc6ce56e06896c5166aedb9865f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af79b3af91a03769be959db25ab7da2c4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#af79b3af91a03769be959db25ab7da2c4">ExecuteNonQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:af79b3af91a03769be959db25ab7da2c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#af79b3af91a03769be959db25ab7da2c4">More...</a><br /></td></tr>
-<tr class="separator:af79b3af91a03769be959db25ab7da2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7cb1d2c56a995698c583329b4fe8cef"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ac7cb1d2c56a995698c583329b4fe8cef">ExecuteQueryScalar</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:ac7cb1d2c56a995698c583329b4fe8cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL statement, returning a scalar value. An exception will be thrown if the connection is not open.  <a href="#ac7cb1d2c56a995698c583329b4fe8cef">More...</a><br /></td></tr>
-<tr class="separator:ac7cb1d2c56a995698c583329b4fe8cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1280135ed5932e67c193fc5367b520a9"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a1280135ed5932e67c193fc5367b520a9">ExecuteScalarEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a1280135ed5932e67c193fc5367b520a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL statement, returning a scalar value. An exception will be thrown if the connection is not open.  <a href="#a1280135ed5932e67c193fc5367b520a9">More...</a><br /></td></tr>
-<tr class="separator:a1280135ed5932e67c193fc5367b520a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1c2668a66de9eb0c17b411cc246c9a1"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ab1c2668a66de9eb0c17b411cc246c9a1">ExecuteScalarEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:ab1c2668a66de9eb0c17b411cc246c9a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL statement, returning a scalar value. An exception will be thrown if the connection is not open.  <a href="#ab1c2668a66de9eb0c17b411cc246c9a1">More...</a><br /></td></tr>
-<tr class="separator:ab1c2668a66de9eb0c17b411cc246c9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94ad7ae2f9f42847dd24e76bc2e59aad"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a94ad7ae2f9f42847dd24e76bc2e59aad">GetSingleObjectFromQueryString&lt; T &gt;</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a94ad7ae2f9f42847dd24e76bc2e59aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a single mapped object from a query string. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open.  <a href="#a94ad7ae2f9f42847dd24e76bc2e59aad">More...</a><br /></td></tr>
-<tr class="separator:a94ad7ae2f9f42847dd24e76bc2e59aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a420c73a06abb1abcaee6181cdbc899d3"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a420c73a06abb1abcaee6181cdbc899d3">GetSingleObjectFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a420c73a06abb1abcaee6181cdbc899d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open.  <a href="#a420c73a06abb1abcaee6181cdbc899d3">More...</a><br /></td></tr>
-<tr class="separator:a420c73a06abb1abcaee6181cdbc899d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd4ba3f26ddc5d2b03097a670a9665e2"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#afd4ba3f26ddc5d2b03097a670a9665e2">GetSingleObjectFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:afd4ba3f26ddc5d2b03097a670a9665e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open.  <a href="#afd4ba3f26ddc5d2b03097a670a9665e2">More...</a><br /></td></tr>
-<tr class="separator:afd4ba3f26ddc5d2b03097a670a9665e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3af40a1682397ba1c7e2c60c6bf4b9ce"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a3af40a1682397ba1c7e2c60c6bf4b9ce">GetObjectsFromQueryString&lt; T &gt;</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a3af40a1682397ba1c7e2c60c6bf4b9ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from a query string. An exception will be thrown if the connection is not open.  <a href="#a3af40a1682397ba1c7e2c60c6bf4b9ce">More...</a><br /></td></tr>
-<tr class="separator:a3af40a1682397ba1c7e2c60c6bf4b9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12fc63eb1a4e9f80573d1b78bf5278b0"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a12fc63eb1a4e9f80573d1b78bf5278b0">GetObjectsFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a12fc63eb1a4e9f80573d1b78bf5278b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open.  <a href="#a12fc63eb1a4e9f80573d1b78bf5278b0">More...</a><br /></td></tr>
-<tr class="separator:a12fc63eb1a4e9f80573d1b78bf5278b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e04d58bab71771401e4b7fa7fb5fafc"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a9e04d58bab71771401e4b7fa7fb5fafc">GetObjectsFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a9e04d58bab71771401e4b7fa7fb5fafc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open.  <a href="#a9e04d58bab71771401e4b7fa7fb5fafc">More...</a><br /></td></tr>
-<tr class="separator:a9e04d58bab71771401e4b7fa7fb5fafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab213db156b4cc0b81d0bf4a00b777765"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ab213db156b4cc0b81d0bf4a00b777765">ExecuteNonQueryStringForObject&lt; T &gt;</a> (this IDbConnection connection, string nonQuerySqlString, T obj, bool validateParameters=true)</td></tr>
-<tr class="memdesc:ab213db156b4cc0b81d0bf4a00b777765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#ab213db156b4cc0b81d0bf4a00b777765">More...</a><br /></td></tr>
-<tr class="separator:ab213db156b4cc0b81d0bf4a00b777765"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0536fa39725f5d74e852d8557e809a3"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ad0536fa39725f5d74e852d8557e809a3">ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, T obj, bool validateParameters=true)</td></tr>
-<tr class="memdesc:ad0536fa39725f5d74e852d8557e809a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#ad0536fa39725f5d74e852d8557e809a3">More...</a><br /></td></tr>
-<tr class="separator:ad0536fa39725f5d74e852d8557e809a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a240702d72ab523c5e82b8609ede4c68c"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a240702d72ab523c5e82b8609ede4c68c">ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, T obj, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a240702d72ab523c5e82b8609ede4c68c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#a240702d72ab523c5e82b8609ede4c68c">More...</a><br /></td></tr>
-<tr class="separator:a240702d72ab523c5e82b8609ede4c68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a651d37d4cc8638362c2aa61f404ca6e4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a651d37d4cc8638362c2aa61f404ca6e4">ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, IEnumerable&lt; T &gt; objects, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a651d37d4cc8638362c2aa61f404ca6e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#a651d37d4cc8638362c2aa61f404ca6e4">More...</a><br /></td></tr>
-<tr class="separator:a651d37d4cc8638362c2aa61f404ca6e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a970d3ce30d0c0b0eaf25b96b9ebda432"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a970d3ce30d0c0b0eaf25b96b9ebda432">ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, IEnumerable&lt; T &gt; objects, bool validateParameters=true)</td></tr>
-<tr class="memdesc:a970d3ce30d0c0b0eaf25b96b9ebda432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#a970d3ce30d0c0b0eaf25b96b9ebda432">More...</a><br /></td></tr>
-<tr class="separator:a970d3ce30d0c0b0eaf25b96b9ebda432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b45608e2c25aa1275229f99be2d929b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a3b45608e2c25aa1275229f99be2d929b">ExecuteQueryString</a> (this IDbConnection connection, string sqlString, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a3b45608e2c25aa1275229f99be2d929b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement. An exception will be thrown if the connection is not open.  <a href="#a3b45608e2c25aa1275229f99be2d929b">More...</a><br /></td></tr>
+<tr class="separator:a3b45608e2c25aa1275229f99be2d929b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323ca90a66dc4e4319b94718ee6cf35c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a323ca90a66dc4e4319b94718ee6cf35c">ExecuteQueryString</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a323ca90a66dc4e4319b94718ee6cf35c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement. An exception will be thrown if the connection is not open.  <a href="#a323ca90a66dc4e4319b94718ee6cf35c">More...</a><br /></td></tr>
+<tr class="separator:a323ca90a66dc4e4319b94718ee6cf35c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a430c474cab2d89d20604579a66052020"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a430c474cab2d89d20604579a66052020">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a430c474cab2d89d20604579a66052020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a430c474cab2d89d20604579a66052020">More...</a><br /></td></tr>
+<tr class="separator:a430c474cab2d89d20604579a66052020"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51679e971136235758d02f0bcdeb1822"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a51679e971136235758d02f0bcdeb1822">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a51679e971136235758d02f0bcdeb1822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a51679e971136235758d02f0bcdeb1822">More...</a><br /></td></tr>
+<tr class="separator:a51679e971136235758d02f0bcdeb1822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a027aaac95ad6cea7e42317bd2b3ec9ac"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a027aaac95ad6cea7e42317bd2b3ec9ac">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a027aaac95ad6cea7e42317bd2b3ec9ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a027aaac95ad6cea7e42317bd2b3ec9ac">More...</a><br /></td></tr>
+<tr class="separator:a027aaac95ad6cea7e42317bd2b3ec9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d29f18027a4b5f1bba7d2dbf5a2ea6c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a8d29f18027a4b5f1bba7d2dbf5a2ea6c">ExecuteQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDataReader &gt; readerCallback, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a8d29f18027a4b5f1bba7d2dbf5a2ea6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a8d29f18027a4b5f1bba7d2dbf5a2ea6c">More...</a><br /></td></tr>
+<tr class="separator:a8d29f18027a4b5f1bba7d2dbf5a2ea6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfac9ac363eeb9545af9b3a662f438df"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#adfac9ac363eeb9545af9b3a662f438df">ExecuteNonQueryString</a> (this IDbConnection connection, string nonQuerySqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:adfac9ac363eeb9545af9b3a662f438df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement. An exception will be thrown if the connection is not open.  <a href="#adfac9ac363eeb9545af9b3a662f438df">More...</a><br /></td></tr>
+<tr class="separator:adfac9ac363eeb9545af9b3a662f438df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48b91dbba9d032dbd364a0ce48a7238"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#af48b91dbba9d032dbd364a0ce48a7238">ExecuteNonQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:af48b91dbba9d032dbd364a0ce48a7238"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#af48b91dbba9d032dbd364a0ce48a7238">More...</a><br /></td></tr>
+<tr class="separator:af48b91dbba9d032dbd364a0ce48a7238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dcbcb9d09dd691c17bc9652fa2894b1"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a3dcbcb9d09dd691c17bc9652fa2894b1">ExecuteNonQueryEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a3dcbcb9d09dd691c17bc9652fa2894b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement in an Embedded Resource. An exception will be thrown if the connection is not open.  <a href="#a3dcbcb9d09dd691c17bc9652fa2894b1">More...</a><br /></td></tr>
+<tr class="separator:a3dcbcb9d09dd691c17bc9652fa2894b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18988406fddb5b1d39db4d364f258b5"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ae18988406fddb5b1d39db4d364f258b5">ExecuteQueryScalar</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:ae18988406fddb5b1d39db4d364f258b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL statement, returning a scalar value. An exception will be thrown if the connection is not open.  <a href="#ae18988406fddb5b1d39db4d364f258b5">More...</a><br /></td></tr>
+<tr class="separator:ae18988406fddb5b1d39db4d364f258b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc070329fd92b0fa1e2c928671147e0f"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#adc070329fd92b0fa1e2c928671147e0f">ExecuteScalarEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:adc070329fd92b0fa1e2c928671147e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL statement, returning a scalar value. An exception will be thrown if the connection is not open.  <a href="#adc070329fd92b0fa1e2c928671147e0f">More...</a><br /></td></tr>
+<tr class="separator:adc070329fd92b0fa1e2c928671147e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7fb52092d3f2bd4fa11d0da0bffd576"><td class="memItemLeft" align="right" valign="top">static object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ad7fb52092d3f2bd4fa11d0da0bffd576">ExecuteScalarEmbeddedResource</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:ad7fb52092d3f2bd4fa11d0da0bffd576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Query SQL statement, returning a scalar value. An exception will be thrown if the connection is not open.  <a href="#ad7fb52092d3f2bd4fa11d0da0bffd576">More...</a><br /></td></tr>
+<tr class="separator:ad7fb52092d3f2bd4fa11d0da0bffd576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e64ad9f06cca43d119fc75364dcba7f"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a9e64ad9f06cca43d119fc75364dcba7f">GetSingleObjectFromQueryString&lt; T &gt;</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a9e64ad9f06cca43d119fc75364dcba7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a single mapped object from a query string. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open.  <a href="#a9e64ad9f06cca43d119fc75364dcba7f">More...</a><br /></td></tr>
+<tr class="separator:a9e64ad9f06cca43d119fc75364dcba7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20549e54528ba4334ca7113fa68943f2"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a20549e54528ba4334ca7113fa68943f2">GetSingleObjectFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a20549e54528ba4334ca7113fa68943f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open.  <a href="#a20549e54528ba4334ca7113fa68943f2">More...</a><br /></td></tr>
+<tr class="separator:a20549e54528ba4334ca7113fa68943f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53b10a5834036e0e2246b50a8bcf6b4"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#aa53b10a5834036e0e2246b50a8bcf6b4">GetSingleObjectFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:aa53b10a5834036e0e2246b50a8bcf6b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open.  <a href="#aa53b10a5834036e0e2246b50a8bcf6b4">More...</a><br /></td></tr>
+<tr class="separator:aa53b10a5834036e0e2246b50a8bcf6b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb831f47624e0f8d9cbf85346b804c8f"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#adb831f47624e0f8d9cbf85346b804c8f">GetObjectsFromQueryString&lt; T &gt;</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:adb831f47624e0f8d9cbf85346b804c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from a query string. An exception will be thrown if the connection is not open.  <a href="#adb831f47624e0f8d9cbf85346b804c8f">More...</a><br /></td></tr>
+<tr class="separator:adb831f47624e0f8d9cbf85346b804c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8f3f4ea489e102f940854f8ea3a4c55"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; Tuple&lt; T, U &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ac8f3f4ea489e102f940854f8ea3a4c55">GetObjectsFromQueryString&lt; T, U &gt;</a> (this IDbConnection connection, string sqlString, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:ac8f3f4ea489e102f940854f8ea3a4c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from a query string. An exception will be thrown if the connection is not open.  <a href="#ac8f3f4ea489e102f940854f8ea3a4c55">More...</a><br /></td></tr>
+<tr class="separator:ac8f3f4ea489e102f940854f8ea3a4c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae196dbd8508c49353e1737aa13779e46"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ae196dbd8508c49353e1737aa13779e46">GetObjectsFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:ae196dbd8508c49353e1737aa13779e46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open.  <a href="#ae196dbd8508c49353e1737aa13779e46">More...</a><br /></td></tr>
+<tr class="separator:ae196dbd8508c49353e1737aa13779e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28bbe4b7cb773c4b8738bed7826f20d5"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; Tuple&lt; T, U &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a28bbe4b7cb773c4b8738bed7826f20d5">GetObjectsFromEmbeddedResource&lt; T, U &gt;</a> (this IDbConnection connection, string embeddedResource, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a28bbe4b7cb773c4b8738bed7826f20d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open.  <a href="#a28bbe4b7cb773c4b8738bed7826f20d5">More...</a><br /></td></tr>
+<tr class="separator:a28bbe4b7cb773c4b8738bed7826f20d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c60246634c1fda423e48c7e6ddbd266"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a5c60246634c1fda423e48c7e6ddbd266">GetObjectsFromEmbeddedResource&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a5c60246634c1fda423e48c7e6ddbd266"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open.  <a href="#a5c60246634c1fda423e48c7e6ddbd266">More...</a><br /></td></tr>
+<tr class="separator:a5c60246634c1fda423e48c7e6ddbd266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a153750e71b28ba5bd687c95e83485914"><td class="memItemLeft" align="right" valign="top">static IEnumerable&lt; Tuple&lt; T, U &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a153750e71b28ba5bd687c95e83485914">GetObjectsFromEmbeddedResource&lt; T, U &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, Action&lt; IDbCommand &gt; commandCallback=null, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a153750e71b28ba5bd687c95e83485914"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open.  <a href="#a153750e71b28ba5bd687c95e83485914">More...</a><br /></td></tr>
+<tr class="separator:a153750e71b28ba5bd687c95e83485914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab62a6fdee017e2623bed5e2f1e8ebc1f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ab62a6fdee017e2623bed5e2f1e8ebc1f">ExecuteNonQueryStringForObject&lt; T &gt;</a> (this IDbConnection connection, string nonQuerySqlString, T obj, bool validateParameters=false)</td></tr>
+<tr class="memdesc:ab62a6fdee017e2623bed5e2f1e8ebc1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#ab62a6fdee017e2623bed5e2f1e8ebc1f">More...</a><br /></td></tr>
+<tr class="separator:ab62a6fdee017e2623bed5e2f1e8ebc1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af558e620660d15904b4eec510bd47af5"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#af558e620660d15904b4eec510bd47af5">ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, T obj, bool validateParameters=false)</td></tr>
+<tr class="memdesc:af558e620660d15904b4eec510bd47af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement from an embedded resource for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#af558e620660d15904b4eec510bd47af5">More...</a><br /></td></tr>
+<tr class="separator:af558e620660d15904b4eec510bd47af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc6cbdf1b238168f13a6b2a88e309743"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#abc6cbdf1b238168f13a6b2a88e309743">ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, T obj, bool validateParameters=false)</td></tr>
+<tr class="memdesc:abc6cbdf1b238168f13a6b2a88e309743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement from an embedded resource for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#abc6cbdf1b238168f13a6b2a88e309743">More...</a><br /></td></tr>
+<tr class="separator:abc6cbdf1b238168f13a6b2a88e309743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b70dc8befcb44864a49795cd865c50d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a3b70dc8befcb44864a49795cd865c50d">ExecuteNonQueryStringForObjects&lt; T &gt;</a> (this IDbConnection connection, string nonQuerySqlString, IEnumerable&lt; T &gt; objects, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a3b70dc8befcb44864a49795cd865c50d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#a3b70dc8befcb44864a49795cd865c50d">More...</a><br /></td></tr>
+<tr class="separator:a3b70dc8befcb44864a49795cd865c50d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03e05fb2dd4ab39d85a77addd01b12e1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#a03e05fb2dd4ab39d85a77addd01b12e1">ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, IEnumerable&lt; T &gt; objects, bool validateParameters=false)</td></tr>
+<tr class="memdesc:a03e05fb2dd4ab39d85a77addd01b12e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement from an embedded resource for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#a03e05fb2dd4ab39d85a77addd01b12e1">More...</a><br /></td></tr>
+<tr class="separator:a03e05fb2dd4ab39d85a77addd01b12e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace41ced3582ae6d75803703d3213c099"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions.html#ace41ced3582ae6d75803703d3213c099">ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;</a> (this IDbConnection connection, string embeddedResource, System.Reflection.Assembly assembly, IEnumerable&lt; T &gt; objects, bool validateParameters=false)</td></tr>
+<tr class="memdesc:ace41ced3582ae6d75803703d3213c099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes a Non Query SQL Statement from an embedded resource for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open.  <a href="#ace41ced3582ae6d75803703d3213c099">More...</a><br /></td></tr>
+<tr class="separator:ace41ced3582ae6d75803703d3213c099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Extension Methods for System.Data.IDbConnection </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aa556c672e950d5fcf5930de536a85a46"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa556c672e950d5fcf5930de536a85a46">&#9670;&nbsp;</a></span>CommandWithEmbeddedResource() <span class="overload">[1/2]</span></h2>
 
@@ -350,8 +368,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1771dc6ce56e06896c5166aedb9865f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1771dc6ce56e06896c5166aedb9865f6">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResource() <span class="overload">[1/2]</span></h2>
+<a id="af48b91dbba9d032dbd364a0ce48a7238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af48b91dbba9d032dbd364a0ce48a7238">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResource() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -381,7 +399,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -410,8 +428,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af79b3af91a03769be959db25ab7da2c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af79b3af91a03769be959db25ab7da2c4">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResource() <span class="overload">[2/2]</span></h2>
+<a id="a3dcbcb9d09dd691c17bc9652fa2894b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dcbcb9d09dd691c17bc9652fa2894b1">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResource() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -447,7 +465,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -477,8 +495,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad0536fa39725f5d74e852d8557e809a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0536fa39725f5d74e852d8557e809a3">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;() <span class="overload">[1/2]</span></h2>
+<a id="af558e620660d15904b4eec510bd47af5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af558e620660d15904b4eec510bd47af5">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -508,7 +526,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -523,7 +541,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Executes a Non Query SQL Statement for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
+<p>Executes a Non Query SQL Statement from an embedded resource for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
@@ -551,8 +569,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a240702d72ab523c5e82b8609ede4c68c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a240702d72ab523c5e82b8609ede4c68c">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;() <span class="overload">[2/2]</span></h2>
+<a id="abc6cbdf1b238168f13a6b2a88e309743"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc6cbdf1b238168f13a6b2a88e309743">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObject&lt; T &gt;() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -588,7 +606,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -603,7 +621,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Executes a Non Query SQL Statement for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
+<p>Executes a Non Query SQL Statement from an embedded resource for a DbField decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
@@ -632,8 +650,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a651d37d4cc8638362c2aa61f404ca6e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a651d37d4cc8638362c2aa61f404ca6e4">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;() <span class="overload">[1/2]</span></h2>
+<a id="a03e05fb2dd4ab39d85a77addd01b12e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03e05fb2dd4ab39d85a77addd01b12e1">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -663,7 +681,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -678,7 +696,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
+<p>Executes a Non Query SQL Statement from an embedded resource for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
@@ -705,8 +723,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a970d3ce30d0c0b0eaf25b96b9ebda432"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a970d3ce30d0c0b0eaf25b96b9ebda432">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;() <span class="overload">[2/2]</span></h2>
+<a id="ace41ced3582ae6d75803703d3213c099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace41ced3582ae6d75803703d3213c099">&#9670;&nbsp;</a></span>ExecuteNonQueryEmbeddedResourceForObjects&lt; T &gt;() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -742,7 +760,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -757,7 +775,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
+<p>Executes a Non Query SQL Statement from an embedded resource for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
@@ -785,8 +803,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab5556c5cbfe794c4669a4dd9ba80475b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5556c5cbfe794c4669a4dd9ba80475b">&#9670;&nbsp;</a></span>ExecuteNonQueryString()</h2>
+<a id="adfac9ac363eeb9545af9b3a662f438df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfac9ac363eeb9545af9b3a662f438df">&#9670;&nbsp;</a></span>ExecuteNonQueryString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -816,7 +834,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -845,8 +863,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab213db156b4cc0b81d0bf4a00b777765"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab213db156b4cc0b81d0bf4a00b777765">&#9670;&nbsp;</a></span>ExecuteNonQueryStringForObject&lt; T &gt;()</h2>
+<a id="ab62a6fdee017e2623bed5e2f1e8ebc1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab62a6fdee017e2623bed5e2f1e8ebc1f">&#9670;&nbsp;</a></span>ExecuteNonQueryStringForObject&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -876,7 +894,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -919,8 +937,82 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adf6d4a060eb0a30d358d31aa66555f1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf6d4a060eb0a30d358d31aa66555f1c">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[1/4]</span></h2>
+<a id="a3b70dc8befcb44864a49795cd865c50d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b70dc8befcb44864a49795cd865c50d">&#9670;&nbsp;</a></span>ExecuteNonQueryStringForObjects&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void BlueCloud.Extensions.Data.IDbConnectionExtensions.ExecuteNonQueryStringForObjects&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">this IDbConnection&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>nonQuerySqlString</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">IEnumerable&lt; T &gt;&#160;</td>
+          <td class="paramname"><em>objects</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Executes a Non Query SQL Statement for a enumerable list of DbField decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
+    <tr><td class="paramname">nonQuerySqlString</td><td>Non Query SQL <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_string.html">String</a></td></tr>
+    <tr><td class="paramname">objects</td><td>Enumerable list of model objects from which parameters are to be populated</td></tr>
+    <tr><td class="paramname">validateParameters</td><td>If set to <code>true</code> validate parameters.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of records affected</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td><a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_data.html">Data</a> Type</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a430c474cab2d89d20604579a66052020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a430c474cab2d89d20604579a66052020">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -962,7 +1054,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -992,8 +1084,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a29824247ed676b9d944fc63bfc48875f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29824247ed676b9d944fc63bfc48875f">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[2/4]</span></h2>
+<a id="a51679e971136235758d02f0bcdeb1822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51679e971136235758d02f0bcdeb1822">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1029,7 +1121,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1058,8 +1150,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af955729e166df12ee7c5856798c7e047"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af955729e166df12ee7c5856798c7e047">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[3/4]</span></h2>
+<a id="a027aaac95ad6cea7e42317bd2b3ec9ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a027aaac95ad6cea7e42317bd2b3ec9ac">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1095,7 +1187,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1124,8 +1216,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7b2fc0f0635efd4c13fc3201abc8757f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b2fc0f0635efd4c13fc3201abc8757f">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[4/4]</span></h2>
+<a id="a8d29f18027a4b5f1bba7d2dbf5a2ea6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d29f18027a4b5f1bba7d2dbf5a2ea6c">&#9670;&nbsp;</a></span>ExecuteQueryEmbeddedResource() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1155,7 +1247,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1183,8 +1275,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac7cb1d2c56a995698c583329b4fe8cef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7cb1d2c56a995698c583329b4fe8cef">&#9670;&nbsp;</a></span>ExecuteQueryScalar()</h2>
+<a id="ae18988406fddb5b1d39db4d364f258b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18988406fddb5b1d39db4d364f258b5">&#9670;&nbsp;</a></span>ExecuteQueryScalar()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1214,7 +1306,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1243,8 +1335,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a75afa37354f81fa82c594e06d5bda02c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75afa37354f81fa82c594e06d5bda02c">&#9670;&nbsp;</a></span>ExecuteQueryString() <span class="overload">[1/2]</span></h2>
+<a id="a3b45608e2c25aa1275229f99be2d929b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b45608e2c25aa1275229f99be2d929b">&#9670;&nbsp;</a></span>ExecuteQueryString() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1274,7 +1366,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1302,8 +1394,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad6bda36c6d7ca4641d58888ffdd3fb7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6bda36c6d7ca4641d58888ffdd3fb7a">&#9670;&nbsp;</a></span>ExecuteQueryString() <span class="overload">[2/2]</span></h2>
+<a id="a323ca90a66dc4e4319b94718ee6cf35c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323ca90a66dc4e4319b94718ee6cf35c">&#9670;&nbsp;</a></span>ExecuteQueryString() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1339,7 +1431,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1368,8 +1460,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1280135ed5932e67c193fc5367b520a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1280135ed5932e67c193fc5367b520a9">&#9670;&nbsp;</a></span>ExecuteScalarEmbeddedResource() <span class="overload">[1/2]</span></h2>
+<a id="adc070329fd92b0fa1e2c928671147e0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc070329fd92b0fa1e2c928671147e0f">&#9670;&nbsp;</a></span>ExecuteScalarEmbeddedResource() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1405,7 +1497,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1435,8 +1527,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab1c2668a66de9eb0c17b411cc246c9a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1c2668a66de9eb0c17b411cc246c9a1">&#9670;&nbsp;</a></span>ExecuteScalarEmbeddedResource() <span class="overload">[2/2]</span></h2>
+<a id="ad7fb52092d3f2bd4fa11d0da0bffd576"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7fb52092d3f2bd4fa11d0da0bffd576">&#9670;&nbsp;</a></span>ExecuteScalarEmbeddedResource() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1466,7 +1558,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1495,8 +1587,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a12fc63eb1a4e9f80573d1b78bf5278b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12fc63eb1a4e9f80573d1b78bf5278b0">&#9670;&nbsp;</a></span>GetObjectsFromEmbeddedResource&lt; T &gt;() <span class="overload">[1/2]</span></h2>
+<a id="ae196dbd8508c49353e1737aa13779e46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae196dbd8508c49353e1737aa13779e46">&#9670;&nbsp;</a></span>GetObjectsFromEmbeddedResource&lt; T &gt;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1526,7 +1618,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1569,8 +1661,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9e04d58bab71771401e4b7fa7fb5fafc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e04d58bab71771401e4b7fa7fb5fafc">&#9670;&nbsp;</a></span>GetObjectsFromEmbeddedResource&lt; T &gt;() <span class="overload">[2/2]</span></h2>
+<a id="a5c60246634c1fda423e48c7e6ddbd266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c60246634c1fda423e48c7e6ddbd266">&#9670;&nbsp;</a></span>GetObjectsFromEmbeddedResource&lt; T &gt;() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1606,7 +1698,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1650,8 +1742,167 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3af40a1682397ba1c7e2c60c6bf4b9ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3af40a1682397ba1c7e2c60c6bf4b9ce">&#9670;&nbsp;</a></span>GetObjectsFromQueryString&lt; T &gt;()</h2>
+<a id="a28bbe4b7cb773c4b8738bed7826f20d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28bbe4b7cb773c4b8738bed7826f20d5">&#9670;&nbsp;</a></span>GetObjectsFromEmbeddedResource&lt; T, U &gt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;Tuple&lt;T, U&gt; &gt; BlueCloud.Extensions.Data.IDbConnectionExtensions.GetObjectsFromEmbeddedResource&lt; T, U &gt; </td>
+          <td>(</td>
+          <td class="paramtype">this IDbConnection&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>embeddedResource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; IDbCommand &gt;&#160;</td>
+          <td class="paramname"><em>commandCallback</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. </p>
+<dl class="section return"><dt>Returns</dt><dd>Enumerable of Mapped Objects</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
+    <tr><td class="paramname">embeddedResource</td><td>Embedded Resource Name</td></tr>
+    <tr><td class="paramname">commandCallback</td><td>Parameter lambda expression callback in the form (command) =&gt; { }</td></tr>
+    <tr><td class="paramname">validateParameters</td><td>If set to <code>true</code> validate parameters.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>First <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_data.html">Data</a> Type</td></tr>
+    <tr><td class="paramname">U</td><td>Second <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_data.html">Data</a> Type</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>U</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a153750e71b28ba5bd687c95e83485914"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a153750e71b28ba5bd687c95e83485914">&#9670;&nbsp;</a></span>GetObjectsFromEmbeddedResource&lt; T, U &gt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;Tuple&lt;T, U&gt; &gt; BlueCloud.Extensions.Data.IDbConnectionExtensions.GetObjectsFromEmbeddedResource&lt; T, U &gt; </td>
+          <td>(</td>
+          <td class="paramtype">this IDbConnection&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>embeddedResource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System.Reflection.Assembly&#160;</td>
+          <td class="paramname"><em>assembly</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; IDbCommand &gt;&#160;</td>
+          <td class="paramname"><em>commandCallback</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. </p>
+<dl class="section return"><dt>Returns</dt><dd>Enumerable of Mapped Objects</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
+    <tr><td class="paramname">embeddedResource</td><td>Embedded Resource Name</td></tr>
+    <tr><td class="paramname">assembly</td><td><a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_assembly.html">Assembly</a> Where Embedded Resource Resides</td></tr>
+    <tr><td class="paramname">commandCallback</td><td>Parameter lambda expression callback in the form (command) =&gt; { }</td></tr>
+    <tr><td class="paramname">validateParameters</td><td>If set to <code>true</code> validate parameters.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>First <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_data.html">Data</a> Type</td></tr>
+    <tr><td class="paramname">U</td><td>Second <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_data.html">Data</a> Type</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>U</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="adb831f47624e0f8d9cbf85346b804c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb831f47624e0f8d9cbf85346b804c8f">&#9670;&nbsp;</a></span>GetObjectsFromQueryString&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1681,7 +1932,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1724,8 +1975,84 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a420c73a06abb1abcaee6181cdbc899d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a420c73a06abb1abcaee6181cdbc899d3">&#9670;&nbsp;</a></span>GetSingleObjectFromEmbeddedResource&lt; T &gt;() <span class="overload">[1/2]</span></h2>
+<a id="ac8f3f4ea489e102f940854f8ea3a4c55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8f3f4ea489e102f940854f8ea3a4c55">&#9670;&nbsp;</a></span>GetObjectsFromQueryString&lt; T, U &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IEnumerable&lt;Tuple&lt;T, U&gt; &gt; BlueCloud.Extensions.Data.IDbConnectionExtensions.GetObjectsFromQueryString&lt; T, U &gt; </td>
+          <td>(</td>
+          <td class="paramtype">this IDbConnection&#160;</td>
+          <td class="paramname"><em>connection</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>sqlString</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; IDbCommand &gt;&#160;</td>
+          <td class="paramname"><em>commandCallback</em> = <code>null</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets mapped objects from a query string. An exception will be thrown if the connection is not open. </p>
+<dl class="section return"><dt>Returns</dt><dd>Enumerable of Mapped Objects</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connection</td><td>IDbConnection</td></tr>
+    <tr><td class="paramname">sqlString</td><td>Query SQL <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_string.html">String</a> to Execute</td></tr>
+    <tr><td class="paramname">commandCallback</td><td>Parameter lambda expression callback in the form (command) =&gt; { }</td></tr>
+    <tr><td class="paramname">validateParameters</td><td>If set to <code>true</code> validate parameters.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>First <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_data.html">Data</a> Type</td></tr>
+    <tr><td class="paramname">U</td><td>Second <a class="el" href="namespace_blue_cloud_1_1_extensions_1_1_data.html">Data</a> Type</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="typeconstraint">
+<dl><dt><b>Type Constraints</b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+<tr><td valign="top"><em>U</em></td><td>&#160;:</td><td valign="top"><em>class</em></td><td>&#160;</td></tr>
+</table>
+</dd>
+</dl>
+</div>
+
+</div>
+</div>
+<a id="a20549e54528ba4334ca7113fa68943f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20549e54528ba4334ca7113fa68943f2">&#9670;&nbsp;</a></span>GetSingleObjectFromEmbeddedResource&lt; T &gt;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1755,7 +2082,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1798,8 +2125,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afd4ba3f26ddc5d2b03097a670a9665e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd4ba3f26ddc5d2b03097a670a9665e2">&#9670;&nbsp;</a></span>GetSingleObjectFromEmbeddedResource&lt; T &gt;() <span class="overload">[2/2]</span></h2>
+<a id="aa53b10a5834036e0e2246b50a8bcf6b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa53b10a5834036e0e2246b50a8bcf6b4">&#9670;&nbsp;</a></span>GetSingleObjectFromEmbeddedResource&lt; T &gt;() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1835,7 +2162,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1879,8 +2206,8 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a94ad7ae2f9f42847dd24e76bc2e59aad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94ad7ae2f9f42847dd24e76bc2e59aad">&#9670;&nbsp;</a></span>GetSingleObjectFromQueryString&lt; T &gt;()</h2>
+<a id="a9e64ad9f06cca43d119fc75364dcba7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e64ad9f06cca43d119fc75364dcba7f">&#9670;&nbsp;</a></span>GetSingleObjectFromQueryString&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1910,7 +2237,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>validateParameters</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>validateParameters</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

@@ -2,6 +2,9 @@
 
 namespace BlueCloud.Extensions.Data
 {
+    /// <summary>
+    /// DbField Attribute used to annotate properties to be mapped to database fields.
+    /// </summary>
     public class DbFieldAttribute : Attribute
     {
         /// <summary>

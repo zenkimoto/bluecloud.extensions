@@ -1,0 +1,212 @@
+\hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions}{}\section{Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions Class Reference}
+\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions}\index{Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions@{Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions}}
+
+
+Extension Methods for System.\+Data.\+I\+Data\+Reader  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static T \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a9f0ec28408443dd8a53d3eebb81e4dda}{Get\+Value$<$ T $>$}} (this I\+Data\+Reader data\+Reader, string field\+Name)
+\begin{DoxyCompactList}\small\item\em Returns a value from the database with a given type. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ T $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a96d6babf950003a62ab3dab97d868c53}{Map\+To\+Objects$<$ T $>$}} (this I\+Data\+Reader data\+Reader)
+\begin{DoxyCompactList}\small\item\em Maps a data reader result to model classes \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ Tuple$<$ T, U $>$ $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_af125bc42a7dc02955ce4322f138c8648}{Map\+To\+Objects$<$ T, U $>$}} (this I\+Data\+Reader data\+Reader)
+\begin{DoxyCompactList}\small\item\em Maps a data reader result to model classes \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ T $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a4cb93e1c624aa13c212084880c57c243}{Map\+To\+Objects$<$ T $>$}} (this I\+Data\+Reader data\+Reader, int take)
+\begin{DoxyCompactList}\small\item\em Maps a data reader result to model classes \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ Tuple$<$ T, U $>$ $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_ac1ab442430a138f00d6845d5d7b30241}{Map\+To\+Objects$<$ T, U $>$}} (this I\+Data\+Reader data\+Reader, int take)
+\begin{DoxyCompactList}\small\item\em Maps to objects. \end{DoxyCompactList}\item 
+static Dictionary$<$ string, int $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a6f7b4f6e3b78a8a6eea6bcd8927c5531}{Get\+Column\+Ordinals}} (this I\+Data\+Record record)
+\begin{DoxyCompactList}\small\item\em Returns a dictionary mapping of a database field name to column ordinal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{interface_blue_cloud_1_1_extensions_1_1_cache_1_1_i_cacheable}{I\+Cacheable}}$<$ List$<$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_db_mapping}{Db\+Mapping}} $>$ $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_aec5e45db6160d2502c2eceead22b1a83}{cache}} = new \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_cache_1_1_default_cache}{Default\+Cache}}$<$List$<$\mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_db_mapping}{Db\+Mapping}}$>$$>$(new Time\+Span(2, 0, 0))
+\begin{DoxyCompactList}\small\item\em I\+Cacheable interface used to cache reflected property information. By default, items are cached in a sliding 2 hour window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Extension Methods for System.\+Data.\+I\+Data\+Reader 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a6f7b4f6e3b78a8a6eea6bcd8927c5531}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a6f7b4f6e3b78a8a6eea6bcd8927c5531}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}!Get\+Column\+Ordinals@{Get\+Column\+Ordinals}}
+\index{Get\+Column\+Ordinals@{Get\+Column\+Ordinals}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Column\+Ordinals()}{GetColumnOrdinals()}}
+{\footnotesize\ttfamily static Dictionary$<$string, int$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions.\+Get\+Column\+Ordinals (\begin{DoxyParamCaption}\item[{this I\+Data\+Record}]{record }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns a dictionary mapping of a database field name to column ordinal. 
+
+\begin{DoxyReturn}{Returns}
+Mapping of field name to column ordinal
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em record} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Record\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a9f0ec28408443dd8a53d3eebb81e4dda}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a9f0ec28408443dd8a53d3eebb81e4dda}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}!Get\+Value$<$ T $>$@{Get\+Value$<$ T $>$}}
+\index{Get\+Value$<$ T $>$@{Get\+Value$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Value$<$ T $>$()}{GetValue< T >()}}
+{\footnotesize\ttfamily static T Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions.\+Get\+Value$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Data\+Reader}]{data\+Reader,  }\item[{string}]{field\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Returns a value from the database with a given type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em field\+Name} & Database Field Name\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value from database
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a96d6babf950003a62ab3dab97d868c53}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a96d6babf950003a62ab3dab97d868c53}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}!Map\+To\+Objects$<$ T $>$@{Map\+To\+Objects$<$ T $>$}}
+\index{Map\+To\+Objects$<$ T $>$@{Map\+To\+Objects$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}}
+\subsubsection{\texorpdfstring{Map\+To\+Objects$<$ T $>$()}{MapToObjects< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$T$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions.\+Map\+To\+Objects$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Data\+Reader}]{data\+Reader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Maps a data reader result to model classes 
+
+\begin{DoxyReturn}{Returns}
+Mapped Model Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Reader} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} reader\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a4cb93e1c624aa13c212084880c57c243}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_a4cb93e1c624aa13c212084880c57c243}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}!Map\+To\+Objects$<$ T $>$@{Map\+To\+Objects$<$ T $>$}}
+\index{Map\+To\+Objects$<$ T $>$@{Map\+To\+Objects$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}}
+\subsubsection{\texorpdfstring{Map\+To\+Objects$<$ T $>$()}{MapToObjects< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$T$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions.\+Map\+To\+Objects$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Data\+Reader}]{data\+Reader,  }\item[{int}]{take }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Maps a data reader result to model classes 
+
+Amount of records to map. A negative 1 (-\/1) will map all records. 
+
+\begin{DoxyReturn}{Returns}
+Mapped Model Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Reader} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} reader\\
+\hline
+{\em take} & Amount of records to map. A negative 1 (-\/1) will map all records.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_af125bc42a7dc02955ce4322f138c8648}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_af125bc42a7dc02955ce4322f138c8648}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}!Map\+To\+Objects$<$ T, U $>$@{Map\+To\+Objects$<$ T, U $>$}}
+\index{Map\+To\+Objects$<$ T, U $>$@{Map\+To\+Objects$<$ T, U $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}}
+\subsubsection{\texorpdfstring{Map\+To\+Objects$<$ T, U $>$()}{MapToObjects< T, U >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$Tuple$<$T, U$>$ $>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions.\+Map\+To\+Objects$<$ T, U $>$ (\begin{DoxyParamCaption}\item[{this I\+Data\+Reader}]{data\+Reader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Maps a data reader result to model classes 
+
+\begin{DoxyReturn}{Returns}
+Tuple of Mapped Model Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Reader} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} reader\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & First \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+{\em U} & Second \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em U} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_ac1ab442430a138f00d6845d5d7b30241}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_ac1ab442430a138f00d6845d5d7b30241}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}!Map\+To\+Objects$<$ T, U $>$@{Map\+To\+Objects$<$ T, U $>$}}
+\index{Map\+To\+Objects$<$ T, U $>$@{Map\+To\+Objects$<$ T, U $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}}
+\subsubsection{\texorpdfstring{Map\+To\+Objects$<$ T, U $>$()}{MapToObjects< T, U >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$Tuple$<$T, U$>$ $>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions.\+Map\+To\+Objects$<$ T, U $>$ (\begin{DoxyParamCaption}\item[{this I\+Data\+Reader}]{data\+Reader,  }\item[{int}]{take }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Maps to objects. 
+
+\begin{DoxyReturn}{Returns}
+The to objects.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Reader} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} reader.\\
+\hline
+{\em take} & Take.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The 1st type parameter.\\
+\hline
+{\em U} & The 2nd type parameter.\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em U} : {\em class}]\end{description}
+\end{Desc}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_aec5e45db6160d2502c2eceead22b1a83}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_data_reader_extensions_aec5e45db6160d2502c2eceead22b1a83}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}!cache@{cache}}
+\index{cache@{cache}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Data\+Reader\+Extensions}}
+\subsubsection{\texorpdfstring{cache}{cache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_blue_cloud_1_1_extensions_1_1_cache_1_1_i_cacheable}{I\+Cacheable}}$<$List$<$\mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_db_mapping}{Db\+Mapping}}$>$ $>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Data\+Reader\+Extensions.\+cache = new \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_cache_1_1_default_cache}{Default\+Cache}}$<$List$<$\mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_db_mapping}{Db\+Mapping}}$>$$>$(new Time\+Span(2, 0, 0))\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+I\+Cacheable interface used to cache reflected property information. By default, items are cached in a sliding 2 hour window. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Blue\+Cloud.\+Extensions/\+Data/I\+Data\+Reader\+Extensions.\+cs\end{DoxyCompactItemize}

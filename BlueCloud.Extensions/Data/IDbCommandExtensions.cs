@@ -11,6 +11,9 @@ using System.Diagnostics;
 
 namespace BlueCloud.Extensions.Data
 {
+    /// <summary>
+    /// Extension Methods for System.Data.IDbCommand
+    /// </summary>
     public static class IDbCommandExtensions
     {
         /// <summary>

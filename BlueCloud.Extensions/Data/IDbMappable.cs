@@ -1,5 +1,8 @@
 ﻿namespace BlueCloud.Extensions.Data
 {
+    /// <summary>
+    /// IDbHydrationOverridable used to customize property hydration.
+    /// </summary>
     public interface IDbHydrationOverridable
     {
         /// <summary>
@@ -18,6 +21,9 @@
         object OverridePropertyHydration(string propertyName, object value);
     }
 
+    /// <summary>
+    /// IDbSerializationOverridable used to customize property database serialization.
+    /// </summary>
     public interface IDbSerializationOverridable
     {
         /// <summary>

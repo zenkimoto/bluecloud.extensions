@@ -1,0 +1,216 @@
+\hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions}{}\section{Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions Class Reference}
+\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions}\index{Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions@{Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions}}
+
+
+Extension Methods for System.\+Data.\+I\+Db\+Command  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ade7a7c7734eb0342da8adab3fd64e1db}{Load\+Embedded\+Resource}} (this I\+Db\+Command command, string embedded\+Resource)
+\begin{DoxyCompactList}\small\item\em Loads an Embedded Resource into the Command Text \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_aab4280488db21f8215f49ca35a1f8721}{Load\+Embedded\+Resource}} (this I\+Db\+Command command, string embedded\+Resource, System.\+Reflection.\+Assembly assembly)
+\begin{DoxyCompactList}\small\item\em Loads an Embedded Resource into the Command Text \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_a823e1e5bb08e6a7970e88c262b0d8945}{Validate\+Parameters}} (this I\+Db\+Command command)
+\begin{DoxyCompactList}\small\item\em Validates if parameters specified in the S\+QL Statement matches the parameters added to the Parameter Collection. This method is not Optimized. This method is O\+N\+LY meant to be executed in D\+E\+B\+UG mode during development. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_af870b6bc8fd4669588dc5cccce54c89e}{Add\+Parameter$<$ T $>$}} (this I\+Db\+Command command, string name, T value, Action$<$ I\+Db\+Data\+Parameter $>$ parameter\+Callback=null)
+\begin{DoxyCompactList}\small\item\em Adds a new database parameter. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ab164a63709c4d2e66f95b8b993edaf40}{Add\+Output\+Parameter}} (this I\+Db\+Command command, string name, Db\+Type type, Action$<$ I\+Db\+Data\+Parameter $>$ parameter\+Callback=null)
+\begin{DoxyCompactList}\small\item\em Adds a new output database parameter. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ae1ef7c72419b652eba87c1c7e36ea0f9}{Bind\+Parameters\+From\+Object$<$ T $>$}} (this I\+Db\+Command command, T model)
+\begin{DoxyCompactList}\small\item\em Creates parameters and binds mapped properties to database parameters. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ string $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_a0a20fe106170359ea8bb089be6a68cc2}{Parameter\+Names\+From\+Command\+Text}} (this I\+Db\+Command command)
+\begin{DoxyCompactList}\small\item\em Parameter names in S\+QL (Command\+Text) \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ string $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_afbe2b511da57a9b8c2ae9f7891b8a6cb}{Parameter\+Names}} (this I\+Db\+Command command)
+\begin{DoxyCompactList}\small\item\em Parameter names in the Parameters collection. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_af7e1bd2cfb81e60899ca6aec80b3f56a}{Remove\+Parameter}} (this I\+Db\+Command command, string parameter\+Name)
+\begin{DoxyCompactList}\small\item\em Removes a database parameter from the command object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Extension Methods for System.\+Data.\+I\+Db\+Command 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ab164a63709c4d2e66f95b8b993edaf40}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ab164a63709c4d2e66f95b8b993edaf40}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Add\+Output\+Parameter@{Add\+Output\+Parameter}}
+\index{Add\+Output\+Parameter@{Add\+Output\+Parameter}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Add\+Output\+Parameter()}{AddOutputParameter()}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Add\+Output\+Parameter (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command,  }\item[{string}]{name,  }\item[{Db\+Type}]{type,  }\item[{Action$<$ I\+Db\+Data\+Parameter $>$}]{parameter\+Callback = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Adds a new output database parameter. 
+
+\begin{DoxyReturn}{Returns}
+The output parameter.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+{\em name} & Parameter Name\\
+\hline
+{\em type} & Database Type\\
+\hline
+{\em parameter\+Callback} & Callback to modify additional parameter properties.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_af870b6bc8fd4669588dc5cccce54c89e}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_af870b6bc8fd4669588dc5cccce54c89e}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Add\+Parameter$<$ T $>$@{Add\+Parameter$<$ T $>$}}
+\index{Add\+Parameter$<$ T $>$@{Add\+Parameter$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Add\+Parameter$<$ T $>$()}{AddParameter< T >()}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Add\+Parameter$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command,  }\item[{string}]{name,  }\item[{T}]{value,  }\item[{Action$<$ I\+Db\+Data\+Parameter $>$}]{parameter\+Callback = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Adds a new database parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+{\em name} & Parameter Name\\
+\hline
+{\em value} & Value\\
+\hline
+{\em parameter\+Callback} & Callback to modify additional parameter properties.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ae1ef7c72419b652eba87c1c7e36ea0f9}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ae1ef7c72419b652eba87c1c7e36ea0f9}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Bind\+Parameters\+From\+Object$<$ T $>$@{Bind\+Parameters\+From\+Object$<$ T $>$}}
+\index{Bind\+Parameters\+From\+Object$<$ T $>$@{Bind\+Parameters\+From\+Object$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Bind\+Parameters\+From\+Object$<$ T $>$()}{BindParametersFromObject< T >()}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Bind\+Parameters\+From\+Object$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command,  }\item[{T}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates parameters and binds mapped properties to database parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+{\em model} & Model Object to Bind\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ade7a7c7734eb0342da8adab3fd64e1db}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_ade7a7c7734eb0342da8adab3fd64e1db}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Load\+Embedded\+Resource@{Load\+Embedded\+Resource}}
+\index{Load\+Embedded\+Resource@{Load\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Load\+Embedded\+Resource()}{LoadEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Load\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command,  }\item[{string}]{embedded\+Resource }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Loads an Embedded Resource into the Command Text 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_aab4280488db21f8215f49ca35a1f8721}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_aab4280488db21f8215f49ca35a1f8721}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Load\+Embedded\+Resource@{Load\+Embedded\+Resource}}
+\index{Load\+Embedded\+Resource@{Load\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Load\+Embedded\+Resource()}{LoadEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Load\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Loads an Embedded Resource into the Command Text 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+{\em embedded\+Resource} & Embedded Resource\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}}\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_afbe2b511da57a9b8c2ae9f7891b8a6cb}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_afbe2b511da57a9b8c2ae9f7891b8a6cb}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Parameter\+Names@{Parameter\+Names}}
+\index{Parameter\+Names@{Parameter\+Names}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Parameter\+Names()}{ParameterNames()}}
+{\footnotesize\ttfamily static I\+Enumerable$<$string$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Parameter\+Names (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Parameter names in the Parameters collection. 
+
+\begin{DoxyReturn}{Returns}
+Enumerable List of Parameter Names
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_a0a20fe106170359ea8bb089be6a68cc2}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_a0a20fe106170359ea8bb089be6a68cc2}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Parameter\+Names\+From\+Command\+Text@{Parameter\+Names\+From\+Command\+Text}}
+\index{Parameter\+Names\+From\+Command\+Text@{Parameter\+Names\+From\+Command\+Text}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Parameter\+Names\+From\+Command\+Text()}{ParameterNamesFromCommandText()}}
+{\footnotesize\ttfamily static I\+Enumerable$<$string$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Parameter\+Names\+From\+Command\+Text (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Parameter names in S\+QL (Command\+Text) 
+
+\begin{DoxyReturn}{Returns}
+An enumerable list of parameter names.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_af7e1bd2cfb81e60899ca6aec80b3f56a}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_af7e1bd2cfb81e60899ca6aec80b3f56a}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Remove\+Parameter@{Remove\+Parameter}}
+\index{Remove\+Parameter@{Remove\+Parameter}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Remove\+Parameter()}{RemoveParameter()}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Remove\+Parameter (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command,  }\item[{string}]{parameter\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Removes a database parameter from the command object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & I\+Db\+Command\\
+\hline
+{\em parameter\+Name} & Parameter name of parameter to remove.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_a823e1e5bb08e6a7970e88c262b0d8945}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_command_extensions_a823e1e5bb08e6a7970e88c262b0d8945}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}!Validate\+Parameters@{Validate\+Parameters}}
+\index{Validate\+Parameters@{Validate\+Parameters}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Command\+Extensions}}
+\subsubsection{\texorpdfstring{Validate\+Parameters()}{ValidateParameters()}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Command\+Extensions.\+Validate\+Parameters (\begin{DoxyParamCaption}\item[{this I\+Db\+Command}]{command }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Validates if parameters specified in the S\+QL Statement matches the parameters added to the Parameter Collection. This method is not Optimized. This method is O\+N\+LY meant to be executed in D\+E\+B\+UG mode during development. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Blue\+Cloud.\+Extensions/\+Data/I\+Db\+Command\+Extensions.\+cs\end{DoxyCompactItemize}

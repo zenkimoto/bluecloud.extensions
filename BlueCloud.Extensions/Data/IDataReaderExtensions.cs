@@ -6,6 +6,9 @@ using BlueCloud.Extensions.Cache;
 
 namespace BlueCloud.Extensions.Data
 {
+    /// <summary>
+    /// Extension Methods for System.Data.IDataReader
+    /// </summary>
     public static class IDataReaderExtensions
     {
         /// <summary>

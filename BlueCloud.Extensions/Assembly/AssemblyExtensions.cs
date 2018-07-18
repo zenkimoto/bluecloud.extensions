@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace BlueCloud.Extensions.Assembly
 {
+    /// <summary>
+    /// Extension Methods for System.Reflection.Assembly
+    /// </summary>
     public static class AssemblyExtensions
     {
         /// <summary>

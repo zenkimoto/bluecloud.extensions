@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace BlueCloud.Extensions.Collections
 {
+    /// <summary>
+    /// Extension Methods for System.Text.RegularExpressions.MatchCollection
+    /// </summary>
     public static class MatchCollectionExtensions
     {
         /// <summary>
@@ -26,6 +29,9 @@ namespace BlueCloud.Extensions.Collections
         }
     }
 
+    /// <summary>
+    /// Extension Methods for the IEnumerable Interface.
+    /// </summary>
     public static class IEnumerableExtensions
     {
         /// <summary>

@@ -3,6 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace BlueCloud.Extensions.String
 {
+    /// <summary>
+    /// Extension Methods for System.String
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>

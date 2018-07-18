@@ -1,0 +1,956 @@
+\hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions}{}\section{Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions Class Reference}
+\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions}\index{Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions@{Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions}}
+
+
+Extension Methods for System.\+Data.\+I\+Db\+Connection  
+
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static I\+Db\+Command \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ace25288fc9d48650a733cb64b1ba1d51}{Command\+With\+Sql\+String}} (this I\+Db\+Connection connection, string sql\+String)
+\begin{DoxyCompactList}\small\item\em Creates a new I\+Db\+Command with an initialized S\+QL Statement. \end{DoxyCompactList}\item 
+static I\+Db\+Command \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3ab3a6435b37ddb3254ed1be83bb74c9}{Command\+With\+Stored\+Procedure}} (this I\+Db\+Connection connection, string stored\+Procedure)
+\begin{DoxyCompactList}\small\item\em Creates a new I\+Db\+Command with an initialized Stored Procedure Name. \end{DoxyCompactList}\item 
+static I\+Db\+Command \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_aa556c672e950d5fcf5930de536a85a46}{Command\+With\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource)
+\begin{DoxyCompactList}\small\item\em Creates a new I\+Db\+Command with an initialized from a specifed embedded resource. \end{DoxyCompactList}\item 
+static I\+Db\+Command \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a46009b6907850de6e6d764d5dabd4d4a}{Command\+With\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly)
+\begin{DoxyCompactList}\small\item\em Creates a new I\+Db\+Command with an initialized from a specifed embedded resource. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3b45608e2c25aa1275229f99be2d929b}{Execute\+Query\+String}} (this I\+Db\+Connection connection, string sql\+String, Action$<$ I\+Data\+Reader $>$ reader\+Callback, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL Statement. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a323ca90a66dc4e4319b94718ee6cf35c}{Execute\+Query\+String}} (this I\+Db\+Connection connection, string sql\+String, Action$<$ I\+Db\+Command $>$ command\+Callback, Action$<$ I\+Data\+Reader $>$ reader\+Callback, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL Statement. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a430c474cab2d89d20604579a66052020}{Execute\+Query\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, Action$<$ I\+Db\+Command $>$ command\+Callback, Action$<$ I\+Data\+Reader $>$ reader\+Callback, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a51679e971136235758d02f0bcdeb1822}{Execute\+Query\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, Action$<$ I\+Data\+Reader $>$ reader\+Callback, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a027aaac95ad6cea7e42317bd2b3ec9ac}{Execute\+Query\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, Action$<$ I\+Db\+Command $>$ command\+Callback, Action$<$ I\+Data\+Reader $>$ reader\+Callback, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a8d29f18027a4b5f1bba7d2dbf5a2ea6c}{Execute\+Query\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, Action$<$ I\+Data\+Reader $>$ reader\+Callback, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adfac9ac363eeb9545af9b3a662f438df}{Execute\+Non\+Query\+String}} (this I\+Db\+Connection connection, string non\+Query\+Sql\+String, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_af48b91dbba9d032dbd364a0ce48a7238}{Execute\+Non\+Query\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3dcbcb9d09dd691c17bc9652fa2894b1}{Execute\+Non\+Query\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ae18988406fddb5b1d39db4d364f258b5}{Execute\+Query\+Scalar}} (this I\+Db\+Connection connection, string sql\+String, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL statement, returning a scalar value. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adc070329fd92b0fa1e2c928671147e0f}{Execute\+Scalar\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL statement, returning a scalar value. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static object \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ad7fb52092d3f2bd4fa11d0da0bffd576}{Execute\+Scalar\+Embedded\+Resource}} (this I\+Db\+Connection connection, string embedded\+Resource, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Query S\+QL statement, returning a scalar value. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static T \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a9e64ad9f06cca43d119fc75364dcba7f}{Get\+Single\+Object\+From\+Query\+String$<$ T $>$}} (this I\+Db\+Connection connection, string sql\+String, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets a single mapped object from a query string. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static T \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a20549e54528ba4334ca7113fa68943f2}{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static T \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_aa53b10a5834036e0e2246b50a8bcf6b4}{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ T $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adb831f47624e0f8d9cbf85346b804c8f}{Get\+Objects\+From\+Query\+String$<$ T $>$}} (this I\+Db\+Connection connection, string sql\+String, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets mapped objects from a query string. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ Tuple$<$ T, U $>$ $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ac8f3f4ea489e102f940854f8ea3a4c55}{Get\+Objects\+From\+Query\+String$<$ T, U $>$}} (this I\+Db\+Connection connection, string sql\+String, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets mapped objects from a query string. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ T $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ae196dbd8508c49353e1737aa13779e46}{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ Tuple$<$ T, U $>$ $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a28bbe4b7cb773c4b8738bed7826f20d5}{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ T $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a5c60246634c1fda423e48c7e6ddbd266}{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static I\+Enumerable$<$ Tuple$<$ T, U $>$ $>$ \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a153750e71b28ba5bd687c95e83485914}{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, Action$<$ I\+Db\+Command $>$ command\+Callback=null, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ab62a6fdee017e2623bed5e2f1e8ebc1f}{Execute\+Non\+Query\+String\+For\+Object$<$ T $>$}} (this I\+Db\+Connection connection, string non\+Query\+Sql\+String, T obj, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement for a Db\+Field decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_af558e620660d15904b4eec510bd47af5}{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, T obj, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement from an embedded resource for a Db\+Field decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_abc6cbdf1b238168f13a6b2a88e309743}{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, T obj, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement from an embedded resource for a Db\+Field decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3b70dc8befcb44864a49795cd865c50d}{Execute\+Non\+Query\+String\+For\+Objects$<$ T $>$}} (this I\+Db\+Connection connection, string non\+Query\+Sql\+String, I\+Enumerable$<$ T $>$ objects, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement for a enumerable list of Db\+Field decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a03e05fb2dd4ab39d85a77addd01b12e1}{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, I\+Enumerable$<$ T $>$ objects, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement from an embedded resource for a enumerable list of Db\+Field decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ace41ced3582ae6d75803703d3213c099}{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$}} (this I\+Db\+Connection connection, string embedded\+Resource, System.\+Reflection.\+Assembly assembly, I\+Enumerable$<$ T $>$ objects, bool validate\+Parameters=false)
+\begin{DoxyCompactList}\small\item\em Executes a Non Query S\+QL Statement from an embedded resource for a enumerable list of Db\+Field decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Extension Methods for System.\+Data.\+I\+Db\+Connection 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_aa556c672e950d5fcf5930de536a85a46}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_aa556c672e950d5fcf5930de536a85a46}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Command\+With\+Embedded\+Resource@{Command\+With\+Embedded\+Resource}}
+\index{Command\+With\+Embedded\+Resource@{Command\+With\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Command\+With\+Embedded\+Resource()}{CommandWithEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static I\+Db\+Command Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Command\+With\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a new I\+Db\+Command with an initialized from a specifed embedded resource. 
+
+\begin{DoxyReturn}{Returns}
+I\+Db\+Command
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded resource name\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a46009b6907850de6e6d764d5dabd4d4a}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a46009b6907850de6e6d764d5dabd4d4a}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Command\+With\+Embedded\+Resource@{Command\+With\+Embedded\+Resource}}
+\index{Command\+With\+Embedded\+Resource@{Command\+With\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Command\+With\+Embedded\+Resource()}{CommandWithEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static I\+Db\+Command Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Command\+With\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a new I\+Db\+Command with an initialized from a specifed embedded resource. 
+
+\begin{DoxyReturn}{Returns}
+The with embedded resource.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded resource name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} where embedded resource exists\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ace25288fc9d48650a733cb64b1ba1d51}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ace25288fc9d48650a733cb64b1ba1d51}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Command\+With\+Sql\+String@{Command\+With\+Sql\+String}}
+\index{Command\+With\+Sql\+String@{Command\+With\+Sql\+String}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Command\+With\+Sql\+String()}{CommandWithSqlString()}}
+{\footnotesize\ttfamily static I\+Db\+Command Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Command\+With\+Sql\+String (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{sql\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a new I\+Db\+Command with an initialized S\+QL Statement. 
+
+\begin{DoxyReturn}{Returns}
+I\+Db\+Command
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em sql\+String} & S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}} to Execute\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3ab3a6435b37ddb3254ed1be83bb74c9}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3ab3a6435b37ddb3254ed1be83bb74c9}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Command\+With\+Stored\+Procedure@{Command\+With\+Stored\+Procedure}}
+\index{Command\+With\+Stored\+Procedure@{Command\+With\+Stored\+Procedure}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Command\+With\+Stored\+Procedure()}{CommandWithStoredProcedure()}}
+{\footnotesize\ttfamily static I\+Db\+Command Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Command\+With\+Stored\+Procedure (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{stored\+Procedure }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a new I\+Db\+Command with an initialized Stored Procedure Name. 
+
+\begin{DoxyReturn}{Returns}
+I\+Db\+Command
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em stored\+Procedure} & Stored Procedure to Execute\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_af48b91dbba9d032dbd364a0ce48a7238}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_af48b91dbba9d032dbd364a0ce48a7238}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+Embedded\+Resource@{Execute\+Non\+Query\+Embedded\+Resource}}
+\index{Execute\+Non\+Query\+Embedded\+Resource@{Execute\+Non\+Query\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+Embedded\+Resource()}{ExecuteNonQueryEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static int Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of rows affected
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3dcbcb9d09dd691c17bc9652fa2894b1}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3dcbcb9d09dd691c17bc9652fa2894b1}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+Embedded\+Resource@{Execute\+Non\+Query\+Embedded\+Resource}}
+\index{Execute\+Non\+Query\+Embedded\+Resource@{Execute\+Non\+Query\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+Embedded\+Resource()}{ExecuteNonQueryEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static int Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of rows affected
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_af558e620660d15904b4eec510bd47af5}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_af558e620660d15904b4eec510bd47af5}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$}}
+\index{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$()}{ExecuteNonQueryEmbeddedResourceForObject< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static int Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{T}]{obj,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement from an embedded resource for a Db\+Field decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em obj} & Model object from which parameters are to be populated\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of records affected
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_abc6cbdf1b238168f13a6b2a88e309743}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_abc6cbdf1b238168f13a6b2a88e309743}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$}}
+\index{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$()}{ExecuteNonQueryEmbeddedResourceForObject< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static int Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+Embedded\+Resource\+For\+Object$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{T}]{obj,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement from an embedded resource for a Db\+Field decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em obj} & Model object from which parameters are to be populated\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of records affected
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a03e05fb2dd4ab39d85a77addd01b12e1}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a03e05fb2dd4ab39d85a77addd01b12e1}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$}}
+\index{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$()}{ExecuteNonQueryEmbeddedResourceForObjects< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{I\+Enumerable$<$ T $>$}]{objects,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement from an embedded resource for a enumerable list of Db\+Field decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em objects} & Enumerable list of model objects from which parameters are to be populated\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ace41ced3582ae6d75803703d3213c099}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ace41ced3582ae6d75803703d3213c099}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$}}
+\index{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$@{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$()}{ExecuteNonQueryEmbeddedResourceForObjects< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+Embedded\+Resource\+For\+Objects$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{I\+Enumerable$<$ T $>$}]{objects,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement from an embedded resource for a enumerable list of Db\+Field decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em objects} & Enumerable list of model objects from which parameters are to be populated\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adfac9ac363eeb9545af9b3a662f438df}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adfac9ac363eeb9545af9b3a662f438df}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+String@{Execute\+Non\+Query\+String}}
+\index{Execute\+Non\+Query\+String@{Execute\+Non\+Query\+String}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+String()}{ExecuteNonQueryString()}}
+{\footnotesize\ttfamily static int Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+String (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{non\+Query\+Sql\+String,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em non\+Query\+Sql\+String} & Non Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}} to Execute\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of rows affected
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ab62a6fdee017e2623bed5e2f1e8ebc1f}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ab62a6fdee017e2623bed5e2f1e8ebc1f}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+String\+For\+Object$<$ T $>$@{Execute\+Non\+Query\+String\+For\+Object$<$ T $>$}}
+\index{Execute\+Non\+Query\+String\+For\+Object$<$ T $>$@{Execute\+Non\+Query\+String\+For\+Object$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+String\+For\+Object$<$ T $>$()}{ExecuteNonQueryStringForObject< T >()}}
+{\footnotesize\ttfamily static int Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+String\+For\+Object$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{non\+Query\+Sql\+String,  }\item[{T}]{obj,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement for a Db\+Field decorated object. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em non\+Query\+Sql\+String} & Non Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}}\\
+\hline
+{\em obj} & Model object from which parameters are to be populated\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of records affected
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3b70dc8befcb44864a49795cd865c50d}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3b70dc8befcb44864a49795cd865c50d}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Non\+Query\+String\+For\+Objects$<$ T $>$@{Execute\+Non\+Query\+String\+For\+Objects$<$ T $>$}}
+\index{Execute\+Non\+Query\+String\+For\+Objects$<$ T $>$@{Execute\+Non\+Query\+String\+For\+Objects$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Non\+Query\+String\+For\+Objects$<$ T $>$()}{ExecuteNonQueryStringForObjects< T >()}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Non\+Query\+String\+For\+Objects$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{non\+Query\+Sql\+String,  }\item[{I\+Enumerable$<$ T $>$}]{objects,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Non Query S\+QL Statement for a enumerable list of Db\+Field decorated objects. Sql Parameters will be automatically populated. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em non\+Query\+Sql\+String} & Non Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}}\\
+\hline
+{\em objects} & Enumerable list of model objects from which parameters are to be populated\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of records affected
+\end{DoxyReturn}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a430c474cab2d89d20604579a66052020}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a430c474cab2d89d20604579a66052020}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}}
+\index{Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Query\+Embedded\+Resource()}{ExecuteQueryEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Query\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback,  }\item[{Action$<$ I\+Data\+Reader $>$}]{reader\+Callback,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em reader\+Callback} & Reader lambda expression callback in the form (reader) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a51679e971136235758d02f0bcdeb1822}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a51679e971136235758d02f0bcdeb1822}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}}
+\index{Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Query\+Embedded\+Resource()}{ExecuteQueryEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Query\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{Action$<$ I\+Data\+Reader $>$}]{reader\+Callback,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em reader\+Callback} & Reader lambda expression callback in the form (reader) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a027aaac95ad6cea7e42317bd2b3ec9ac}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a027aaac95ad6cea7e42317bd2b3ec9ac}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}}
+\index{Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Query\+Embedded\+Resource()}{ExecuteQueryEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Query\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback,  }\item[{Action$<$ I\+Data\+Reader $>$}]{reader\+Callback,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em reader\+Callback} & Reader lambda expression callback in the form (reader) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a8d29f18027a4b5f1bba7d2dbf5a2ea6c}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a8d29f18027a4b5f1bba7d2dbf5a2ea6c}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}}
+\index{Execute\+Query\+Embedded\+Resource@{Execute\+Query\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Query\+Embedded\+Resource()}{ExecuteQueryEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Query\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{Action$<$ I\+Data\+Reader $>$}]{reader\+Callback,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL Statement in an Embedded Resource. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em reader\+Callback} & Reader lambda expression callback in the form (reader) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ae18988406fddb5b1d39db4d364f258b5}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ae18988406fddb5b1d39db4d364f258b5}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Query\+Scalar@{Execute\+Query\+Scalar}}
+\index{Execute\+Query\+Scalar@{Execute\+Query\+Scalar}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Query\+Scalar()}{ExecuteQueryScalar()}}
+{\footnotesize\ttfamily static object Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Query\+Scalar (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{sql\+String,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL statement, returning a scalar value. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em sql\+String} & Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}} to Execute\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scalar value
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3b45608e2c25aa1275229f99be2d929b}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a3b45608e2c25aa1275229f99be2d929b}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Query\+String@{Execute\+Query\+String}}
+\index{Execute\+Query\+String@{Execute\+Query\+String}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Query\+String()}{ExecuteQueryString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Query\+String (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{sql\+String,  }\item[{Action$<$ I\+Data\+Reader $>$}]{reader\+Callback,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL Statement. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em sql\+String} & Sql string to execute\\
+\hline
+{\em reader\+Callback} & Reader callback\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a323ca90a66dc4e4319b94718ee6cf35c}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a323ca90a66dc4e4319b94718ee6cf35c}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Query\+String@{Execute\+Query\+String}}
+\index{Execute\+Query\+String@{Execute\+Query\+String}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Query\+String()}{ExecuteQueryString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static void Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Query\+String (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{sql\+String,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback,  }\item[{Action$<$ I\+Data\+Reader $>$}]{reader\+Callback,  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL Statement. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em sql\+String} & Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}} to Execute\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em reader\+Callback} & Reader lambda expression callback in the form (reader) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adc070329fd92b0fa1e2c928671147e0f}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adc070329fd92b0fa1e2c928671147e0f}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Scalar\+Embedded\+Resource@{Execute\+Scalar\+Embedded\+Resource}}
+\index{Execute\+Scalar\+Embedded\+Resource@{Execute\+Scalar\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Scalar\+Embedded\+Resource()}{ExecuteScalarEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static object Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Scalar\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL statement, returning a scalar value. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scalar value
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ad7fb52092d3f2bd4fa11d0da0bffd576}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ad7fb52092d3f2bd4fa11d0da0bffd576}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Execute\+Scalar\+Embedded\+Resource@{Execute\+Scalar\+Embedded\+Resource}}
+\index{Execute\+Scalar\+Embedded\+Resource@{Execute\+Scalar\+Embedded\+Resource}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Execute\+Scalar\+Embedded\+Resource()}{ExecuteScalarEmbeddedResource()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static object Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Execute\+Scalar\+Embedded\+Resource (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Executes a Query S\+QL statement, returning a scalar value. An exception will be thrown if the connection is not open. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scalar value
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ae196dbd8508c49353e1737aa13779e46}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ae196dbd8508c49353e1737aa13779e46}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Objects\+From\+Embedded\+Resource$<$ T $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$}}
+\index{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$()}{GetObjectsFromEmbeddedResource< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$T$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Objects\+From\+Embedded\+Resource$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Enumerable of Mapped Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a5c60246634c1fda423e48c7e6ddbd266}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a5c60246634c1fda423e48c7e6ddbd266}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Objects\+From\+Embedded\+Resource$<$ T $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$}}
+\index{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Objects\+From\+Embedded\+Resource$<$ T $>$()}{GetObjectsFromEmbeddedResource< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$T$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Objects\+From\+Embedded\+Resource$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Enumerable of Mapped Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a28bbe4b7cb773c4b8738bed7826f20d5}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a28bbe4b7cb773c4b8738bed7826f20d5}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$}}
+\index{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$()}{GetObjectsFromEmbeddedResource< T, U >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$Tuple$<$T, U$>$ $>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Enumerable of Mapped Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & First \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+{\em U} & Second \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em U} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a153750e71b28ba5bd687c95e83485914}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a153750e71b28ba5bd687c95e83485914}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$}}
+\index{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$@{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$()}{GetObjectsFromEmbeddedResource< T, U >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static I\+Enumerable$<$Tuple$<$T, U$>$ $>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Objects\+From\+Embedded\+Resource$<$ T, U $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets mapped objects from an embedded resource. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Enumerable of Mapped Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & First \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+{\em U} & Second \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em U} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adb831f47624e0f8d9cbf85346b804c8f}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_adb831f47624e0f8d9cbf85346b804c8f}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Objects\+From\+Query\+String$<$ T $>$@{Get\+Objects\+From\+Query\+String$<$ T $>$}}
+\index{Get\+Objects\+From\+Query\+String$<$ T $>$@{Get\+Objects\+From\+Query\+String$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Objects\+From\+Query\+String$<$ T $>$()}{GetObjectsFromQueryString< T >()}}
+{\footnotesize\ttfamily static I\+Enumerable$<$T$>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Objects\+From\+Query\+String$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{sql\+String,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets mapped objects from a query string. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Enumerable of Mapped Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em sql\+String} & Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}} to Execute\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ac8f3f4ea489e102f940854f8ea3a4c55}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_ac8f3f4ea489e102f940854f8ea3a4c55}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Objects\+From\+Query\+String$<$ T, U $>$@{Get\+Objects\+From\+Query\+String$<$ T, U $>$}}
+\index{Get\+Objects\+From\+Query\+String$<$ T, U $>$@{Get\+Objects\+From\+Query\+String$<$ T, U $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Objects\+From\+Query\+String$<$ T, U $>$()}{GetObjectsFromQueryString< T, U >()}}
+{\footnotesize\ttfamily static I\+Enumerable$<$Tuple$<$T, U$>$ $>$ Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Objects\+From\+Query\+String$<$ T, U $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{sql\+String,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets mapped objects from a query string. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Enumerable of Mapped Objects
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em sql\+String} & Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}} to Execute\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & First \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+{\em U} & Second \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\item[{\em U} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a20549e54528ba4334ca7113fa68943f2}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a20549e54528ba4334ca7113fa68943f2}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$@{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$}}
+\index{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$@{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$()}{GetSingleObjectFromEmbeddedResource< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static T Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Mapped Object
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_aa53b10a5834036e0e2246b50a8bcf6b4}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_aa53b10a5834036e0e2246b50a8bcf6b4}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$@{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$}}
+\index{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$@{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$()}{GetSingleObjectFromEmbeddedResource< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static T Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Single\+Object\+From\+Embedded\+Resource$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{embedded\+Resource,  }\item[{System.\+Reflection.\+Assembly}]{assembly,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets a single mapped object from an embedded resouce. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Mapped Object
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em embedded\+Resource} & Embedded Resource Name\\
+\hline
+{\em assembly} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_assembly}{Assembly}} Where Embedded Resource Resides\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a9e64ad9f06cca43d119fc75364dcba7f}\label{class_blue_cloud_1_1_extensions_1_1_data_1_1_i_db_connection_extensions_a9e64ad9f06cca43d119fc75364dcba7f}} 
+\index{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}!Get\+Single\+Object\+From\+Query\+String$<$ T $>$@{Get\+Single\+Object\+From\+Query\+String$<$ T $>$}}
+\index{Get\+Single\+Object\+From\+Query\+String$<$ T $>$@{Get\+Single\+Object\+From\+Query\+String$<$ T $>$}!Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions@{Blue\+Cloud\+::\+Extensions\+::\+Data\+::\+I\+Db\+Connection\+Extensions}}
+\subsubsection{\texorpdfstring{Get\+Single\+Object\+From\+Query\+String$<$ T $>$()}{GetSingleObjectFromQueryString< T >()}}
+{\footnotesize\ttfamily static T Blue\+Cloud.\+Extensions.\+Data.\+I\+Db\+Connection\+Extensions.\+Get\+Single\+Object\+From\+Query\+String$<$ T $>$ (\begin{DoxyParamCaption}\item[{this I\+Db\+Connection}]{connection,  }\item[{string}]{sql\+String,  }\item[{Action$<$ I\+Db\+Command $>$}]{command\+Callback = {\ttfamily null},  }\item[{bool}]{validate\+Parameters = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets a single mapped object from a query string. If there are more than one record, it will just return the first one. An exception will be thrown if the connection is not open. 
+
+\begin{DoxyReturn}{Returns}
+Mapped Object
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em connection} & I\+Db\+Connection\\
+\hline
+{\em sql\+String} & Query S\+QL \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_string}{String}} to Execute\\
+\hline
+{\em command\+Callback} & Parameter lambda expression callback in the form (command) =$>$ \{ \}\\
+\hline
+{\em validate\+Parameters} & If set to {\ttfamily true} validate parameters.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \mbox{\hyperlink{namespace_blue_cloud_1_1_extensions_1_1_data}{Data}} Type\\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Blue\+Cloud.\+Extensions/\+Data/I\+Db\+Connection\+Extensions.\+cs\end{DoxyCompactItemize}
