@@ -14,13 +14,13 @@ The bluecloud.extensions Library is available through [NuGet](https://www.nuget.
 To install it with package manager:
 
 ```
-Install-Package bluecloud.extensions -Version 1.0.0
+Install-Package bluecloud.extensions -Version 1.0.1
 ```
 
 To install it with .NET CLI:
 
 ```
-dotnet add package bluecloud.extensions --version 1.0.0
+dotnet add package bluecloud.extensions --version 1.0.1
 ```
 
 ## Getting Started
