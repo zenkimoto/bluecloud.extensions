@@ -72,9 +72,13 @@ _To be completed..._
 
 ## Validate Parameters
 
-On all extension methods, there is a validateParameters parameter that validates the mapping between SQL and parameters in the `IDbCommand` object.
+On all extension methods, there is a validateParameters parameter that validates the mapping between SQL and parameters in the `IDbCommand` object.  
+
+When validateParameter is set to `true`, it will throw an exception when a parameter in the SQL file does not have a corresponding parameter is the `IDbCommand` object or if the model class does not have a corresponding `DbField`.  The exception will notify you of the missing parameters for you to correct your code.
 
 By default, validateParameters is set to `false` assuming that code executed is in release mode.
+
+> 💡 **Tip:** Enable `validateParameters` during development to ensure your mappings are correct.  Disable it during production.
 
 _To be completed..._
 
@@ -180,7 +184,7 @@ If you want to change the Timespan of the sliding window to 30 minutes, you can 
 IDataReaderExtensions.cache = new DefaultCache<List<DbMapping>>(new TimeSpan(0, 30, 0));
 ```
 
-If you want to create your own cache, create a new class that implements the [`BlueCloud.Extensions.Data.ICacheable`](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Documentation/html/interface_blue_cloud_1_1_extensions_1_1_cache_1_1_i_cacheable.html) Interface.
+If you want to create your own cache, create a new class that implements the [`ICacheable`](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Documentation/html/interface_blue_cloud_1_1_extensions_1_1_cache_1_1_i_cacheable.html) Interface.
 
 _To be completed..._
 
