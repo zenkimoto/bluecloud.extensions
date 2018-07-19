@@ -186,7 +186,40 @@ IDataReaderExtensions.cache = new DefaultCache<List<DbMapping>>(new TimeSpan(0, 
 
 If you want to create your own cache, create a new class that implements the [`ICacheable`](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Documentation/html/interface_blue_cloud_1_1_extensions_1_1_cache_1_1_i_cacheable.html) Interface.
 
-_To be completed..._
+#### Example
+
+The following is an example of utilizing [LazyCache](https://github.com/alastairtree/LazyCache) instead of the DefaultCache class.
+
+First, create an adapter class that implements the [`ICacheable`](https://cdn.rawgit.com/zenkimoto/bluecloud.extensions/master/Documentation/html/interface_blue_cloud_1_1_extensions_1_1_cache_1_1_i_cacheable.html) interface.
+
+```
+using LazyCache;
+
+...
+
+public class MyLazyCache<T> : ICacheable<T>
+{
+    private IAppCache cache = new CachingService();
+
+    public T Get(string key)
+    {
+        return cache.Get<T>(key);
+    }
+
+    public void Set(string key, T value)
+    {
+        cache.Add(key, value);
+    }
+}
+```
+
+Next, assign `IDbDataReader.cache` to a new instance of `MyLazyCache`.
+
+```
+IDataReaderExtensions.cache = new MyLazyCache<List<DbMapping>>();
+```
+
+Now, BlueCloud.Extensions will be using [LazyCache](https://github.com/alastairtree/LazyCache) as the default caching provider.
 
 ## Additional Method Extensions
 
