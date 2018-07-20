@@ -20,6 +20,8 @@ The extension methods have consistent naming.  Methods where you pass in a SQL S
 
 The `DbField` attribute is used to annotate your model classes with the SQL result column names from `IDataReader`.  **Not all** properties in an object need to be annotated with `DbField` attribute, just the ones you want mapped.  In addition, you could create read only calculated properties based on `DbField` mapped properties.
 
+**Note:** If no database field is specified, the property name will be used as the database field. 
+
 > 💡 **Tip:** You can alias your columns in your SELECT queries to change the `IDataReader` column name result.
 
 > 💡 **Tip:** Model objects do not have to have to be a 1-1 match with database tables.
