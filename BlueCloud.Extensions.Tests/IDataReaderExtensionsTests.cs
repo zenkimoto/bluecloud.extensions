@@ -234,6 +234,16 @@ namespace BlueCloud.Extensions.Tests
         }
 
         [Fact]
+        public void MapToObjects_WhenAttemptingToAssignNullToAReferenceField_ShouldAssignNull()
+        {
+            QueryInvoices();
+
+            var invoice = reader.MapToObjects<Invoice>(1).First();
+
+            Assert.Null(invoice.BillingState);
+        }
+
+        [Fact]
         public void MapToObjects_WhenAttemptingToMapToInvalidMapping_ShouldThrowInvalidCastException()
         {
             QueryEmployees();

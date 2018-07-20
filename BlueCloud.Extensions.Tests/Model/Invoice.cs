@@ -16,6 +16,9 @@ namespace BlueCloud.Extensions.Tests.Model
         [DbField("InvoiceDate")]
         public DateTime InvoiceDate { get; set; }
 
+        [DbField("BillingState")]
+        public string BillingState { get; set; }
+
         public bool ShouldOverridePropertyHydration(string propertyName)
         {
             string[] properties = { "InvoiceDate", "InvoiceId" };

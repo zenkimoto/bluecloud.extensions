@@ -245,7 +245,8 @@ namespace BlueCloud.Extensions.Data
 
                 if (attrib != null)
                 {
-                    var isNullable = Nullable.GetUnderlyingType(property.PropertyType) != null;
+                    var isNullable = Nullable.GetUnderlyingType(property.PropertyType) != null || !property.PropertyType.IsValueType;
+
                     var mapping = new DbMapping() 
                     { 
                         DatabaseField = attrib.Field, 
