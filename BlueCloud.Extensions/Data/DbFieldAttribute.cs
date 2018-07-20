@@ -20,7 +20,7 @@ namespace BlueCloud.Extensions.Data
         /// <summary>
         /// Database Field to Property Mapping Attribute
         /// 
-        /// If not specified, the database field will be the property name.
+        /// If fieldName not specified, the database field will be the property name.
         /// </summary>
         /// <param name="fieldName">Database Field</param>
         /// <param name="parameterName">SQL Parameter Name (Optional) in SQL Text</param>
@@ -33,7 +33,7 @@ namespace BlueCloud.Extensions.Data
         /// <summary>
         /// Database Field to Property Mapping Attribute.
         /// 
-        /// If not specified, the database field will be the property name.
+        /// If fieldName not specified, the database field will be the property name.
         /// </summary>
         public DbFieldAttribute()
         {
