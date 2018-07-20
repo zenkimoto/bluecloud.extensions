@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Sample2.Models.InvoiceItem>
+@{
+    ViewData["Title"] = "Invoice Detail";
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Artist</td>
+            <th>Track</th>
+            <th>Album</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoiceDetail in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(_ => invoiceDetail.ArtistName)</td>
+            <td>@Html.DisplayFor(_ => invoiceDetail.TrackName)</td>
+            <td>@Html.DisplayFor(_ => invoiceDetail.AlbumTitle)</td>
+            <td>@Html.DisplayFor(_ => invoiceDetail.Quantity)</td>
+            <td>@Html.DisplayFor(_ => invoiceDetail.UnitPrice)</td>
+            <td>@Html.DisplayFor(_ => invoiceDetail.LineItemTotal)</td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Sample2.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+<table id="table_id" class="table table-striped table-bordered table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th>Invoice Id</th>
+            <th>Customer Id</th>
+            <th>Invoice Date</th>
+            <th>Billing Address</th>
+            <th>Billing City</th>
+            <th>Billing State</th>
+            <th>Billing Country</th>
+            <th>Billing Postal</th>
+            <th>Billing Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+        <tr data-invoice-id="@invoice.InvoiceId">
+            <td>@Html.DisplayFor(_ => invoice.InvoiceId)</td>
+            <td>@Html.DisplayFor(_ => invoice.CustomerId)</td>
+            <td>@Html.DisplayFor(_ => invoice.InvoiceDate)</td>
+            <td>@Html.DisplayFor(_ => invoice.BillingAddress)</td>
+            <td>@Html.DisplayFor(_ => invoice.BillingCity)</td>
+            <td>@Html.DisplayFor(_ => invoice.BillingState)</td>
+            <td>@Html.DisplayFor(_ => invoice.BillingCountry)</td>
+            <td>@Html.DisplayFor(_ => invoice.BillingPostalCode)</td>
+            <td>@Html.DisplayFor(_ => invoice.Total)</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+<script>$(document).ready(function() {
+        $('#table_id').DataTable({
+            "initComplete": function() {
+                var api = this.api();
+                api.$('tr').click(function() {
+                    let invoiceId = $(this).data('invoice-id');
+                    location.href = `@Url.Action("Detail", "Home")/${invoiceId}`;
+                });
+            }
+        });
+});</script>
+}
