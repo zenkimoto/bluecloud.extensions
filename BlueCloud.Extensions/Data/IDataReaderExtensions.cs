@@ -249,7 +249,7 @@ namespace BlueCloud.Extensions.Data
 
                     var mapping = new DbMapping() 
                     { 
-                        DatabaseField = attrib.Field, 
+                        DatabaseField = attrib.Field ?? property.Name, 
                         ObjectProperty = property, 
                         IsNullable = isNullable 
                     };

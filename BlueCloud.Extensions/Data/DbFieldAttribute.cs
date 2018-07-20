@@ -27,5 +27,14 @@ namespace BlueCloud.Extensions.Data
             Field = fieldName;
             SqlParameterName = parameterName ?? fieldName;
         }
+
+        /// <summary>
+        /// Database Field to Property Mapping Attribute
+        /// </summary>
+        public DbFieldAttribute()
+        {
+            Field = null;
+            SqlParameterName = null;
+        }
     }
 }

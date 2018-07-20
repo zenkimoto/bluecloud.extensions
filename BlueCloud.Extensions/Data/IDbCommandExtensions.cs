@@ -170,10 +170,9 @@ namespace BlueCloud.Extensions.Data
                 if (dbField == null)
                     continue;
 
-                if (dbField.SqlParameterName == null)
-                    continue;
+                var sqlParameterName = dbField.SqlParameterName ?? property.Name;
 
-                if (bindParameters.Contains(dbField.SqlParameterName.TrimStart(':', '@').ToLower()) == false)
+                if (bindParameters.Contains(sqlParameterName.TrimStart(':', '@').ToLower()) == false)
                     continue;
 
                 var propertyValue = property.GetValue(model);
@@ -186,7 +185,7 @@ namespace BlueCloud.Extensions.Data
 
                 Debug.WriteLine($"{property.Name} [{property.PropertyType}] <-> Database Field: {dbField.Field}");
 
-                command.AddParameter(dbField.SqlParameterName, propertyValue);
+                command.AddParameter(sqlParameterName, propertyValue);
             }
         }
 

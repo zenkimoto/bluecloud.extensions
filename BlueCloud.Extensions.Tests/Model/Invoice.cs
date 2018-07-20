@@ -7,16 +7,16 @@ namespace BlueCloud.Extensions.Tests.Model
 {
     public class Invoice : IDbHydrationOverridable, IDbSerializationOverridable
     {
-        [DbField("InvoiceId")]
+        [DbField]
         public long InvoiceId { get; set; }
 
-        [DbField("CustomerId")]
+        [DbField]
         public long CustomerId { get; set; }
 
-        [DbField("InvoiceDate")]
+        [DbField]
         public DateTime InvoiceDate { get; set; }
 
-        [DbField("BillingState")]
+        [DbField]
         public string BillingState { get; set; }
 
         public bool ShouldOverridePropertyHydration(string propertyName)
