@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>bluecloud.extensions</id>
+    <id>BlueCloud.Extensions</id>
     <version>1.0.2</version>
-    <title>bluecloud.extensions</title>
+    <title>BlueCloud.Extensions</title>
     <authors>Alex Yip</authors>
     <owners>Blue Cloud Software, LLC</owners>
     <licenseUrl>https://github.com/zenkimoto/bluecloud.extensions/blob/master/LICENSE.md</licenseUrl>
@@ -11,9 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/zenkimoto/bluecloud.extensions/master/Logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A helpful set of C# extensions used to map database results to object models.</description>
-    <releaseNotes>Initial Release.</releaseNotes>
+    <releaseNotes>Bug fixes</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>orm micro-orm sql</tags>
+    <dependencies>
+      <dependency id="System.Runtime.Caching" version="4.5.0" />
+    </dependencies>
   </metadata>
   <files>
       <file src="bin/Release/netstandard2.0/BlueCloud.Extensions.dll" target="lib/netstandard2.0/BlueCloud.Extensions.dll" />
